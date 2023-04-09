@@ -1,8 +1,5 @@
 package org.image;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
