@@ -2,17 +2,18 @@ package org.image;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.function.Function;
 import javax.imageio.ImageIO;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ImageProcessorTest {
 
@@ -34,6 +35,15 @@ public class ImageProcessorTest {
         BufferedImage blackWhiteImage = imageProcessorMethod.apply(colorImage);
         assertNotNull(blackWhiteImage, "Black and white image should not be null");
         assertEquals(BufferedImage.TYPE_BYTE_BINARY, blackWhiteImage.getType(), "Image type should be BufferedImage.TYPE_BYTE_BINARY");
+        assertEquals(colorImage.getWidth(), blackWhiteImage.getWidth(), "Width should be equal");
+        assertEquals(colorImage.getHeight(), blackWhiteImage.getHeight(), "Height should be equal");
+    }
+
+    @Test
+    public void testScaleImageForPreview() {
+        BufferedImage scaledImage = ImageProcessor.scaleImageForPreview(colorImage);
+        assertNotNull(scaledImage, "Scaled image should not be null");
+        assertTrue(scaledImage.getWidth() <= 500 && scaledImage.getHeight() <= 500, "Scaled image dimensions should not exceed 500x500");
     }
 
     private Function<BufferedImage, BufferedImage> getImageProcessorMethod(String methodName) {
@@ -48,4 +58,26 @@ public class ImageProcessorTest {
                 throw new IllegalArgumentException("Invalid method name: " + methodName);
         }
     }
+
+    @Test
+    public void testSaveBlackWhiteImage(@TempDir Path tempDir) throws IOException {
+        BufferedImage bwImage = ImageProcessor.convertToBlackAndWhite1(colorImage);
+
+        String outputImagePath = tempDir.resolve("image.jpg").toString();
+        File outputFileBeforeSave = new File(outputImagePath);
+        assertFalse(outputFileBeforeSave.exists(), "Output file should not exist before saving");
+
+        ImageProcessor.saveBlackWhiteImage(bwImage, inputImagePath);
+
+        String expectedOutputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
+        File outputFile = new File(expectedOutputImagePath);
+        assertTrue(outputFile.exists(), "Output file should exist");
+        assertTrue(outputFile.getName().endsWith("_bw.jpg"), "Output file name should end with '_bw.jpg'");
+
+        BufferedImage savedImage = ImageIO.read(outputFile);
+        assertNotNull(savedImage, "Saved image should not be null");
+        assertEquals(bwImage.getWidth(), savedImage.getWidth(), "Width should be equal");
+        assertEquals(bwImage.getHeight(), savedImage.getHeight(), "Height should be equal");
+    }
+
 }

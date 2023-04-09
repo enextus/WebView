@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ImageProcessor {
 
@@ -123,9 +124,17 @@ public class ImageProcessor {
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new GridLayout(1, 3));
-            buttonPanel.add(new JButton("Преобразование 1"));
-            buttonPanel.add(new JButton("Преобразование 2"));
-            buttonPanel.add(new JButton("Преобразование 3"));
+            JButton button1 = new JButton("Преобразование 1");
+            button1.addActionListener(e -> saveImage(bwImage1));
+            buttonPanel.add(button1);
+
+            JButton button2 = new JButton("Преобразование 2");
+            button2.addActionListener(e -> saveImage(bwImage2));
+            buttonPanel.add(button2);
+
+            JButton button3 = new JButton("Преобразование 3");
+            button3.addActionListener(e -> saveImage(bwImage3));
+            buttonPanel.add(button3);
             frame.add(buttonPanel, BorderLayout.CENTER);
 
             JPanel resultImagesPanel = new JPanel();
@@ -141,7 +150,7 @@ public class ImageProcessor {
         });
     }
 
-    private static BufferedImage scaleImageForPreview(BufferedImage image) {
+    public static BufferedImage scaleImageForPreview(BufferedImage image) {
         int maxWidth = 500;
         int maxHeight = 500;
         int width = image.getWidth();
@@ -162,6 +171,36 @@ public class ImageProcessor {
         g.dispose();
 
         return resizedImage;
+    }
+
+    private static void saveImage(BufferedImage image) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Сохранить изображение");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG Images", "jpg");
+        fileChooser.setFileFilter(filter);
+
+        int returnValue = fileChooser.showSaveDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String filePath = selectedFile.getAbsolutePath();
+            if (!filePath.toLowerCase().endsWith(".jpg")) {
+                filePath += ".jpg";
+            }
+
+            try {
+                ImageIO.write(image, "jpg", new File(filePath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void saveBlackWhiteImage(BufferedImage bwImage, String inputImagePath) throws IOException {
+        String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
+        ImageIO.write(bwImage, "jpg", new File(outputImagePath));
     }
 
 }
