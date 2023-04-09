@@ -7,9 +7,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class ImageProcessor {
 
     public static void main(String[] args) {
@@ -38,7 +35,6 @@ public class ImageProcessor {
             }
         }
     }
-
 
     public static BufferedImage convertToBlackAndWhite1(BufferedImage colorImage) {
         BufferedImage blackWhiteImage = new BufferedImage(colorImage.getWidth(), colorImage.getHeight(), BufferedImage.TYPE_BYTE_BINARY);
@@ -89,6 +85,7 @@ public class ImageProcessor {
 
         return blackWhiteImage;
     }
+
     public static BufferedImage convertToBlackAndWhite3(BufferedImage colorImage) {
         BufferedImage blackWhiteImage = new BufferedImage(colorImage.getWidth(), colorImage.getHeight(), BufferedImage.TYPE_BYTE_BINARY);
         int width = colorImage.getWidth();
@@ -121,7 +118,7 @@ public class ImageProcessor {
             frame.setLayout(new BorderLayout());
 
             JPanel originalImagePanel = new JPanel();
-            originalImagePanel.add(new JLabel(new ImageIcon(colorImage)));
+            originalImagePanel.add(new JLabel(new ImageIcon(scaleImageForPreview(colorImage))));
             frame.add(originalImagePanel, BorderLayout.NORTH);
 
             JPanel buttonPanel = new JPanel();
@@ -133,9 +130,9 @@ public class ImageProcessor {
 
             JPanel resultImagesPanel = new JPanel();
             resultImagesPanel.setLayout(new GridLayout(1, 3));
-            resultImagesPanel.add(new JLabel(new ImageIcon(bwImage1)));
-            resultImagesPanel.add(new JLabel(new ImageIcon(bwImage2)));
-            resultImagesPanel.add(new JLabel(new ImageIcon(bwImage3)));
+            resultImagesPanel.add(new JLabel(new ImageIcon(scaleImageForPreview(bwImage1))));
+            resultImagesPanel.add(new JLabel(new ImageIcon(scaleImageForPreview(bwImage2))));
+            resultImagesPanel.add(new JLabel(new ImageIcon(scaleImageForPreview(bwImage3))));
             frame.add(resultImagesPanel, BorderLayout.SOUTH);
 
             frame.pack();
@@ -143,4 +140,28 @@ public class ImageProcessor {
             frame.setVisible(true);
         });
     }
+
+    private static BufferedImage scaleImageForPreview(BufferedImage image) {
+        int maxWidth = 500;
+        int maxHeight = 500;
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        if (width <= maxWidth && height <= maxHeight) {
+            return image;
+        }
+
+        double scaleFactor = Math.min((double) maxWidth / width, (double) maxHeight / height);
+        int newWidth = (int) (width * scaleFactor);
+        int newHeight = (int) (height * scaleFactor);
+
+        BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, image.getType());
+        Graphics2D g = resizedImage.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.drawImage(image, 0, 0, newWidth, newHeight, null);
+        g.dispose();
+
+        return resizedImage;
+    }
+
 }
