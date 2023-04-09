@@ -50,7 +50,7 @@ public class ImageProcessor {
                 int green = (pixel >> 8) & 0xff;
                 int blue = pixel & 0xff;
 
-                int gray = (int) (0.3 * red + 0.59 * green + 0.11 * blue);
+                int gray = (int) (0.35 * red + 0.35 * green + 0.35 * blue);
                 int binary = (gray > 128) ? 255 : 0;
 
                 int newPixel = (binary << 16) | (binary << 8) | binary;
@@ -100,7 +100,7 @@ public class ImageProcessor {
                 int green = (pixel >> 8) & 0xff;
                 int blue = pixel & 0xff;
 
-                int gray = (int) (0.1 * red + 0.79 * green + 0.2 * blue);
+                int gray = (int) (0.79 * red + 0.11 * green + 0.1 * blue);
                 int binary = (gray > 128) ? 255 : 0;
 
                 int newPixel = (binary << 16) | (binary << 8) | binary;
