@@ -27,7 +27,7 @@ public class ImageProcessor {
         }
     }
 
-    private static BufferedImage convertToBlackAndWhite(BufferedImage colorImage) {
+    public static BufferedImage convertToBlackAndWhite(BufferedImage colorImage) {
         BufferedImage blackWhiteImage = new BufferedImage(colorImage.getWidth(), colorImage.getHeight(), BufferedImage.TYPE_BYTE_BINARY);
         int width = colorImage.getWidth();
         int height = colorImage.getHeight();

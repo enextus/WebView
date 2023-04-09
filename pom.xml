@@ -49,7 +49,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>org.serpinskitriangle.AnimatedSierpinskiTriangleThree</mainClass>
+                            <mainClass>org.image.ImageProcessor</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
