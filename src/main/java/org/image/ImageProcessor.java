@@ -12,11 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 public class ImageProcessor {
 
@@ -29,10 +24,10 @@ public class ImageProcessor {
         int returnValue = fileChooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            String inputImagePath = selectedFile.getAbsolutePath();
-            String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
-
             try {
+                String inputImagePath = selectedFile.getCanonicalPath();
+                String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
+
                 BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
                 BufferedImage blackWhiteImage = convertToBlackAndWhite(colorImage);
                 ImageIO.write(blackWhiteImage, "jpg", new File(outputImagePath));
@@ -43,6 +38,7 @@ public class ImageProcessor {
             }
         }
     }
+
 
     public static BufferedImage convertToBlackAndWhite(BufferedImage colorImage) {
         BufferedImage blackWhiteImage = new BufferedImage(colorImage.getWidth(), colorImage.getHeight(), BufferedImage.TYPE_BYTE_BINARY);
