@@ -11,19 +11,36 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 public class ImageProcessor {
+
     public static void main(String[] args) {
-        String inputImagePath = "src/main/resources/img/image.jpg";
-        String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Выберите изображение");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(false);
 
-        try {
-            BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
-            BufferedImage blackWhiteImage = convertToBlackAndWhite(colorImage);
-            ImageIO.write(blackWhiteImage, "jpg", new File(outputImagePath));
+        int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String inputImagePath = selectedFile.getAbsolutePath();
+            String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
 
-            displayImages(colorImage, blackWhiteImage);
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
+                BufferedImage blackWhiteImage = convertToBlackAndWhite(colorImage);
+                ImageIO.write(blackWhiteImage, "jpg", new File(outputImagePath));
+
+                displayImages(colorImage, blackWhiteImage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
