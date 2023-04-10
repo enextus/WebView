@@ -1,10 +1,15 @@
 package org.image;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class ImageDisplay {
+
+    private static JButton changeImageButton;
 
     public static void displayImages(BufferedImage colorImage, BufferedImage bwImage1, BufferedImage bwImage2, BufferedImage bwImage3) {
         SwingUtilities.invokeLater(() -> {
@@ -20,9 +25,16 @@ public class ImageDisplay {
             frame.setLayout(new BorderLayout());
             frame.setResizable(false); // Prevent window resizing
 
+            JPanel panel = new JPanel();
+            frame.add(panel, BorderLayout.NORTH);
+
+            changeImageButton = new JButton("Выбрать другое изображение");
+            changeImageButton.addActionListener(e -> changeImage());
+            panel.add(changeImageButton);
+
             JPanel originalImagePanel = new JPanel();
             originalImagePanel.add(new JLabel(new ImageIcon(scaleImageForPreview(colorImage))));
-            frame.add(originalImagePanel, BorderLayout.NORTH);
+            frame.add(originalImagePanel, BorderLayout.WEST);
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new GridLayout(1, 3));
@@ -56,6 +68,35 @@ public class ImageDisplay {
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });
+    }
+
+    private static void changeImage() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Выберите изображение");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(false);
+
+        int returnValue = fileChooser.showOpenDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            try {
+                String inputImagePath = ((File) selectedFile).getCanonicalPath();
+                BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
+
+                double[] weights1 = {0.35, 0.35, 0.35};
+                double[] weights2 = {0.1, 0.79, 0.11};
+                double[] weights3 = {0.79, 0.11, 0.1};
+
+                BufferedImage bwImage1 = ImageProcessor.convertToBlackAndWhite(colorImage, weights1);
+                BufferedImage bwImage2 = ImageProcessor.convertToBlackAndWhite(colorImage, weights2);
+                BufferedImage bwImage3 = ImageProcessor.convertToBlackAndWhite(colorImage, weights3);
+
+                displayImages(colorImage, bwImage1, bwImage2, bwImage3);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static BufferedImage scaleImageForPreview(BufferedImage image) {
