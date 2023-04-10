@@ -10,11 +10,15 @@ import java.io.IOException;
 public class ImageDisplay {
 
     private static JButton changeImageButton;
+    private static JLabel originalImageLabel;
+    private static JLabel bwImage1Label;
+    private static JLabel bwImage2Label;
+    private static JLabel bwImage3Label;
 
     public static void displayImages(BufferedImage colorImage, BufferedImage bwImage1, BufferedImage bwImage2, BufferedImage bwImage3) {
         SwingUtilities.invokeLater(() -> {
             try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
                      UnsupportedLookAndFeelException e) {
                 e.printStackTrace();
@@ -33,7 +37,8 @@ public class ImageDisplay {
             panel.add(changeImageButton);
 
             JPanel originalImagePanel = new JPanel();
-            originalImagePanel.add(new JLabel(new ImageIcon(scaleImageForPreview(colorImage))));
+            originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
+            originalImagePanel.add(originalImageLabel);
             frame.add(originalImagePanel, BorderLayout.WEST);
 
             JPanel buttonPanel = new JPanel();
@@ -59,9 +64,13 @@ public class ImageDisplay {
 
             JPanel resultImagesPanel = new JPanel();
             resultImagesPanel.setLayout(new GridLayout(1, 3));
-            resultImagesPanel.add(new JLabel(new ImageIcon(scaleImageForPreview(bwImage1))));
-            resultImagesPanel.add(new JLabel(new ImageIcon(scaleImageForPreview(bwImage2))));
-            resultImagesPanel.add(new JLabel(new ImageIcon(scaleImageForPreview(bwImage3))));
+            bwImage1Label = new JLabel(new ImageIcon(scaleImageForPreview(bwImage1)));
+            bwImage2Label = new JLabel(new ImageIcon(scaleImageForPreview(bwImage2)));
+            bwImage3Label = new JLabel(new ImageIcon(scaleImageForPreview(bwImage3)));
+
+            resultImagesPanel.add(bwImage1Label);
+            resultImagesPanel.add(bwImage2Label);
+            resultImagesPanel.add(bwImage3Label);
             frame.add(resultImagesPanel, BorderLayout.SOUTH);
 
             frame.pack();
@@ -92,34 +101,36 @@ public class ImageDisplay {
                 BufferedImage bwImage2 = ImageProcessor.convertToBlackAndWhite(colorImage, weights2);
                 BufferedImage bwImage3 = ImageProcessor.convertToBlackAndWhite(colorImage, weights3);
 
-                displayImages(colorImage, bwImage1, bwImage2, bwImage3);
+                originalImageLabel.setIcon(new ImageIcon(scaleImageForPreview(colorImage)));
+                bwImage1Label.setIcon(new ImageIcon(scaleImageForPreview(bwImage1)));
+                bwImage2Label.setIcon(new ImageIcon(scaleImageForPreview(bwImage2)));
+                bwImage3Label.setIcon(new ImageIcon(scaleImageForPreview(bwImage3)));
+
+                originalImageLabel.repaint();
+                bwImage1Label.repaint();
+                bwImage2Label.repaint();
+                bwImage3Label.repaint();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static BufferedImage scaleImageForPreview(BufferedImage image) {
-        int maxWidth = 500;
-        int maxHeight = 500;
-        int width = image.getWidth();
-        int height = image.getHeight();
+    private static BufferedImage scaleImageForPreview(BufferedImage source) {
+        final int maxSize = 256;
+        double scaleFactor = Math.min((double) maxSize / source.getWidth(), (double) maxSize / source.getHeight());
 
-        if (width <= maxWidth && height <= maxHeight) {
-            return image;
-        }
+        int newWidth = (int) (source.getWidth() * scaleFactor);
+        int newHeight = (int) (source.getHeight() * scaleFactor);
 
-        double scaleFactor = Math.min((double) maxWidth / width, (double) maxHeight / height);
-        int newWidth = (int) (width * scaleFactor);
-        int newHeight = (int) (height * scaleFactor);
-
-        BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, image.getType());
-        Graphics2D g = resizedImage.createGraphics();
+        BufferedImage scaledImage = new BufferedImage(newWidth, newHeight, source.getType());
+        Graphics2D g = scaledImage.createGraphics();
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(image, 0, 0, newWidth, newHeight, null);
+        g.drawImage(source, 0, 0, newWidth, newHeight, null);
         g.dispose();
 
-        return resizedImage;
+        return scaledImage;
     }
 
 }
