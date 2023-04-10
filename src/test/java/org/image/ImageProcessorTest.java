@@ -41,7 +41,7 @@ public class ImageProcessorTest {
 
     @Test
     public void testScaleImageForPreview() {
-        BufferedImage scaledImage = ImageProcessor.scaleImageForPreview(colorImage);
+        BufferedImage scaledImage = ImageDisplay.scaleImageForPreview(colorImage);
         assertNotNull(scaledImage, "Scaled image should not be null");
         assertTrue(scaledImage.getWidth() <= 500 && scaledImage.getHeight() <= 500, "Scaled image dimensions should not exceed 500x500");
     }
@@ -67,7 +67,7 @@ public class ImageProcessorTest {
         File outputFileBeforeSave = new File(outputImagePath);
         assertFalse(outputFileBeforeSave.exists(), "Output file should not exist before saving");
 
-        ImageProcessor.saveBlackWhiteImage(bwImage, inputImagePath);
+        SaveImages.saveBlackWhiteImage(bwImage, inputImagePath);
 
         String expectedOutputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
         File outputFile = new File(expectedOutputImagePath);
