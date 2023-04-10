@@ -15,7 +15,7 @@ public class App {
         double[] weights3 = {0.79, 0.11, 0.1};
 
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Выберите изображение");
+        fileChooser.setDialogTitle("Choose an image");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setAcceptAllFileFilterUsed(false);
 

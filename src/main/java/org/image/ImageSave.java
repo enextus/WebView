@@ -7,11 +7,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SaveImages {
+public class ImageSave {
 
     static void saveImage(BufferedImage image) {
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Сохранить изображение");
+        fileChooser.setDialogTitle("Save Image");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setAcceptAllFileFilterUsed(false);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG Images", "jpg");

@@ -15,9 +15,10 @@ public class ImageDisplay {
                 e.printStackTrace();
             }
 
-            JFrame frame = new JFrame("Image Processor");
+            JFrame frame = new JFrame("Image Processor | Color to B/W");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLayout(new BorderLayout());
+            frame.setResizable(false); // Prevent window resizing
 
             JPanel originalImagePanel = new JPanel();
             originalImagePanel.add(new JLabel(new ImageIcon(scaleImageForPreview(colorImage))));
@@ -25,25 +26,19 @@ public class ImageDisplay {
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new GridLayout(1, 3));
-            JButton button1 = new JButton("Преобразование 1");
-            button1.addActionListener(e -> SaveImages.saveImage(bwImage1));
+            JButton button1 = new JButton("Save Image with effect 1");
+            button1.addActionListener(e -> ImageSave.saveImage(bwImage1));
 
-            JButton button2 = new JButton("Преобразование 2");
-            button2.addActionListener(e -> SaveImages.saveImage(bwImage2));
+            JButton button2 = new JButton("Save Image with effect 2");
+            button2.addActionListener(e -> ImageSave.saveImage(bwImage2));
 
-            JButton button3 = new JButton("Преобразование 3");
-            button3.addActionListener(e -> SaveImages.saveImage(bwImage3));
+            JButton button3 = new JButton("Save Image with effect 3");
+            button3.addActionListener(e -> ImageSave.saveImage(bwImage3));
 
             Dimension buttonSize = new Dimension(200, 30);
             button1.setPreferredSize(buttonSize);
-            button1.setMaximumSize(buttonSize);
-            button1.setMinimumSize(buttonSize);
             button2.setPreferredSize(buttonSize);
-            button2.setMaximumSize(buttonSize);
-            button2.setMinimumSize(buttonSize);
             button3.setPreferredSize(buttonSize);
-            button3.setMaximumSize(buttonSize);
-            button3.setMinimumSize(buttonSize);
 
             buttonPanel.add(button1);
             buttonPanel.add(button2);
