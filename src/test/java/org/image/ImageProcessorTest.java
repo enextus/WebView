@@ -2,15 +2,14 @@ package org.image;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.function.Function;
 import javax.imageio.ImageIO;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,11 +27,14 @@ public class ImageProcessorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"convertToBlackAndWhite1", "convertToBlackAndWhite2", "convertToBlackAndWhite3"})
-    public void testConvertToBlackAndWhite(String methodName) throws IOException {
-        Function<BufferedImage, BufferedImage> imageProcessorMethod = getImageProcessorMethod(methodName);
-
-        BufferedImage blackWhiteImage = imageProcessorMethod.apply(colorImage);
+    @CsvSource({
+            "0.35, 0.35, 0.35",
+            "0.1, 0.79, 0.11",
+            "0.79, 0.11, 0.1"
+    })
+    public void testConvertToBlackAndWhite(double weight1, double weight2, double weight3) throws IOException {
+        double[] weights = {weight1, weight2, weight3};
+        BufferedImage blackWhiteImage = ImageProcessor.convertToBlackAndWhite(colorImage, weights);
         assertNotNull(blackWhiteImage, "Black and white image should not be null");
         assertEquals(BufferedImage.TYPE_BYTE_BINARY, blackWhiteImage.getType(), "Image type should be BufferedImage.TYPE_BYTE_BINARY");
         assertEquals(colorImage.getWidth(), blackWhiteImage.getWidth(), "Width should be equal");
@@ -46,22 +48,10 @@ public class ImageProcessorTest {
         assertTrue(scaledImage.getWidth() <= 500 && scaledImage.getHeight() <= 500, "Scaled image dimensions should not exceed 500x500");
     }
 
-    private Function<BufferedImage, BufferedImage> getImageProcessorMethod(String methodName) {
-        switch (methodName) {
-            case "convertToBlackAndWhite1":
-                return ImageProcessor::convertToBlackAndWhite1;
-            case "convertToBlackAndWhite2":
-                return ImageProcessor::convertToBlackAndWhite2;
-            case "convertToBlackAndWhite3":
-                return ImageProcessor::convertToBlackAndWhite3;
-            default:
-                throw new IllegalArgumentException("Invalid method name: " + methodName);
-        }
-    }
-
     @Test
     public void testSaveBlackWhiteImage(@TempDir Path tempDir) throws IOException {
-        BufferedImage bwImage = ImageProcessor.convertToBlackAndWhite1(colorImage);
+        double[] weights = {0.79, 0.11, 0.1};
+        BufferedImage bwImage = ImageProcessor.convertToBlackAndWhite(colorImage, weights);
 
         String outputImagePath = tempDir.resolve("image.jpg").toString();
         File outputFileBeforeSave = new File(outputImagePath);
