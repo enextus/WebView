@@ -32,11 +32,11 @@ public class App {
                 BufferedImage bwImage2 = ImageProcessor.convertToBlackAndWhite(colorImage, weights2);
                 BufferedImage bwImage3 = ImageProcessor.convertToBlackAndWhite(colorImage, weights3);
 
-                ImageDisplay.displayImages(colorImage, bwImage1, bwImage2, bwImage3);
+                JFrame frame = new JFrame("Image Processor | Color to B/W");
+                ImageDisplay.displayImages(frame, colorImage, bwImage1, bwImage2, bwImage3);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-
 }

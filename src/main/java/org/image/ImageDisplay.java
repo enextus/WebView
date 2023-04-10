@@ -10,12 +10,21 @@ import java.io.IOException;
 public class ImageDisplay {
 
     private static JButton changeImageButton;
-    private static JLabel originalImageLabel;
-    private static JLabel bwImage1Label;
-    private static JLabel bwImage2Label;
-    private static JLabel bwImage3Label;
 
-    public static void displayImages(BufferedImage colorImage, BufferedImage bwImage1, BufferedImage bwImage2, BufferedImage bwImage3) {
+    /**
+     * Displays the given images in a JFrame, allowing the user to choose different image effects.
+     *
+     * @param colorImage The original color image.
+     * @param bwImage1   The first black and white image effect.
+     * @param bwImage2   The second black and white image effect.
+     * @param bwImage3   The third black and white image effect.
+     * @param image3
+     */
+    public static void displayImages(JFrame colorImage, BufferedImage bwImage1, BufferedImage bwImage2, BufferedImage bwImage3, BufferedImage image3) {
+        if (colorImage == null || bwImage1 == null || bwImage2 == null || bwImage3 == null) {
+            throw new IllegalArgumentException("Input images cannot be null.");
+        }
+
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -37,8 +46,7 @@ public class ImageDisplay {
             panel.add(changeImageButton);
 
             JPanel originalImagePanel = new JPanel();
-            originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
-            originalImagePanel.add(originalImageLabel);
+            originalImagePanel.add(new JLabel(new ImageIcon(scaleImageForPreview(colorImage))));
             frame.add(originalImagePanel, BorderLayout.WEST);
 
             JPanel buttonPanel = new JPanel();
@@ -64,13 +72,9 @@ public class ImageDisplay {
 
             JPanel resultImagesPanel = new JPanel();
             resultImagesPanel.setLayout(new GridLayout(1, 3));
-            bwImage1Label = new JLabel(new ImageIcon(scaleImageForPreview(bwImage1)));
-            bwImage2Label = new JLabel(new ImageIcon(scaleImageForPreview(bwImage2)));
-            bwImage3Label = new JLabel(new ImageIcon(scaleImageForPreview(bwImage3)));
-
-            resultImagesPanel.add(bwImage1Label);
-            resultImagesPanel.add(bwImage2Label);
-            resultImagesPanel.add(bwImage3Label);
+            resultImagesPanel.add(new JLabel(new ImageIcon(scaleImageForPreview(bwImage1))));
+            resultImagesPanel.add(new JLabel(new ImageIcon(scaleImageForPreview(bwImage2))));
+            resultImagesPanel.add(new JLabel(new ImageIcon(scaleImageForPreview(bwImage3))));
             frame.add(resultImagesPanel, BorderLayout.SOUTH);
 
             frame.pack();
@@ -90,7 +94,8 @@ public class ImageDisplay {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             try {
-                String inputImagePath = ((File) selectedFile).getCanonicalPath();
+                String inputImagePath = selectedFile.getCanonicalPath();
+
                 BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
 
                 double[] weights1 = {0.35, 0.35, 0.35};
@@ -101,36 +106,33 @@ public class ImageDisplay {
                 BufferedImage bwImage2 = ImageProcessor.convertToBlackAndWhite(colorImage, weights2);
                 BufferedImage bwImage3 = ImageProcessor.convertToBlackAndWhite(colorImage, weights3);
 
-                originalImageLabel.setIcon(new ImageIcon(scaleImageForPreview(colorImage)));
-                bwImage1Label.setIcon(new ImageIcon(scaleImageForPreview(bwImage1)));
-                bwImage2Label.setIcon(new ImageIcon(scaleImageForPreview(bwImage2)));
-                bwImage3Label.setIcon(new ImageIcon(scaleImageForPreview(bwImage3)));
-
-                originalImageLabel.repaint();
-                bwImage1Label.repaint();
-                bwImage2Label.repaint();
-                bwImage3Label.repaint();
-
+                SwingUtilities.invokeLater(() -> displayImages(colorImage, bwImage1, bwImage2, bwImage3, bwImage3));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static BufferedImage scaleImageForPreview(BufferedImage source) {
-        final int maxSize = 256;
-        double scaleFactor = Math.min((double) maxSize / source.getWidth(), (double) maxSize / source.getHeight());
+    static BufferedImage scaleImageForPreview(BufferedImage image) {
+        int maxWidth = 200;
+        int maxHeight = 200;
+        int newWidth = image.getWidth();
+        int newHeight = image.getHeight();
 
-        int newWidth = (int) (source.getWidth() * scaleFactor);
-        int newHeight = (int) (source.getHeight() * scaleFactor);
+        if (newWidth > maxWidth || newHeight > maxHeight) {
+            double scaleFactor = Math.min((double) maxWidth / newWidth, (double) maxHeight / newHeight);
+            newWidth = (int) (newWidth * scaleFactor);
+            newHeight = (int) (newHeight * scaleFactor);
+        }
 
-        BufferedImage scaledImage = new BufferedImage(newWidth, newHeight, source.getType());
-        Graphics2D g = scaledImage.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(source, 0, 0, newWidth, newHeight, null);
-        g.dispose();
+        Image scaledImage = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+        BufferedImage bufferedImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_RGB);
 
-        return scaledImage;
+        Graphics2D g2d = bufferedImage.createGraphics();
+        g2d.drawImage(scaledImage, 0, 0, null);
+        g2d.dispose();
+
+        return bufferedImage;
     }
 
 }
