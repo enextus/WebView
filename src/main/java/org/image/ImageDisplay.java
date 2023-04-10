@@ -117,7 +117,7 @@ public class ImageDisplay {
         }
     }
 
-    private static BufferedImage scaleImageForPreview(BufferedImage source) {
+    public static BufferedImage scaleImageForPreview(BufferedImage source) {
         final int maxSize = 256;
         double scaleFactor = Math.min((double) maxSize / source.getWidth(), (double) maxSize / source.getHeight());
 
