@@ -28,7 +28,7 @@ public class ImageProcessor {
                 BufferedImage bwImage1 = convertToBlackAndWhite1(colorImage);
                 BufferedImage bwImage2 = convertToBlackAndWhite2(colorImage);
                 BufferedImage bwImage3 = convertToBlackAndWhite3(colorImage);
-                ImageIO.write(bwImage1, "jpg", new File(outputImagePath));
+                // ImageIO.write(bwImage1, "jpg", new File(outputImagePath));
 
                 displayImages(colorImage, bwImage1, bwImage2, bwImage3);
             } catch (IOException e) {
