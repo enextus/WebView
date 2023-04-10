@@ -49,7 +49,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>org.image.ImageProcessor</mainClass>
+                            <mainClass>org.image.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
