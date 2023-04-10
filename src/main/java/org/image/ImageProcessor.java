@@ -4,22 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class ImageProcessor {
 
-    /**
-     * Converts the given color image to a black and white image using the specified weights.
-     *
-     * @param colorImage A BufferedImage representing the input color image.
-     * @param weights    An array of 3 doubles representing the weights for the red, green, and blue channels.
-     * @return A BufferedImage representing the black and white image.
-     */
     public static BufferedImage convertToBlackAndWhite(BufferedImage colorImage, double[] weights) {
-        if (colorImage == null) {
-            throw new IllegalArgumentException("Input image cannot be null.");
-        }
-
-        if (weights == null || weights.length != 3) {
-            throw new IllegalArgumentException("Weights must be an array of 3 elements.");
-        }
-
         BufferedImage blackWhiteImage = new BufferedImage(colorImage.getWidth(), colorImage.getHeight(), BufferedImage.TYPE_BYTE_BINARY);
         int width = colorImage.getWidth();
         int height = colorImage.getHeight();

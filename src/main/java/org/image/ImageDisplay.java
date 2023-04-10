@@ -29,7 +29,7 @@ public class ImageDisplay {
         frame.setVisible(true);
     }
 
-    private static BufferedImage scaleImageForPreview(BufferedImage image) {
+    static BufferedImage scaleImageForPreview(BufferedImage image) {
         int width = 300;
         int height = (int) (((double) image.getHeight()) / image.getWidth() * width);
 
