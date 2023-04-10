@@ -20,7 +20,7 @@ public class ImageProcessor {
             File selectedFile = fileChooser.getSelectedFile();
             try {
                 String inputImagePath = selectedFile.getCanonicalPath();
-                String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
+//                String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
 
                 BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
 

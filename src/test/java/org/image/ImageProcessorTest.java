@@ -16,23 +16,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ImageProcessorTest {
 
-    private String inputImagePath;
+    private static final String INPUT_IMAGE_PATH = "src/main/resources/img/image.jpg";
     private BufferedImage colorImage;
 
     @BeforeEach
     public void setUp() throws IOException {
-        inputImagePath = "src/main/resources/img/image.jpg";
-        colorImage = ImageIO.read(new File(inputImagePath));
+        colorImage = ImageIO.read(new File(INPUT_IMAGE_PATH));
         assertNotNull(colorImage, "Color image should not be null");
     }
 
     @ParameterizedTest
-    @CsvSource({
-            "0.35, 0.35, 0.35",
-            "0.1, 0.79, 0.11",
-            "0.79, 0.11, 0.1"
-    })
-    public void testConvertToBlackAndWhite(double weight1, double weight2, double weight3) throws IOException {
+    @CsvSource({"0.35, 0.35, 0.35", "0.1, 0.79, 0.11", "0.79, 0.11, 0.1"})
+    public void testConvertToBlackAndWhite(double weight1, double weight2, double weight3) {
         double[] weights = {weight1, weight2, weight3};
         BufferedImage blackWhiteImage = ImageProcessor.convertToBlackAndWhite(colorImage, weights);
         assertNotNull(blackWhiteImage, "Black and white image should not be null");
@@ -57,9 +52,9 @@ public class ImageProcessorTest {
         File outputFileBeforeSave = new File(outputImagePath);
         assertFalse(outputFileBeforeSave.exists(), "Output file should not exist before saving");
 
-        SaveImages.saveBlackWhiteImage(bwImage, inputImagePath);
+        SaveImages.saveBlackWhiteImage(bwImage, INPUT_IMAGE_PATH);
 
-        String expectedOutputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
+        String expectedOutputImagePath = INPUT_IMAGE_PATH.substring(0, INPUT_IMAGE_PATH.lastIndexOf('.')) + "_bw.jpg";
         File outputFile = new File(expectedOutputImagePath);
         assertTrue(outputFile.exists(), "Output file should exist");
         assertTrue(outputFile.getName().endsWith("_bw.jpg"), "Output file name should end with '_bw.jpg'");
