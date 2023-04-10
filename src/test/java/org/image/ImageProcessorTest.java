@@ -14,6 +14,9 @@ import javax.imageio.ImageIO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for the ImageProcessor class.
+ */
 public class ImageProcessorTest {
 
     private static final String INPUT_IMAGE_PATH = "src/main/resources/img/image.jpg";
@@ -25,6 +28,13 @@ public class ImageProcessorTest {
         assertNotNull(colorImage, "Color image should not be null");
     }
 
+    /**
+     * Tests the conversion of a color image to black and white using the provided weights.
+     *
+     * @param weight1 the weight for the red channel
+     * @param weight2 the weight for the green channel
+     * @param weight3 the weight for the blue channel
+     */
     @ParameterizedTest
     @CsvSource({"0.35, 0.35, 0.35", "0.1, 0.79, 0.11", "0.79, 0.11, 0.1"})
     public void testConvertToBlackAndWhite(double weight1, double weight2, double weight3) {
@@ -36,6 +46,9 @@ public class ImageProcessorTest {
         assertEquals(colorImage.getHeight(), blackWhiteImage.getHeight(), "Height should be equal");
     }
 
+    /**
+     * Tests scaling of a color image to fit a maximum size of 500x500 pixels for preview purposes.
+     */
     @Test
     public void testScaleImageForPreview() {
         BufferedImage scaledImage = ImageDisplay.scaleImageForPreview(colorImage);
@@ -43,6 +56,12 @@ public class ImageProcessorTest {
         assertTrue(scaledImage.getWidth() <= 500 && scaledImage.getHeight() <= 500, "Scaled image dimensions should not exceed 500x500");
     }
 
+
+    /**
+     * Tests saving of a black and white image.
+     *
+     * @param tempDir a temporary directory to save the image
+     */
     @Test
     public void testSaveBlackWhiteImage(@TempDir Path tempDir) throws IOException {
         double[] weights = {0.79, 0.11, 0.1};

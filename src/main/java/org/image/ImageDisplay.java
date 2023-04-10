@@ -7,14 +7,31 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+
+ The {@code ImageDisplay} class is responsible for displaying and interacting with the user interface of the image processing application.
+
+ It provides methods for displaying the original color image and its black and white conversions with different weights.
+
+ The class also contains a method for scaling images for preview purposes.
+ */
 public class ImageDisplay {
 
+    // GUI components
     private static JButton changeImageButton;
     private static JLabel originalImageLabel;
     private static JLabel bwImage1Label;
     private static JLabel bwImage2Label;
     private static JLabel bwImage3Label;
 
+    /**
+     * Displays the original and black and white versions of an image with three different effects.
+     *
+     * @param colorImage the original color image
+     * @param bwImage1   the black and white image with effect 1
+     * @param bwImage2   the black and white image with effect 2
+     * @param bwImage3   the black and white image with effect 3
+     */
     public static void displayImages(BufferedImage colorImage, BufferedImage bwImage1, BufferedImage bwImage2, BufferedImage bwImage3) {
         SwingUtilities.invokeLater(() -> {
             try {
@@ -79,6 +96,9 @@ public class ImageDisplay {
         });
     }
 
+    /**
+     * Changes the displayed image to a new one selected by the user.
+     */
     private static void changeImage() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Выберите изображение");
@@ -117,6 +137,12 @@ public class ImageDisplay {
         }
     }
 
+    /**
+     * Scales a given image to fit within a maximum size of 256x256 pixels for preview purposes.
+     *
+     * @param source the image to be scaled
+     * @return the scaled image
+     */
     public static BufferedImage scaleImageForPreview(BufferedImage source) {
         final int maxSize = 256;
         double scaleFactor = Math.min((double) maxSize / source.getWidth(), (double) maxSize / source.getHeight());
