@@ -7,14 +7,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-/**
-
- The {@code ImageDisplay} class is responsible for displaying and interacting with the user interface of the image processing application.
-
- It provides methods for displaying the original color image and its black and white conversions with different weights.
-
- The class also contains a method for scaling images for preview purposes.
- */
 public class ImageDisplay {
 
     // GUI components
@@ -53,20 +45,28 @@ public class ImageDisplay {
             changeImageButton.addActionListener(e -> changeImage());
             panel.add(changeImageButton);
 
-            JPanel originalImagePanel = new JPanel();
+            JPanel centerPanel = new JPanel();
+            centerPanel.setLayout(new BorderLayout());
+
             originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
-            originalImagePanel.add(originalImageLabel);
-            frame.add(originalImagePanel, BorderLayout.WEST);
+            centerPanel.add(originalImageLabel, BorderLayout.CENTER);
+
+            JPanel grayPanel = new JPanel();
+            grayPanel.setPreferredSize(new Dimension(originalImageLabel.getWidth(), 10));
+            grayPanel.setBackground(Color.GRAY);
+            centerPanel.add(grayPanel, BorderLayout.SOUTH);
+
+            frame.add(centerPanel, BorderLayout.CENTER);
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new GridLayout(1, 3));
-            JButton button1 = new JButton("Save Image with effect 1");
+            JButton button1 = new JButton("Сохранить с эффектом 1");
             button1.addActionListener(e -> ImageSaver.saveImage(bwImage1));
 
-            JButton button2 = new JButton("Save Image with effect 2");
+            JButton button2 = new JButton("Сохранить с эффектом 2");
             button2.addActionListener(e -> ImageSaver.saveImage(bwImage2));
 
-            JButton button3 = new JButton("Save Image with effect 3");
+            JButton button3 = new JButton("Сохранить с эффектом 3");
             button3.addActionListener(e -> ImageSaver.saveImage(bwImage3));
 
             Dimension buttonSize = new Dimension(200, 30);
@@ -77,7 +77,6 @@ public class ImageDisplay {
             buttonPanel.add(button1);
             buttonPanel.add(button2);
             buttonPanel.add(button3);
-            frame.add(buttonPanel, BorderLayout.CENTER);
 
             JPanel resultImagesPanel = new JPanel();
             resultImagesPanel.setLayout(new GridLayout(1, 3));
@@ -88,7 +87,13 @@ public class ImageDisplay {
             resultImagesPanel.add(bwImage1Label);
             resultImagesPanel.add(bwImage2Label);
             resultImagesPanel.add(bwImage3Label);
-            frame.add(resultImagesPanel, BorderLayout.SOUTH);
+
+            // Создание новой панели для размещения панелей buttonPanel и resultImagesPanel вертикально
+            JPanel southPanel = new JPanel();
+            southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.Y_AXIS));
+            southPanel.add(buttonPanel);
+            southPanel.add(resultImagesPanel);
+            frame.add(southPanel, BorderLayout.SOUTH);
 
             frame.pack();
             frame.setLocationRelativeTo(null);
@@ -138,13 +143,13 @@ public class ImageDisplay {
     }
 
     /**
-     * Scales a given image to fit within a maximum size of 256x256 pixels for preview purposes.
+     * Scales a given image to fit within a maximum size of 512x512 pixels for preview purposes.
      *
      * @param source the image to be scaled
      * @return the scaled image
      */
     public static BufferedImage scaleImageForPreview(BufferedImage source) {
-        final int maxSize = 256;
+        final int maxSize = 512;
         double scaleFactor = Math.min((double) maxSize / source.getWidth(), (double) maxSize / source.getHeight());
 
         int newWidth = (int) (source.getWidth() * scaleFactor);
@@ -158,5 +163,4 @@ public class ImageDisplay {
 
         return scaledImage;
     }
-
 }
