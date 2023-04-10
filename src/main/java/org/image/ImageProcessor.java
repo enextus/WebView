@@ -9,24 +9,4 @@ public class ImageProcessor {
         int width = colorImage.getWidth();
         int height = colorImage.getHeight();
 
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                int pixel = colorImage.getRGB(x, y);
 
-                int red = (pixel >> 16) & 0xff;
-                int green = (pixel >> 8) & 0xff;
-                int blue = pixel & 0xff;
-
-                int gray = (int) (weights[0] * red + weights[1] * green + weights[2] * blue);
-                int binary = (gray > 128) ? 255 : 0;
-
-                int newPixel = (binary << 16) | (binary << 8) | binary;
-
-                blackWhiteImage.setRGB(x, y, newPixel);
-            }
-        }
-
-        return blackWhiteImage;
-    }
-
-}
