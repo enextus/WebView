@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ImageSave {
+public class ImageSaver {
 
     static void saveImage(BufferedImage image) {
         JFileChooser fileChooser = new JFileChooser();

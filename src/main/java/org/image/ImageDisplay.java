@@ -27,13 +27,13 @@ public class ImageDisplay {
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new GridLayout(1, 3));
             JButton button1 = new JButton("Save Image with effect 1");
-            button1.addActionListener(e -> ImageSave.saveImage(bwImage1));
+            button1.addActionListener(e -> ImageSaver.saveImage(bwImage1));
 
             JButton button2 = new JButton("Save Image with effect 2");
-            button2.addActionListener(e -> ImageSave.saveImage(bwImage2));
+            button2.addActionListener(e -> ImageSaver.saveImage(bwImage2));
 
             JButton button3 = new JButton("Save Image with effect 3");
-            button3.addActionListener(e -> ImageSave.saveImage(bwImage3));
+            button3.addActionListener(e -> ImageSaver.saveImage(bwImage3));
 
             Dimension buttonSize = new Dimension(200, 30);
             button1.setPreferredSize(buttonSize);

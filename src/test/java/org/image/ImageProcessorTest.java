@@ -52,7 +52,7 @@ public class ImageProcessorTest {
         File outputFileBeforeSave = new File(outputImagePath);
         assertFalse(outputFileBeforeSave.exists(), "Output file should not exist before saving");
 
-        ImageSave.saveBlackWhiteImage(bwImage, INPUT_IMAGE_PATH);
+        ImageSaver.saveBlackWhiteImage(bwImage, INPUT_IMAGE_PATH);
 
         String expectedOutputImagePath = INPUT_IMAGE_PATH.substring(0, INPUT_IMAGE_PATH.lastIndexOf('.')) + "_bw.jpg";
         File outputFile = new File(expectedOutputImagePath);
