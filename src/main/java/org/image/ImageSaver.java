@@ -9,6 +9,12 @@ import java.io.IOException;
 
 public class ImageSaver {
 
+    private static String originalFileName;
+
+    public static void setOriginalFileName(String fileName) {
+        originalFileName = fileName;
+    }
+
     static void saveImage(BufferedImage image) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Save Image");

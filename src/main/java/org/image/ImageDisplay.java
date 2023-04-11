@@ -107,7 +107,7 @@ public class ImageDisplay {
      */
     private static void changeImage() {
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Выберите изображение");
+        fileChooser.setDialogTitle("Select image");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setAcceptAllFileFilterUsed(false);
 
@@ -118,6 +118,9 @@ public class ImageDisplay {
             try {
                 String inputImagePath = ((File) selectedFile).getCanonicalPath();
                 BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
+
+                // Set filename
+                ImageSaver.setOriginalFileName(selectedFile.getName());
 
                 double[] weights1 = {0.35, 0.35, 0.35};
                 double[] weights2 = {0.1, 0.79, 0.11};
@@ -142,6 +145,7 @@ public class ImageDisplay {
             }
         }
     }
+
 
     /**
      * Scales a given image to fit within a maximum size of 512x512 pixels for preview purposes.
