@@ -61,13 +61,13 @@ public class ImageDisplay {
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new GridLayout(1, 3));
-            JButton button1 = new JButton("Сохранить с эффектом 1");
+            JButton button1 = new JButton("Save with Effect 1.");
             button1.addActionListener(e -> ImageSaver.saveImage(bwImage1));
 
-            JButton button2 = new JButton("Сохранить с эффектом 2");
+            JButton button2 = new JButton("Save with Effect 2");
             button2.addActionListener(e -> ImageSaver.saveImage(bwImage2));
 
-            JButton button3 = new JButton("Сохранить с эффектом 3");
+            JButton button3 = new JButton("Save with Effect 3");
             button3.addActionListener(e -> ImageSaver.saveImage(bwImage3));
 
             Dimension buttonSize = new Dimension(200, 30);
