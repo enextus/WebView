@@ -41,19 +41,20 @@ public class ImageDisplay {
             JPanel panel = new JPanel();
             frame.add(panel, BorderLayout.NORTH);
 
-            changeImageButton = new JButton("Выбрать другое изображение");
+            changeImageButton = new JButton("Choose another image");
             changeImageButton.addActionListener(e -> changeImage());
             panel.add(changeImageButton);
 
             JPanel centerPanel = new JPanel();
             centerPanel.setLayout(new BorderLayout());
+            centerPanel.setBackground(Color.GRAY); // Change background color to gray
 
             originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
             JPanel grayPanel = new JPanel();
             grayPanel.setPreferredSize(new Dimension(originalImageLabel.getWidth(), 10));
-            grayPanel.setBackground(Color.GRAY);
+            grayPanel.setBackground(Color.GRAY); // Change the color of the horizontal stripe to red
             centerPanel.add(grayPanel, BorderLayout.SOUTH);
 
             frame.add(centerPanel, BorderLayout.CENTER);
@@ -88,7 +89,7 @@ public class ImageDisplay {
             resultImagesPanel.add(bwImage2Label);
             resultImagesPanel.add(bwImage3Label);
 
-            // Создание новой панели для размещения панелей buttonPanel и resultImagesPanel вертикально
+            // Creating a new panel to place buttonPanel and resultImagesPanel panels vertically
             JPanel southPanel = new JPanel();
             southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.Y_AXIS));
             southPanel.add(buttonPanel);
@@ -163,4 +164,5 @@ public class ImageDisplay {
 
         return scaledImage;
     }
+
 }

@@ -36,7 +36,9 @@ public class ImageProcessorTest {
      * @param weight3 the weight for the blue channel
      */
     @ParameterizedTest
-    @CsvSource({"0.35, 0.35, 0.35", "0.1, 0.79, 0.11", "0.79, 0.11, 0.1"})
+    @CsvSource({"0.0, 0.0, 0.0", "0.0, 0.0, 0.0", "0.0, 0.0, 0.0",
+            "0.3, 0.3, 0.3", "0.3, 0.3, 0.3", "0.3, 0.3, 0.3",
+            "0.35, 0.35, 0.35", "0.1, 0.79, 0.11", "0.79, 0.11, 0.1"})
     public void testConvertToBlackAndWhite(double weight1, double weight2, double weight3) {
         double[] weights = {weight1, weight2, weight3};
         BufferedImage blackWhiteImage = ImageProcessor.convertToBlackAndWhite(colorImage, weights);
