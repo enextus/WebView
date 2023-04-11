@@ -53,8 +53,8 @@ public class ImageDisplay {
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
             JPanel grayPanel = new JPanel();
-            grayPanel.setPreferredSize(new Dimension(originalImageLabel.getWidth(), 10));
-            grayPanel.setBackground(Color.GRAY); // Change the color of the horizontal stripe to red
+            grayPanel.setPreferredSize(new Dimension(originalImageLabel.getWidth(), 1));
+            grayPanel.setBackground(Color.GRAY); // Change the color of the horizontal stripe to some color
             centerPanel.add(grayPanel, BorderLayout.SOUTH);
 
             frame.add(centerPanel, BorderLayout.CENTER);
