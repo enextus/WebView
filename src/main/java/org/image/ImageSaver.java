@@ -11,6 +11,10 @@ public class ImageSaver {
 
     private static String originalFileName;
 
+    public static String getOriginalFileName() {
+        return originalFileName;
+    }
+
     public static void setOriginalFileName(String fileName) {
         originalFileName = fileName;
     }
