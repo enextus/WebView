@@ -1,5 +1,8 @@
 package org.image;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -7,6 +10,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class App {
+
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) {
 
@@ -23,8 +28,13 @@ public class App {
 
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
+
             try {
                 String inputImagePath = selectedFile.getCanonicalPath();
+
+                logSelectedImage(inputImagePath);
+
+                logger.info("Selected image: {}", inputImagePath);
 
                 BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
 
@@ -34,9 +44,15 @@ public class App {
 
                 ImageDisplay.displayImages(colorImage, bwImage1, bwImage2, bwImage3);
             } catch (IOException e) {
+                logger.error("Error processing image", e);
                 e.printStackTrace();
             }
         }
+
+    }
+
+    public static void logSelectedImage(String imagePath) {
+        logger.info("Selected image: {}", imagePath);
     }
 
 }
