@@ -13,11 +13,11 @@ public class ImageProcessor {
      */
     public static BufferedImage convertToBlackAndWhite(BufferedImage colorImage, double[] weights) {
         if (colorImage == null) {
-            throw new IllegalArgumentException("Input image cannot be null.");
+            throw new IllegalArgumentException("Check the input data. The input image cannot be null.");
         }
 
         if (weights == null || weights.length != 3) {
-            throw new IllegalArgumentException("Weights must be an array of 3 elements.");
+            throw new IllegalArgumentException("Check the input data. Weights must be an array of 3 elements.");
         }
 
         BufferedImage blackWhiteImage = new BufferedImage(colorImage.getWidth(), colorImage.getHeight(), BufferedImage.TYPE_BYTE_BINARY);

@@ -27,7 +27,7 @@ public class ImageDisplay {
     public static void displayImages(BufferedImage colorImage, BufferedImage bwImage1, BufferedImage bwImage2, BufferedImage bwImage3) {
         SwingUtilities.invokeLater(() -> {
             try {
-                UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
                      UnsupportedLookAndFeelException e) {
                 e.printStackTrace();
@@ -41,32 +41,33 @@ public class ImageDisplay {
             JPanel panel = new JPanel();
             frame.add(panel, BorderLayout.NORTH);
 
-            changeImageButton = new JButton("Выбрать другое изображение");
+            changeImageButton = new JButton("Choose another image");
             changeImageButton.addActionListener(e -> changeImage());
             panel.add(changeImageButton);
 
             JPanel centerPanel = new JPanel();
             centerPanel.setLayout(new BorderLayout());
+            centerPanel.setBackground(Color.GRAY); // Change background color to gray
 
             originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
             JPanel grayPanel = new JPanel();
-            grayPanel.setPreferredSize(new Dimension(originalImageLabel.getWidth(), 10));
-            grayPanel.setBackground(Color.GRAY);
+            grayPanel.setPreferredSize(new Dimension(originalImageLabel.getWidth(), 1));
+            grayPanel.setBackground(Color.GRAY); // Change the color of the horizontal stripe to some color
             centerPanel.add(grayPanel, BorderLayout.SOUTH);
 
             frame.add(centerPanel, BorderLayout.CENTER);
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new GridLayout(1, 3));
-            JButton button1 = new JButton("Сохранить с эффектом 1");
+            JButton button1 = new JButton("Save with Effect 1.");
             button1.addActionListener(e -> ImageSaver.saveImage(bwImage1));
 
-            JButton button2 = new JButton("Сохранить с эффектом 2");
+            JButton button2 = new JButton("Save with Effect 2");
             button2.addActionListener(e -> ImageSaver.saveImage(bwImage2));
 
-            JButton button3 = new JButton("Сохранить с эффектом 3");
+            JButton button3 = new JButton("Save with Effect 3");
             button3.addActionListener(e -> ImageSaver.saveImage(bwImage3));
 
             Dimension buttonSize = new Dimension(200, 30);
@@ -88,7 +89,7 @@ public class ImageDisplay {
             resultImagesPanel.add(bwImage2Label);
             resultImagesPanel.add(bwImage3Label);
 
-            // Создание новой панели для размещения панелей buttonPanel и resultImagesPanel вертикально
+            // Creating a new panel to place buttonPanel and resultImagesPanel panels vertically
             JPanel southPanel = new JPanel();
             southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.Y_AXIS));
             southPanel.add(buttonPanel);
@@ -106,7 +107,7 @@ public class ImageDisplay {
      */
     private static void changeImage() {
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Выберите изображение");
+        fileChooser.setDialogTitle("Select image");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setAcceptAllFileFilterUsed(false);
 
@@ -117,6 +118,9 @@ public class ImageDisplay {
             try {
                 String inputImagePath = ((File) selectedFile).getCanonicalPath();
                 BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
+
+                // Set filename
+                ImageSaver.setOriginalFileName(selectedFile.getName());
 
                 double[] weights1 = {0.35, 0.35, 0.35};
                 double[] weights2 = {0.1, 0.79, 0.11};
@@ -142,6 +146,7 @@ public class ImageDisplay {
         }
     }
 
+
     /**
      * Scales a given image to fit within a maximum size of 512x512 pixels for preview purposes.
      *
@@ -163,4 +168,5 @@ public class ImageDisplay {
 
         return scaledImage;
     }
+
 }
