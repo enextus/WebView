@@ -38,10 +38,34 @@
           </execution>
         </executions>
       </plugin>
+<<<<<<< HEAD
+=======
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.4</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer>
+                  <mainClass>your.main.Class</mainClass>
+                </transformer>
+                <transformer />
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+>>>>>>> works003
     </plugins>
   </build>
   <dependencies>
     <dependency>
+<<<<<<< HEAD
       <groupId>org.mockito</groupId>
       <artifactId>mockito-junit-jupiter</artifactId>
       <version>5.2.0</version>
@@ -54,6 +78,8 @@
       </exclusions>
     </dependency>
     <dependency>
+=======
+>>>>>>> works003
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <version>5.9.2</version>
@@ -66,6 +92,21 @@
       </exclusions>
     </dependency>
     <dependency>
+<<<<<<< HEAD
+=======
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>5.2.0</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>mockito-core</artifactId>
+          <groupId>org.mockito</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+>>>>>>> works003
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.9.2</version>
