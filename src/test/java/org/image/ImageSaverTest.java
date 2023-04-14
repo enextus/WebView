@@ -34,34 +34,5 @@ class ImageSaverTest {
         assertEquals(testFileName, originalFileName, "Original file name should match the set value");
     }
 
-/*    @Test
-    void saveImage() {
-        imageSaver.setOriginalFileName(testFileName);
-
-        // If your saveImage() method throws any exceptions, make sure to catch them here
-        try {
-            imageSaver.saveImage(testImage);
-        } catch (Exception e) {
-            fail("Image saving failed with an exception: " + e.getMessage());
-        }
-
-        File savedFile = new File(testFileName);
-        assertTrue(savedFile.exists(), "Saved file should exist");
-
-        try {
-            BufferedImage loadedImage = ImageIO.read(savedFile);
-            assertNotNull(loadedImage, "Loaded image should not be null");
-            assertEquals(testImage.getWidth(), loadedImage.getWidth(), "Loaded image width should match the original");
-            assertEquals(testImage.getHeight(), loadedImage.getHeight(), "Loaded image height should match the original");
-        } catch (IOException e) {
-            fail("Failed to load saved image");
-        } finally {
-            // Clean up the saved file
-            if (savedFile.exists()) {
-                savedFile.delete();
-            }
-        }
-    }*/
-
 
 }
