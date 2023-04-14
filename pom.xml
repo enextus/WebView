@@ -78,7 +78,7 @@
                         <configuration>
                             <target>
                                 <exec executable="C:\\Program Files (x86)\\Launch4j\\launch4jc" resolveExecutable="true">
-                                    <arg value="C:\\Program Files (x86)\\Launch4j\\build.xml"/>
+                                    <arg value="C:\\Program Files (x86)\\Launch4j\\launch4j.xml"/>
                                 </exec>
                             </target>
                         </configuration>
