@@ -1,18 +1,21 @@
 package org.image;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class App {
 
-    private static final Logger logger = LoggerFactory.getLogger(App.class);
+    private static final Logger LOGGER = Logger.getLogger(App.class.getName());
+
     public static void main(String[] args) {
+
+        LOGGER.info("This is an info message");
 
         double[] weights1 = {0.35, 0.35, 0.35};
         double[] weights2 = {0.1, 0.79, 0.11};
@@ -33,7 +36,7 @@ public class App {
 
                 logSelectedImage(inputImagePath);
 
-                logger.info("Selected image: {}", inputImagePath);
+
 
                 BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
 
@@ -41,9 +44,14 @@ public class App {
                 BufferedImage bwImage2 = ImageProcessor.convertToBlackAndWhite(colorImage, weights2);
                 BufferedImage bwImage3 = ImageProcessor.convertToBlackAndWhite(colorImage, weights3);
 
+                BufferedImage[] processedImages = {bwImage1, bwImage2, bwImage3};
+                String[] fileNames = {"bwImage1.png", "bwImage2.png", "bwImage3.png"};
+                ImageSaver.saveProcessedImages(processedImages, fileNames);
+
                 ImageDisplay.displayImages(colorImage, bwImage1, bwImage2, bwImage3);
+
             } catch (IOException e) {
-                logger.error("Error processing image", e);
+
                 e.printStackTrace();
             }
         }
@@ -51,7 +59,7 @@ public class App {
     }
 
     public static void logSelectedImage(String imagePath) {
-        logger.info("Selected image: {}", imagePath);
+        LOGGER.log(Level.INFO, "Opened original file: {0}", imagePath);
     }
 
 }

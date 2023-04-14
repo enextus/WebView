@@ -6,6 +6,55 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ImageSaver {
+
+    private static final Logger LOGGER = Logger.getLogger(ImageSaver.class.getName());
+
+    private static String originalFileName;
+
+    public static String getOriginalFileName() {
+        return originalFileName;
+    }
+
+    public static void setOriginalFileName(String fileName) {
+        originalFileName = fileName;
+    }
+
+    static void saveImage(BufferedImage image) {
+        // Your existing code
+    }
+
+    public static void saveBlackWhiteImage(BufferedImage bwImage, String inputImagePath) throws IOException {
+        // Your existing code
+    }
+
+    public static void saveProcessedImages(BufferedImage[] images, String[] fileNames) {
+        for (int i = 0; i < images.length; i++) {
+            File outputFile = new File(fileNames[i]);
+            try {
+                ImageIO.write(images[i], "png", outputFile);
+                LOGGER.log(Level.INFO, "Saved processed file: {0}", outputFile.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+
+
+/*
+package org.image;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class ImageSaver {
 
@@ -50,3 +99,4 @@ public class ImageSaver {
     }
 
 }
+*/
