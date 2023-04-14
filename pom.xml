@@ -53,28 +53,17 @@
             <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
-
-
-
-
-
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.32</version>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.1.0</version>
+            <scope>test</scope>
         </dependency>
-
-
-
-
-
-
     </dependencies>
 
     <build>
@@ -113,11 +102,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-
-
-                <!-- other plugins -->
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
@@ -138,10 +122,6 @@
                         </execution>
                     </executions>
                 </plugin>
-
-
-
-
         </plugins>
     </build>
 

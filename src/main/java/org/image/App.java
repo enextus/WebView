@@ -12,7 +12,6 @@ import javax.swing.*;
 public class App {
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
-
     public static void main(String[] args) {
 
         double[] weights1 = {0.35, 0.35, 0.35};
