@@ -50,7 +50,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>your.main.Class</mainClass>
+                  <mainClass>org.image.App</mainClass>
                 </transformer>
                 <transformer />
               </transformers>
