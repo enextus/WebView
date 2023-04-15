@@ -18,7 +18,12 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
@@ -32,10 +37,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.9</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -81,9 +85,8 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <exec executable="C:\\Program Files (x86)\\Launch4j\\launch4jc"
-                                      resolveExecutable="true">
-                                    <arg value="${project.basedir}\\build.xml"/>
+                                <exec executable="C:\\Program Files (x86)\\Launch4j\\launch4jc" resolveExecutable="true">
+                                    <arg value="C:\\Program Files (x86)\\Launch4j\\build.xml"/>
                                 </exec>
                             </target>
                         </configuration>
@@ -93,6 +96,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -105,18 +109,19 @@
                         </goals>
                         <configuration>
                             <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.image.App</mainClass>
                                 </transformer>
                                 <!-- Add this transformer to merge ServiceLoader configurations -->
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+
+
         </plugins>
     </build>
+
 </project>
