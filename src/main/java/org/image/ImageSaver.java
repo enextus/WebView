@@ -50,7 +50,7 @@ public class ImageSaver {
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
             try {
-                ImageIO.write(image, "png", fileToSave);
+                ImageIO.write(image, "jpg", fileToSave);
                 LOGGER.log(Level.INFO, "Saved processed file: {0}", fileToSave.getAbsolutePath());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -59,7 +59,7 @@ public class ImageSaver {
     }
 
     public static void saveBlackWhiteImage(BufferedImage bwImage, String inputImagePath) throws IOException {
-        String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
+        String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "BWEffectsImageProcessor_bw.jpg";
         ImageIO.write(bwImage, "jpg", new File(outputImagePath));
     }
 

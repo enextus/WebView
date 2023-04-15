@@ -15,7 +15,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        LOGGER.info("This is an info message");
+        LOGGER.info("App \"BWEffectsImageProcessor\" running");
 
         double[] weights1 = {0.35, 0.35, 0.35};
         double[] weights2 = {0.1, 0.79, 0.11};
@@ -46,7 +46,6 @@ public class App {
                 BufferedImage[] processedImages = {bwImage1, bwImage2, bwImage3};
 
                 String[] fileNames = {"bwImage1.png", "bwImage2.png", "bwImage3.png"};
-                // ImageSaver.saveProcessedImages(processedImages, fileNames);
 
                 ImageDisplay.displayImages(colorImage, bwImage1, bwImage2, bwImage3);
 

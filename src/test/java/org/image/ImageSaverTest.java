@@ -22,11 +22,6 @@ class ImageSaverTest {
     }
 
     @Test
-    void getOriginalFileName() {
-        // Your existing test implementation
-    }
-
-    @Test
     void setOriginalFileName() {
         imageSaver.setOriginalFileName(testFileName);
         String originalFileName = imageSaver.getOriginalFileName();
