@@ -59,7 +59,7 @@ public class ImageSaver {
     }
 
     public static void saveBlackWhiteImage(BufferedImage bwImage, String inputImagePath) throws IOException {
-        String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "BWEffectsImageProcessor_bw.jpg";
+        String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
         ImageIO.write(bwImage, "jpg", new File(outputImagePath));
     }
 
