@@ -37,6 +37,7 @@ build/
 ### Mac OS ###
 .DS_Store
 
+<<<<<<< HEAD
 ###
 #PS C:\Projects\ImageProcessor> git rm --cached logs/app.log
 #rm 'logs/app.log'
@@ -45,3 +46,6 @@ build/
 #PS C:\Projects\ImageProcessor>
 ###
 logs/app.log
+=======
+logs/app.log
+>>>>>>> works003
