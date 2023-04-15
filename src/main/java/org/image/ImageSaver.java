@@ -13,7 +13,9 @@ public class ImageSaver {
 
     private static final Logger LOGGER = Logger.getLogger(ImageSaver.class.getName());
 
-    private static String originalFileName;
+    private static String originalFileName = "none";
+
+
 
     public static String getOriginalFileName() {
         return originalFileName;
