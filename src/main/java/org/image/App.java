@@ -33,6 +33,7 @@ public class App {
 
             try {
                 String inputImagePath = selectedFile.getCanonicalPath();
+                ImageSaver.setOriginalFileName(selectedFile.getName());
 
                 logSelectedImage(inputImagePath);
 
