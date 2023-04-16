@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch4jConfig>
-    <dontWrapJar>false</dontWrapJar>
     <headerType>gui</headerType>
-    <jar>${basedir}/target/original-image-processor-1.0-SNAPSHOT.jar</jar>
-    <outfile>${basedir}/target/image-processor.exe</outfile>
-    <errTitle></errTitle>
-    <cmdLine></cmdLine>
-    <chdir>.</chdir>
-    <priority>normal</priority>
-    <downloadUrl>http://java.com/download</downloadUrl>
-    <supportUrl></supportUrl>
-    <stayAlive>false</stayAlive>
-    <manifest></manifest>
-    <icon>${basedir}/ico/fr_flag_icon_251655.ico</icon>
+    <jar>C:\Projects\ImageProcessor\target\original-image-processor-1.0-SNAPSHOT.jar</jar>
+    <outfile>C:\Projects\ImageProcessor\target\ImageProcessor.exe</outfile>
+    <errTitle>ImageProcessor Error</errTitle>
+    <classPath>
+        <mainClass>org/image/App</mainClass>
+    </classPath>
     <jre>
-        <path></path>
-        <minVersion>1.8.0</minVersion>
-        <maxVersion></maxVersion>
-        <jdkPreference>preferJre</jdkPreference>
+        <minVersion>11</minVersion>
     </jre>
 </launch4jConfig>

@@ -7,7 +7,7 @@
     </target>
 
     <target name="install" description="build the project with Maven">
-        <exec executable="mvn">
+        <exec executable="C:\opt\apache-maven-3.9.1\bin\mvn.cmd">
             <arg value="clean"/>
             <arg value="install"/>
         </exec>
