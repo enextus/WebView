@@ -6,10 +6,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-
 import java.awt.Desktop;
 import java.net.URI;
 
@@ -31,7 +27,20 @@ public class MagnetLinkParser {
         }
     }
 
-
+    /**
+     * Opens the given magnet link in the default torrent client installed on the user's system.
+     * <p>
+     * This method uses the java.awt.Desktop class to open the magnet link in the default torrent client.
+     * It first checks if the Desktop class is supported on the current platform, and then checks if the
+     * BROWSE action is supported. If both conditions are met, it proceeds to open the magnet link as a URI
+     * using the browse() method. In most cases, this will trigger the default torrent client to open and
+     * start downloading the linked content.
+     * <p>
+     * It is important to note that using this program to download illegal content may violate the laws
+     * of your country. Ensure that you use this program in compliance with the law.
+     *
+     * @param magnetLink The magnet link to be opened in the default torrent client
+     */
     private static void openMagnetLinkInTorrentClient(String magnetLink) {
         try {
             if (Desktop.isDesktopSupported()) {
