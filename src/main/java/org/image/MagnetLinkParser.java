@@ -19,7 +19,7 @@ public class MagnetLinkParser {
 
             for (Element magnetLink : magnetLinks) {
                 String link = magnetLink.attr("href");
-                System.out.println("Найдена ссылка: " + link);
+                System.out.println("Link found: " + link);
                 openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
 
             }

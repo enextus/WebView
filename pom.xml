@@ -38,12 +38,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>3.11.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.9</version>
@@ -65,14 +59,11 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.32</version>
         </dependency>
-
-            <dependency>
-                <groupId>org.jsoup</groupId>
-                <artifactId>jsoup</artifactId>
-                <version>1.14.3</version>
-            </dependency>
-
-
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.14.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -100,7 +91,8 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <exec executable="C:\\Program Files (x86)\\Launch4j\\launch4jc" resolveExecutable="true">
+                                <exec executable="C:\\Program Files (x86)\\Launch4j\\launch4jc"
+                                      resolveExecutable="true">
                                     <arg value="C:\\Program Files (x86)\\Launch4j\\build.xml"/>
                                 </exec>
                             </target>
@@ -132,16 +124,20 @@
                                         <exclude>META-INF/*.RSA</exclude>
                                         <exclude>META-INF/LICENSE*</exclude>
                                         <exclude>META-INF/NOTICE*</exclude>
-                                        <exclude>META-INF/maven/org.apache.maven.plugins/maven-shade-plugin/pom.properties</exclude>
+                                        <exclude>
+                                            META-INF/maven/org.apache.maven.plugins/maven-shade-plugin/pom.properties
+                                        </exclude>
                                     </excludes>
                                 </filter>
                             </filters>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.image.App</mainClass>
                                 </transformer>
                                 <!-- Add this transformer to merge ServiceLoader configurations -->
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                         </configuration>
                     </execution>

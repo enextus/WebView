@@ -1,3 +1,13 @@
+/**
+ * The ImageDisplay class provides functionality to display the original image and its three
+ * black and white versions with different effects. It also provides the option to change the
+ * input image and save the black and white images with the applied effects.
+ * <p>
+ * The main components of the class include:
+ * 1. A method to display the original and processed images in a JFrame.
+ * 2. A method to change the displayed image based on user input.
+ * 3. A method to scale the images for preview purposes.
+ */
 package org.image;
 
 import javax.imageio.ImageIO;
@@ -6,6 +16,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class ImageDisplay {
 
@@ -15,6 +27,9 @@ public class ImageDisplay {
     private static JLabel bwImage1Label;
     private static JLabel bwImage2Label;
     private static JLabel bwImage3Label;
+
+    // Add a new JButton instance variable
+    private static JButton enterUrlButton;
 
     /**
      * Displays the original and black and white versions of an image with three different effects.
@@ -44,6 +59,12 @@ public class ImageDisplay {
             changeImageButton = new JButton("Choose another image");
             changeImageButton.addActionListener(e -> changeImage());
             panel.add(changeImageButton);
+
+            // Add the new button
+            enterUrlButton = new JButton("Ввести URL страницы для парсинга");
+            enterUrlButton.addActionListener(e -> enterUrl());
+            panel.add(enterUrlButton);
+
 
             JPanel centerPanel = new JPanel();
             centerPanel.setLayout(new BorderLayout());
@@ -100,6 +121,24 @@ public class ImageDisplay {
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });
+    }
+
+    // Add a new method to handle the new button's action event
+    private static void enterUrl() {
+        JTextField urlField = new JTextField(30);
+        JPanel urlPanel = new JPanel();
+        urlPanel.add(new JLabel("URL:"));
+        urlPanel.add(urlField);
+
+        int result = JOptionPane.showConfirmDialog(null, urlPanel, "Введите URL страницы для парсинга", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            try {
+                URL url = new URL(urlField.getText());
+                // Implement your URL parsing and image processing logic here
+            } catch (MalformedURLException e) {
+                JOptionPane.showMessageDialog(null, "Неверный URL. Пожалуйста, введите корректный URL.", "Ошибка", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     /**
