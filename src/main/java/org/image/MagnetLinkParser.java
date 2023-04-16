@@ -11,7 +11,7 @@ import java.net.URI;
 
 public class MagnetLinkParser {
     public static void main(String[] args) {
-        String url = "https://xxxtor.com/";
+        String url = "https://xxxtor.com/kino/";
 
         try {
             Document doc = Jsoup.connect(url).get();
@@ -20,7 +20,8 @@ public class MagnetLinkParser {
             for (Element magnetLink : magnetLinks) {
                 String link = magnetLink.attr("href");
                 System.out.println("Найдена ссылка: " + link);
-                openMagnetLinkInTorrentClient(link);
+                openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,17 +42,15 @@ public class MagnetLinkParser {
      *
      * @param magnetLink The magnet link to be opened in the default torrent client
      */
-    private static void openMagnetLinkInTorrentClient(String magnetLink) {
+    private static void openMagnetLinkInTorrentClient(String magnetLink, Desktop desktop) {
         try {
-            if (Desktop.isDesktopSupported()) {
-                Desktop desktop = Desktop.getDesktop();
-                if (desktop.isSupported(Desktop.Action.BROWSE)) {
-                    URI magnetURI = new URI(magnetLink);
-                    desktop.browse(magnetURI);
-                }
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                URI magnetURI = new URI(magnetLink);
+                desktop.browse(magnetURI);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }
