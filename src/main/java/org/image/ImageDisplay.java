@@ -61,7 +61,7 @@ public class ImageDisplay {
             panel.add(changeImageButton);
 
             // Add the new button
-            enterUrlButton = new JButton("Ввести URL страницы для парсинга");
+            enterUrlButton = new JButton("Enter the URL of the page to be parsed");
             enterUrlButton.addActionListener(e -> enterUrl());
             panel.add(enterUrlButton);
 
@@ -82,13 +82,13 @@ public class ImageDisplay {
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new GridLayout(1, 3));
-            JButton button1 = new JButton("Save with Effect 1.");
+            JButton button1 = new JButton("Save with effect 1.");
             button1.addActionListener(e -> ImageSaver.saveImage(bwImage1));
 
-            JButton button2 = new JButton("Save with Effect 2");
+            JButton button2 = new JButton("Save with effect 2.");
             button2.addActionListener(e -> ImageSaver.saveImage(bwImage2));
 
-            JButton button3 = new JButton("Save with Effect 3");
+            JButton button3 = new JButton("Save with effect 3.");
             button3.addActionListener(e -> ImageSaver.saveImage(bwImage3));
 
             Dimension buttonSize = new Dimension(200, 30);
@@ -130,14 +130,14 @@ public class ImageDisplay {
         urlPanel.add(new JLabel("URL:"));
         urlPanel.add(urlField);
 
-        int result = JOptionPane.showConfirmDialog(null, urlPanel, "Введите URL страницы для парсинга", JOptionPane.OK_CANCEL_OPTION);
+        int result = JOptionPane.showConfirmDialog(null, urlPanel, "Enter the URL of the page to be parsed", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             try {
                 URL url = new URL(urlField.getText());
                 // Call the parseUrl method with the entered URL
                 MagnetLinkParser.parseUrl(url.toString());
             } catch (MalformedURLException e) {
-                JOptionPane.showMessageDialog(null, "Неверный URL. Пожалуйста, введите корректный URL.", "Ошибка", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
