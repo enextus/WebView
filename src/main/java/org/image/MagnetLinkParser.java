@@ -10,6 +10,22 @@ import java.awt.Desktop;
 import java.net.URI;
 
 public class MagnetLinkParser {
+    public static void parseUrl(String url) {
+        try {
+            Document doc = Jsoup.connect(url).get();
+            Elements magnetLinks = doc.select("a[href^=magnet]");
+
+            for (Element magnetLink : magnetLinks) {
+                String link = magnetLink.attr("href");
+                System.out.println("Link found: " + link);
+                openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public static void main(String[] args) {
         String url = "https://xxxtor.com/kino/";
 

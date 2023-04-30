@@ -134,7 +134,8 @@ public class ImageDisplay {
         if (result == JOptionPane.OK_OPTION) {
             try {
                 URL url = new URL(urlField.getText());
-                // Implement your URL parsing and image processing logic here
+                // Call the parseUrl method with the entered URL
+                MagnetLinkParser.parseUrl(url.toString());
             } catch (MalformedURLException e) {
                 JOptionPane.showMessageDialog(null, "Неверный URL. Пожалуйста, введите корректный URL.", "Ошибка", JOptionPane.ERROR_MESSAGE);
             }
