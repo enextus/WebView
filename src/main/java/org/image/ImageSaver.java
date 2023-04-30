@@ -38,6 +38,7 @@ public class ImageSaver {
     }
 
     static void saveImage(BufferedImage image) {
+
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Save image as");
         fileChooser.setFileFilter(new FileNameExtensionFilter("PNG Images", "png"));

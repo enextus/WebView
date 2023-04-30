@@ -45,6 +45,7 @@ public class App {
             File selectedFile = fileChooser.getSelectedFile();
 
             try {
+
                 String inputImagePath = selectedFile.getCanonicalPath();
                 ImageSaver.setOriginalFileName(selectedFile.getName());
 

@@ -27,6 +27,7 @@ public class MagnetLinkParser {
     }
     
     public static void main(String[] args) {
+
         String url = "https://xxxtor.com/kino/";
 
         try {

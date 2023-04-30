@@ -154,7 +154,9 @@ public class ImageDisplay {
         int returnValue = fileChooser.showOpenDialog(null);
 
         if (returnValue == JFileChooser.APPROVE_OPTION) {
+
             File selectedFile = fileChooser.getSelectedFile();
+
             try {
                 String inputImagePath = ((File) selectedFile).getCanonicalPath();
                 BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
@@ -184,6 +186,7 @@ public class ImageDisplay {
                 e.printStackTrace();
             }
         }
+
     }
 
 
@@ -201,7 +204,9 @@ public class ImageDisplay {
         int newHeight = (int) (source.getHeight() * scaleFactor);
 
         BufferedImage scaledImage = new BufferedImage(newWidth, newHeight, source.getType());
+
         Graphics2D g = scaledImage.createGraphics();
+
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g.drawImage(source, 0, 0, newWidth, newHeight, null);
         g.dispose();

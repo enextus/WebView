@@ -12,6 +12,7 @@ public class ImageProcessor {
      * @return A BufferedImage representing the black and white image.
      */
     public static BufferedImage convertToBlackAndWhite(BufferedImage colorImage, double[] weights) {
+
         if (colorImage == null) {
             throw new IllegalArgumentException("Check the input data. The input image cannot be null.");
         }
