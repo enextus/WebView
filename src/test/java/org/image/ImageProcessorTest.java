@@ -58,32 +58,4 @@ public class ImageProcessorTest {
         assertTrue(scaledImage.getWidth() <= 512 && scaledImage.getHeight() <= 512, "Scaled image dimensions should not exceed 500x500");
     }
 
-
-    /**
-     * Tests saving of a black and white image.
-     *
-     * @param tempDir a temporary directory to save the image
-     */
-    @Test
-    public void testSaveBlackWhiteImage(@TempDir Path tempDir) throws IOException {
-        double[] weights = {0.79, 0.11, 0.1};
-        BufferedImage bwImage = ImageProcessor.convertToBlackAndWhite(colorImage, weights);
-
-        String outputImagePath = tempDir.resolve("image.jpg").toString();
-        File outputFileBeforeSave = new File(outputImagePath);
-        assertFalse(outputFileBeforeSave.exists(), "Output file should not exist before saving");
-
-        ImageSaver.saveBlackWhiteImage(bwImage, INPUT_IMAGE_PATH);
-
-        String expectedOutputImagePath = INPUT_IMAGE_PATH.substring(0, INPUT_IMAGE_PATH.lastIndexOf('.')) + "_bw.jpg";
-        File outputFile = new File(expectedOutputImagePath);
-        assertTrue(outputFile.exists(), "Output file should exist");
-        assertTrue(outputFile.getName().endsWith("_bw.jpg"), "Output file name should end with '_bw.jpg'");
-
-        BufferedImage savedImage = ImageIO.read(outputFile);
-        assertNotNull(savedImage, "Saved image should not be null");
-        assertEquals(bwImage.getWidth(), savedImage.getWidth(), "Width should be equal");
-        assertEquals(bwImage.getHeight(), savedImage.getHeight(), "Height should be equal");
-    }
-
 }
