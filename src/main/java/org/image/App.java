@@ -57,10 +57,6 @@ public class App {
                 BufferedImage bwImage2 = ImageProcessor.convertToBlackAndWhite(colorImage, weights2);
                 BufferedImage bwImage3 = ImageProcessor.convertToBlackAndWhite(colorImage, weights3);
 
-                BufferedImage[] processedImages = {bwImage1, bwImage2, bwImage3};
-
-                String[] fileNames = {"bwImage1.png", "bwImage2.png", "bwImage3.png"};
-
                 ImageDisplay.displayImages(colorImage, bwImage1, bwImage2, bwImage3);
 
             } catch (IOException e) {

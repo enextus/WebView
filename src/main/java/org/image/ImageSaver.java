@@ -15,8 +15,6 @@ public class ImageSaver {
 
     private static String originalFileName;
 
-
-
     public static String getOriginalFileName() {
         return originalFileName;
     }
@@ -25,26 +23,15 @@ public class ImageSaver {
         originalFileName = fileName;
     }
 
-    public static void saveProcessedImages(BufferedImage[] images, String[] fileNames) {
-        for (int i = 0; i < images.length; i++) {
-            File outputFile = new File(fileNames[i]);
-            try {
-                ImageIO.write(images[i], "png", outputFile);
-                LOGGER.log(Level.INFO, "Saved processed file: {0}", outputFile.getAbsolutePath());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     static void saveImage(BufferedImage image) {
 
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Save image as");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("PNG Images", "png"));
+        fileChooser.setFileFilter(new FileNameExtensionFilter("JPG Images", "jpg"));
 
+        String imgSuffix = String.valueOf((int) (Math.random() * (99999 - 11111 + 1) + 11111));
         String filenameWithoutExtension = originalFileName.substring(0, originalFileName.lastIndexOf('.'));
-        fileChooser.setSelectedFile(new File(filenameWithoutExtension + "_bw.png"));
+        fileChooser.setSelectedFile(new File(filenameWithoutExtension + imgSuffix + "_bw.jpg"));
 
         int userSelection = fileChooser.showSaveDialog(null);
 
@@ -57,11 +44,6 @@ public class ImageSaver {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static void saveBlackWhiteImage(BufferedImage bwImage, String inputImagePath) throws IOException {
-        String outputImagePath = inputImagePath.substring(0, inputImagePath.lastIndexOf('.')) + "_bw.jpg";
-        ImageIO.write(bwImage, "jpg", new File(outputImagePath));
     }
 
 }
