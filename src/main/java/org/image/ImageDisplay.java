@@ -17,6 +17,16 @@ import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Base64;
+
 public class ImageDisplay {
 
     // GUI components
@@ -121,6 +131,28 @@ public class ImageDisplay {
         g.dispose();
 
         return scaledImage;
+    }
+
+    static BufferedImage decodeBase64ToImage(String base64ImageString) {
+        try {
+            byte[] imageBytes = Base64.getDecoder().decode(base64ImageString);
+            InputStream inputStream = new ByteArrayInputStream(imageBytes);
+            return ImageIO.read(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    static void displayImageInGUI(BufferedImage image) {
+        JFrame frame = new JFrame("Закодированное изображение");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel imageLabel = new JLabel(new ImageIcon(image));
+        frame.getContentPane().add(imageLabel);
+
+        frame.pack();
+        frame.setVisible(true);
     }
 
 }

@@ -19,50 +19,39 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static org.image.ImageDisplay.decodeBase64ToImage;
+import static org.image.ImageDisplay.displayImageInGUI;
 
 public class App {
 
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
 
-    public static void main(String[] args) {
+    private static final String IMAGE_PATH = "src/main/resources/img/myImage.txt";
+
+
+    public static void main(String[] args) throws IOException {
 
         LOGGER.info("App \"BWEffectsImageProcessor\" running");
 
-        double[] weights1 = {0.35, 0.35, 0.35};
-        double[] weights2 = {0.1, 0.79, 0.11};
-        double[] weights3 = {0.79, 0.11, 0.1};
+        String base64ImageString = new String(Files.readAllBytes(Paths.get(IMAGE_PATH)));
+        BufferedImage imageDecode = decodeBase64ToImage(base64ImageString);
 
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Choose an image");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setAcceptAllFileFilterUsed(false);
+        if (imageDecode != null) {
+            // displayImageInGUI(imageDecode);
+            BufferedImage colorImage = imageDecode;
 
-        int returnValue = fileChooser.showOpenDialog(null);
+            BufferedImage bwImage1 =null;
+            BufferedImage bwImage2 = null;
+            BufferedImage bwImage3 = null;
+            ImageDisplay.displayImages(colorImage, bwImage1, bwImage2, bwImage3);
 
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-
-            try {
-
-                String inputImagePath = selectedFile.getCanonicalPath();
-                ImageSaver.setOriginalFileName(selectedFile.getName());
-
-                logSelectedImage(inputImagePath);
-
-                BufferedImage colorImage = ImageIO.read(new File(inputImagePath));
-
-                BufferedImage bwImage1 = ImageProcessor.convertToBlackAndWhite(colorImage, weights1);
-                BufferedImage bwImage2 = ImageProcessor.convertToBlackAndWhite(colorImage, weights2);
-                BufferedImage bwImage3 = ImageProcessor.convertToBlackAndWhite(colorImage, weights3);
-
-                ImageDisplay.displayImages(colorImage, bwImage1, bwImage2, bwImage3);
-
-            } catch (IOException e) {
-
-                e.printStackTrace();
-            }
+        } else {
+            System.err.println("Не удалось декодировать изображение.");
         }
 
     }
