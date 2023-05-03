@@ -1,15 +1,5 @@
 /**
- * The BWEffectsImageProcessor application is a Java program that reads an input image, applies
- * three different black and white effects using predefined weights, and displays the original
- * and processed images. The application uses the ImageIO library for reading and writing images,
- * and Swing for file selection and image display.
  *
- * The main steps of the application include:
- * 1. Defining three sets of weights for the black and white conversion.
- * 2. Using a JFileChooser object to open a file selection dialog for the user to choose an image.
- * 3. Reading the selected image into a BufferedImage object.
- * 4. Applying the black and white conversion to the input image using each set of weights.
- * 5. Displaying the original and processed images.
  */
 package org.image;
 
@@ -25,10 +15,17 @@ import java.util.stream.Collectors;
 import static org.image.ImageDisplay.decodeBase64ToImage;
 
 public class App {
-
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
-
     private static final String IMAGE_PATH = "/img/myImage.txt";
+
+    /**
+     * Logs the provided URL.
+     *
+     * @param url The URL to be logged.
+     */
+    public static void logURL(String url) {
+        LOGGER.log(Level.INFO, "Parsed URL: {0}", url);
+    }
 
     /**
      * Reads a resource file located at the specified path and returns its content as a string.
@@ -49,6 +46,7 @@ public class App {
         } catch (IOException e) {
             throw new RuntimeException("Failed to read resource file: " + IMAGE_PATH, e);
         }
+
     }
 
     public static void main(String[] args) {
