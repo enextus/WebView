@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/app.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/image/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -237,7 +238,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.App" />
-      <item itemvalue="Application.MagnetLinkParser" />
+      <item itemvalue="Application.Parser" />
       <item itemvalue="JUnit.ImageProcessorTest" />
       <item itemvalue="JUnit.ImageProcessorTest.testConvertToBlackAndWhite" />
       <item itemvalue="JUnit.ImageSaverTest" />
@@ -247,7 +248,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MagnetLinkParser" />
         <item itemvalue="JUnit.MagnetLinkParserTest" />
         <item itemvalue="Maven.image-processor [clean]" />
       </list>
@@ -347,7 +347,9 @@
       <workItem from="1683105569559" duration="3493000" />
       <workItem from="1683109082448" duration="1827000" />
       <workItem from="1683110942762" duration="1050000" />
-      <workItem from="1683132083127" duration="2869000" />
+      <workItem from="1683132083127" duration="3010000" />
+      <workItem from="1683137576811" duration="574000" />
+      <workItem from="1683138298829" duration="125000" />
     </task>
     <servers />
   </component>

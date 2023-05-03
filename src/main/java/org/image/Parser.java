@@ -9,7 +9,22 @@ import java.io.IOException;
 import java.awt.Desktop;
 import java.net.URI;
 
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 public class Parser {
+    private static final Logger logger = Logger.getLogger(Parser.class.getName());
+
+    static {
+        try {
+            LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Не удалось загрузить файл конфигурации логгера", e);
+        }
+    }
 
     /**
      * Parses the given URL for magnet links and opens them in the default torrent client installed on the user's system.
@@ -32,14 +47,19 @@ public class Parser {
 
             // Обработка каждой найденной магнитной ссылки
             for (Element magnetLink : magnetLinks) {
+
                 // Извлечение атрибута "href" из элемента ссылки
                 String link = magnetLink.attr("href");
                 System.out.println("Link found: " + link);
+
+                // log file
+                logger.log(Level.INFO, "Link found: " + link);
+
                 // Открытие магнитной ссылки в торрент-клиенте по умолчанию
                 openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
-
             }
         } catch (IOException e) {
+            logger.log(Level.SEVERE, "Произошла ошибка при подключении к URL", e);
             e.printStackTrace();
         }
     }
