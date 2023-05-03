@@ -24,7 +24,6 @@ import static org.image.App.logURL;
  * 3. A method to scale the images for preview purposes.
  */
 public class Window {
-
     private static JLabel originalImageLabel;
 
     private static JButton enterUrlButton;
@@ -68,6 +67,21 @@ public class Window {
             originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
+            // Create the second button and add an action listener
+            JButton centerButton = new JButton("Enter the URL of the page to be parsed");
+            centerButton.addActionListener(e -> enterUrl());
+
+            // Create a panel with a GridBagLayout and add the second button
+            JPanel overlayPanel = new JPanel(new GridBagLayout());
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            overlayPanel.setOpaque(false);
+            overlayPanel.add(centerButton, gbc);
+
+            // Add the panel on top of the image label
+            originalImageLabel.setLayout(new GridBagLayout());
+            originalImageLabel.add(overlayPanel, gbc);
             frame.add(centerPanel, BorderLayout.CENTER);
 
             frame.pack();
