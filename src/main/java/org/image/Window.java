@@ -38,8 +38,10 @@ public class Window {
      */
     public static void displayImages(BufferedImage colorImage) {
 
+        // Run the code on the Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
 
+            // Set the look and feel for the application
             try {
                 UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
@@ -47,26 +49,20 @@ public class Window {
                 e.printStackTrace();
             }
 
+            // Create the main application frame
             JFrame frame = new JFrame("Magnet Links Parser.");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLayout(new BorderLayout());
 
-            frame.setResizable(false); // Prevent window resizing
+            // Prevent window resizing
+            frame.setResizable(false);
 
-            // add NORTH panel
-            JPanel panel = new JPanel();
-            frame.add(panel, BorderLayout.NORTH);
-
-            // Add the new URL-button
-            enterUrlButton = new JButton("Enter the URL of the page to be parsed");
-            enterUrlButton.addActionListener(e -> enterUrl());
-            panel.add(enterUrlButton);
-
-            // add center panel
+            // Create and add the center panel with a BorderLayout
             JPanel centerPanel = new JPanel();
             centerPanel.setLayout(new BorderLayout());
             centerPanel.setBackground(Color.GRAY); // Change background color to gray
 
+            // Create an image label with a scaled image and add it to the center panel
             originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
@@ -85,8 +81,11 @@ public class Window {
             // Add the panel on top of the image label
             originalImageLabel.setLayout(new GridBagLayout());
             originalImageLabel.add(overlayPanel, gbc);
+
+            // Add the center panel to the main frame
             frame.add(centerPanel, BorderLayout.CENTER);
 
+            // Pack the frame, set its location relative to other windows and make it visible
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
@@ -101,7 +100,7 @@ public class Window {
      */
     private static void enterUrl() {
 
-        JTextField urlField = new JTextField(99);
+        JTextField urlField = new JTextField(66);
         JPanel urlPanel = new JPanel();
         urlPanel.add(new JLabel("URL:"));
         urlPanel.add(urlField);
