@@ -1,3 +1,0 @@
-myImage1.txt
-myImage2.txt
-myImage3.txt
