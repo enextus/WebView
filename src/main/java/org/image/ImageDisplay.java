@@ -17,19 +17,12 @@ import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Base64;
 
 public class ImageDisplay {
-
-    // GUI components
 
     private static JLabel originalImageLabel;
 
@@ -41,8 +34,9 @@ public class ImageDisplay {
      *
      * @param colorImage the original color image
      */
-    public static void displayImages(BufferedImage colorImage, BufferedImage bwImage1, BufferedImage bwImage2, BufferedImage bwImage3) {
+    public static void displayImages(BufferedImage colorImage) {
         SwingUtilities.invokeLater(() -> {
+
             try {
                 UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
@@ -50,19 +44,22 @@ public class ImageDisplay {
                 e.printStackTrace();
             }
 
-            JFrame frame = new JFrame("Image Processor | Color to B/W");
+            JFrame frame = new JFrame("Magnet Links Parser.");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLayout(new BorderLayout());
+
             frame.setResizable(false); // Prevent window resizing
 
+            // add NORTH panel
             JPanel panel = new JPanel();
             frame.add(panel, BorderLayout.NORTH);
 
-            // Add the new button
+            // Add the new URL-button
             enterUrlButton = new JButton("Enter the URL of the page to be parsed");
             enterUrlButton.addActionListener(e -> enterUrl());
             panel.add(enterUrlButton);
 
+            // add center panel
             JPanel centerPanel = new JPanel();
             centerPanel.setLayout(new BorderLayout());
             centerPanel.setBackground(Color.GRAY); // Change background color to gray
@@ -70,19 +67,7 @@ public class ImageDisplay {
             originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
-            JPanel grayPanel = new JPanel();
-            grayPanel.setPreferredSize(new Dimension(originalImageLabel.getWidth(), 1));
-            grayPanel.setBackground(Color.GRAY); // Change the color of the horizontal stripe to some color
-            centerPanel.add(grayPanel, BorderLayout.SOUTH);
-
             frame.add(centerPanel, BorderLayout.CENTER);
-
-            // Creating a new panel to place buttonPanel and resultImagesPanel panels vertically
-            JPanel southPanel = new JPanel();
-            southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.Y_AXIS));
-
-
-            frame.add(southPanel, BorderLayout.SOUTH);
 
             frame.pack();
             frame.setLocationRelativeTo(null);
@@ -90,7 +75,12 @@ public class ImageDisplay {
         });
     }
 
-    // Add a new method to handle the new button's action event
+    /**
+     * This method creates and displays a dialog to input a URL.
+     * Once a URL is entered and the OK button is clicked, it validates the URL and calls the parseUrl method
+     * from the MagnetLinkParser class to parse the provided URL.
+     * If the URL is invalid, it shows an error message dialog.
+     */
     private static void enterUrl() {
         JTextField urlField = new JTextField(99);
         JPanel urlPanel = new JPanel();
@@ -133,6 +123,12 @@ public class ImageDisplay {
         return scaledImage;
     }
 
+    /**
+     * Decodes a Base64 encoded image string and returns a BufferedImage object.
+     *
+     * @param base64ImageString The Base64 encoded image string.
+     * @return A BufferedImage object representing the decoded image, or null if an error occurs during decoding.
+     */
     static BufferedImage decodeBase64ToImage(String base64ImageString) {
         try {
             byte[] imageBytes = Base64.getDecoder().decode(base64ImageString);
@@ -142,17 +138,6 @@ public class ImageDisplay {
             e.printStackTrace();
             return null;
         }
-    }
-
-    static void displayImageInGUI(BufferedImage image) {
-        JFrame frame = new JFrame("Закодированное изображение");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JLabel imageLabel = new JLabel(new ImageIcon(image));
-        frame.getContentPane().add(imageLabel);
-
-        frame.pack();
-        frame.setVisible(true);
     }
 
 }

@@ -3,7 +3,7 @@
  * three different black and white effects using predefined weights, and displays the original
  * and processed images. The application uses the ImageIO library for reading and writing images,
  * and Swing for file selection and image display.
- * <p>
+ *
  * The main steps of the application include:
  * 1. Defining three sets of weights for the black and white conversion.
  * 2. Using a JFileChooser object to open a file selection dialog for the user to choose an image.
@@ -14,48 +14,64 @@
 package org.image;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import java.io.*;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.nio.charset.StandardCharsets;
+import java.util.stream.Collectors;
+
 import static org.image.ImageDisplay.decodeBase64ToImage;
-import static org.image.ImageDisplay.displayImageInGUI;
 
 public class App {
 
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
 
-    private static final String IMAGE_PATH = "src/main/resources/img/myImage.txt";
+    private static final String IMAGE_PATH = "/img/myImage.txt";
 
+    /**
+     * Reads a resource file located at the specified path and returns its content as a string.
+     * The file is read using UTF-8 encoding.
+     *
+     * @return The content of the resource file as a string.
+     * @throws IllegalArgumentException If the resource file is not found.
+     * @throws RuntimeException If there's an error reading the resource file.
+     */
+    private static String readResourceFileToString() {
+        InputStream inputStream = ImageDisplay.class.getResourceAsStream(IMAGE_PATH);
+        if (inputStream == null) {
+            throw new IllegalArgumentException("Resource file not found: " + IMAGE_PATH);
+        }
 
-    public static void main(String[] args) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+            return reader.lines().collect(Collectors.joining("\n"));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read resource file: " + IMAGE_PATH, e);
+        }
+    }
+
+    public static void main(String[] args) {
 
         LOGGER.info("App \"BWEffectsImageProcessor\" running");
 
-        String base64ImageString = new String(Files.readAllBytes(Paths.get(IMAGE_PATH)));
+        String base64ImageString = readResourceFileToString();
         BufferedImage imageDecode = decodeBase64ToImage(base64ImageString);
 
         if (imageDecode != null) {
-            // displayImageInGUI(imageDecode);
-            BufferedImage colorImage = imageDecode;
-
-            BufferedImage bwImage1 =null;
-            BufferedImage bwImage2 = null;
-            BufferedImage bwImage3 = null;
-            ImageDisplay.displayImages(colorImage, bwImage1, bwImage2, bwImage3);
-
+            logSelectedImage(IMAGE_PATH);
+            ImageDisplay.displayImages(imageDecode);
         } else {
-            System.err.println("Не удалось декодировать изображение.");
+            System.err.println("Failed to decode the image.");
         }
 
     }
 
+    /**
+     * Logs the selected image's path.
+     *
+     * @param imagePath The path of the selected image.
+     */
     public static void logSelectedImage(String imagePath) {
         LOGGER.log(Level.INFO, "Opened original file: {0}", imagePath);
     }
