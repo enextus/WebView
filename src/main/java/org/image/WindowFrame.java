@@ -1,13 +1,3 @@
-/**
- * The WindowFrame class provides functionality to display the original image and its three
- * black and white versions with different effects. It also provides the option to change the
- * input image and save the black and white images with the applied effects.
- * <p>
- * The main components of the class include:
- * 1. A method to display the original and processed images in a JFrame.
- * 2. A method to change the displayed image based on user input.
- * 3. A method to scale the images for preview purposes.
- */
 package org.image;
 
 import javax.imageio.ImageIO;
@@ -22,6 +12,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
 
+import static org.image.App.logURL;
+
+/**
+ * The WindowFrame class provides functionality to display the original image and its three
+ * black and white versions with different effects. It also provides the option to change the
+ * input image and save the black and white images with the applied effects.
+ * <p>
+ * The main components of the class include:
+ * 1. A method to display the original and processed images in a JFrame.
+ * 2. A method to change the displayed image based on user input.
+ * 3. A method to scale the images for preview purposes.
+ */
 public class WindowFrame {
 
     private static JLabel originalImageLabel;
@@ -35,6 +37,7 @@ public class WindowFrame {
      * @param colorImage the original color image
      */
     public static void displayImages(BufferedImage colorImage) {
+
         SwingUtilities.invokeLater(() -> {
 
             try {
@@ -89,8 +92,11 @@ public class WindowFrame {
 
         int result = JOptionPane.showConfirmDialog(null, urlPanel, "Enter the URL of the page to be parsed", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
+            String urlString = urlField.getText();
+            logURL(urlString); // Log the entered URL or any other characters
+
             try {
-                URL url = new URL(urlField.getText());
+                URL url = new URL(urlString);
                 // Call the parseUrl method with the entered URL
                 MagnetLinkParser.parseUrl(url.toString());
             } catch (MalformedURLException e) {
