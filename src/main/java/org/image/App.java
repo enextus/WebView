@@ -12,11 +12,30 @@ import java.util.logging.Logger;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
-import static org.image.ImageDisplay.decodeBase64ToImage;
+import static org.image.WindowFrame.decodeBase64ToImage;
+
 
 public class App {
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
     private static final String IMAGE_PATH = "/img/myImage.txt";
+
+
+
+    public static void main(String[] args) {
+
+        LOGGER.info("App \"BWEffectsImageProcessor\" running");
+
+        String base64ImageString = readResourceFileToString();
+        BufferedImage imageDecode = decodeBase64ToImage(base64ImageString);
+
+        if (imageDecode != null) {
+            logSelectedImage(IMAGE_PATH);
+            WindowFrame.displayImages(imageDecode);
+        } else {
+            System.err.println("Failed to decode the image.");
+        }
+
+    }
 
     /**
      * Logs the provided URL.
@@ -36,7 +55,9 @@ public class App {
      * @throws RuntimeException If there's an error reading the resource file.
      */
     private static String readResourceFileToString() {
-        InputStream inputStream = ImageDisplay.class.getResourceAsStream(IMAGE_PATH);
+
+        InputStream inputStream = WindowFrame.class.getResourceAsStream(IMAGE_PATH);
+
         if (inputStream == null) {
             throw new IllegalArgumentException("Resource file not found: " + IMAGE_PATH);
         }
@@ -45,22 +66,6 @@ public class App {
             return reader.lines().collect(Collectors.joining("\n"));
         } catch (IOException e) {
             throw new RuntimeException("Failed to read resource file: " + IMAGE_PATH, e);
-        }
-
-    }
-
-    public static void main(String[] args) {
-
-        LOGGER.info("App \"BWEffectsImageProcessor\" running");
-
-        String base64ImageString = readResourceFileToString();
-        BufferedImage imageDecode = decodeBase64ToImage(base64ImageString);
-
-        if (imageDecode != null) {
-            logSelectedImage(IMAGE_PATH);
-            ImageDisplay.displayImages(imageDecode);
-        } else {
-            System.err.println("Failed to decode the image.");
         }
 
     }

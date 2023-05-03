@@ -1,5 +1,5 @@
 /**
- * The ImageDisplay class provides functionality to display the original image and its three
+ * The WindowFrame class provides functionality to display the original image and its three
  * black and white versions with different effects. It also provides the option to change the
  * input image and save the black and white images with the applied effects.
  * <p>
@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
 
-public class ImageDisplay {
+public class WindowFrame {
 
     private static JLabel originalImageLabel;
 
