@@ -18,7 +18,6 @@ import static org.image.App.logURL;
  * The Window class provides functionality to display the original image and its three
  * black and white versions with different effects. It also provides the option to change the
  * input image and save the black and white images with the applied effects.
- * <p>
  * The main components of the class include:
  * 1. A method to display the original and processed images in a JFrame.
  * 2. A method to change the displayed image based on user input.
@@ -28,7 +27,6 @@ public class Window {
 
     private static JLabel originalImageLabel;
 
-    // Add a new JButton instance variable
     private static JButton enterUrlButton;
 
     /**
@@ -85,6 +83,7 @@ public class Window {
      * If the URL is invalid, it shows an error message dialog.
      */
     private static void enterUrl() {
+
         JTextField urlField = new JTextField(99);
         JPanel urlPanel = new JPanel();
         urlPanel.add(new JLabel("URL:"));
@@ -112,6 +111,7 @@ public class Window {
      * @return the scaled image
      */
     public static BufferedImage scaleImageForPreview(BufferedImage source) {
+
         final int maxSize = 512;
         double scaleFactor = Math.min((double) maxSize / source.getWidth(), (double) maxSize / source.getHeight());
 
