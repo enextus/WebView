@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.awt.Desktop;
 import java.net.URI;
 
-public class MagnetLinkParser {
+public class Parser {
     public static void parseUrl(String url) {
         try {
             Document doc = Jsoup.connect(url).get();

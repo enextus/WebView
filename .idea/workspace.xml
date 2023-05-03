@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/MagnetLinkParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/image/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,8 +106,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MagnetLinkParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.image.MagnetLinkParser" />
+    <configuration name="Parser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.image.Parser" />
       <module name="image-processor" />
       <extension name="coverage">
         <pattern>
@@ -347,7 +347,7 @@
       <workItem from="1683105569559" duration="3493000" />
       <workItem from="1683109082448" duration="1827000" />
       <workItem from="1683110942762" duration="1050000" />
-      <workItem from="1683132083127" duration="1912000" />
+      <workItem from="1683132083127" duration="2020000" />
     </task>
     <servers />
   </component>

@@ -95,7 +95,7 @@ public class Window {
     /**
      * This method creates and displays a dialog to input a URL.
      * Once a URL is entered and the OK button is clicked, it validates the URL and calls the parseUrl method
-     * from the MagnetLinkParser class to parse the provided URL.
+     * from the Parser class to parse the provided URL.
      * If the URL is invalid, it shows an error message dialog.
      */
     private static void enterUrl() {
@@ -113,7 +113,7 @@ public class Window {
             try {
                 URL url = new URL(urlString);
                 // Call the parseUrl method with the entered URL
-                MagnetLinkParser.parseUrl(url.toString());
+                Parser.parseUrl(url.toString());
             } catch (MalformedURLException e) {
                 JOptionPane.showMessageDialog(null, "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
             }
