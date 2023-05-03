@@ -15,7 +15,7 @@ import java.util.Base64;
 import static org.image.App.logURL;
 
 /**
- * The WindowFrame class provides functionality to display the original image and its three
+ * The Window class provides functionality to display the original image and its three
  * black and white versions with different effects. It also provides the option to change the
  * input image and save the black and white images with the applied effects.
  * <p>
@@ -24,7 +24,7 @@ import static org.image.App.logURL;
  * 2. A method to change the displayed image based on user input.
  * 3. A method to scale the images for preview purposes.
  */
-public class WindowFrame {
+public class Window {
 
     private static JLabel originalImageLabel;
 

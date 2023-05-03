@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
-import static org.image.WindowFrame.decodeBase64ToImage;
+import static org.image.Window.decodeBase64ToImage;
 
 
 public class App {
@@ -30,7 +30,7 @@ public class App {
 
         if (imageDecode != null) {
             logSelectedImage(IMAGE_PATH);
-            WindowFrame.displayImages(imageDecode);
+            Window.displayImages(imageDecode);
         } else {
             System.err.println("Failed to decode the image.");
         }
@@ -56,7 +56,7 @@ public class App {
      */
     private static String readResourceFileToString() {
 
-        InputStream inputStream = WindowFrame.class.getResourceAsStream(IMAGE_PATH);
+        InputStream inputStream = Window.class.getResourceAsStream(IMAGE_PATH);
 
         if (inputStream == null) {
             throw new IllegalArgumentException("Resource file not found: " + IMAGE_PATH);
