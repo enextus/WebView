@@ -24,8 +24,11 @@ import static org.image.App.logURL;
  * 3. A method to scale the images for preview purposes.
  */
 public class Window {
+
+    // A JLabel to display the original image in the user interface
     private static JLabel originalImageLabel;
 
+    // A JButton that, when clicked, will open a dialog for the user to enter a URL to be parsed
     private static JButton enterUrlButton;
 
     /**
