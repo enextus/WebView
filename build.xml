@@ -1,6 +1,6 @@
 <project name="launch4j" default="create-exe" basedir=".">
     <property name="launch4j.dir" location="." />
-    <property name="version" value="1.0.0"/>
+    <property name="version" value="1.0.0" />
 
     <target name="clean" description="clean up">
         <delete dir="target" />
