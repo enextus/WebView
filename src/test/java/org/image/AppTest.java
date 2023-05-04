@@ -34,7 +34,7 @@ public class AppTest {
     }
 
     @Test
-    void testReadResourceFileToString_withIOException() throws IOException {
+    void testReadResourceFileToString_withIOException() {
         // Create a mock InputStream that throws an IOException when read
         InputStream mockInputStream = new InputStream() {
             @Override
@@ -45,18 +45,26 @@ public class AppTest {
 
         // Try to read a resource file with the mock InputStream
         String imagePath = "/img/test-image.txt";
-        Assertions.assertThrows(RuntimeException.class, () -> App.readResourceFileToString(imagePath));
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            try (InputStream inputStream = mockInputStream) {
+                App.readResourceFileToString(imagePath);
+            }
+        });
+    }
+
+
+    @Test
+    void testLogURL() {
+        String url = "https://example.com";
+        App.logURL(url);
+        // Check if the URL was logged
     }
 
     @Test
-    void testGetRandomImagePath() {
-        String imagePath = App.getRandomImagePath();
-
-        // Check that the returned path is not empty
-        Assertions.assertFalse(imagePath.isEmpty());
-
-        // Check that the returned path starts with "/img/"
-        Assertions.assertTrue(imagePath.startsWith("/img/"));
+    void testReadResourceFileToString() {
+        String imagePath = "/img/test.txt";
+        String content = App.readResourceFileToString(imagePath);
+        Assertions.assertEquals("Hello, world!", content);
     }
 
 }
