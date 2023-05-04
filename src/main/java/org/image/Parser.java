@@ -25,10 +25,6 @@ import java.util.logging.LogManager;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.List;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Parser {
     private static final Logger logger = Logger.getLogger(Parser.class.getName());
@@ -57,35 +53,6 @@ public class Parser {
      *
      * @param url The URL to be parsed for magnet links
      */
-/*    public static void parseUrl(String url) {
-        try {
-            // Connecting to the URL and obtaining the document using Jsoup
-            Document doc = Jsoup.connect(url).get();
-            //  Selecting magnet links on the page using a CSS selector
-            Elements magnetLinks = doc.select("a[href^=magnet]");
-
-            // Processing each found magnet link
-            for (Element magnetLink : magnetLinks) {
-
-                // Extracting the "href" attribute from the link element
-                String link = magnetLink.attr("href");
-                System.out.println("Link found: " + link);
-
-                // log file
-                logger.log(Level.INFO, "Link found: " + link);
-
-                // Add magnet link to text area
-                Window.addMagnetLinkToTextArea(link);
-
-                // Opening the magnet link in the default torrent client
-                openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
-            }
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "An error occurred while connecting to the URL", e);
-            e.printStackTrace();
-        }
-    }*/
-
     public static void parseUrl(String url) {
         try {
             // Connecting to the URL and obtaining the document using Jsoup
@@ -94,7 +61,7 @@ public class Parser {
             Elements magnetLinks = doc.select("a[href^=magnet]");
 
             // Создайте пул потоков с фиксированным количеством рабочих потоков
-            int numberOfThreads = 10; // Задайте количество потоков в пуле
+            int numberOfThreads = 8; // Задайте количество потоков в пуле
             ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
             // Processing each found magnet link
@@ -124,9 +91,6 @@ public class Parser {
         }
     }
 
-
-
-
     /**
      * The main method of the MagnetLinkParser program.
      * This method serves as the entry point for the program. It connects to the specified URL and retrieves the page
@@ -143,33 +107,19 @@ public class Parser {
         String url = "https://xxxtor.com/kino/";
 
         try {
-            // Connecting to the URL and obtaining the document using Jsoup
-            Document doc = Jsoup.connect(url).get();
-            // Selecting magnet links on the page using a CSS selector
-            Elements magnetLinks = doc.select("a[href^=magnet]");
-
-            for (Element magnetLink : magnetLinks) {
-                // Extracting the "href" attribute from the link element
-                String link = magnetLink.attr("href");
-                System.out.println("Link found: " + link);
-                // Opening the magnet link in the default torrent client
-                openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
-
-            }
-        } catch (IOException e) {
+            parseUrl(url);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /**
      * Opens the given magnet link in the default torrent client installed on the user's system.
-     *
      * This method uses the java.awt.Desktop class to open the magnet link in the default torrent client.
      * It first checks if the Desktop class is supported on the current platform, and then checks if the
      * BROWSE action is supported. If both conditions are met, it proceeds to open the magnet link as a URI
      * using the browse() method. In most cases, this will trigger the default torrent client to open and
      * start downloading the linked content.
-     *
      * It is important to note that using this program to download illegal content may violate the laws
      * of your country. Ensure that you use this program in compliance with the law.
      *

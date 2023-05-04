@@ -30,7 +30,6 @@ public class ParserTest {
         parser = new Parser();
     }
 
-
     @Test
     public void testParseInvalidUrl() {
         // Test case for invalid URL
