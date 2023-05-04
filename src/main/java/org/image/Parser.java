@@ -20,6 +20,7 @@ import java.net.URI;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
+import org.image.Window;
 
 import java.io.FileInputStream;
 
@@ -62,6 +63,9 @@ public class Parser {
                 // log file
                 logger.log(Level.INFO, "Link found: " + link);
 
+                // Add magnet link to text area
+                Window.addMagnetLinkToTextArea(link);
+
                 // Opening the magnet link in the default torrent client
                 openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
             }
@@ -71,6 +75,7 @@ public class Parser {
         }
         return null;
     }
+
 
     /**
      * The main method of the MagnetLinkParser program.

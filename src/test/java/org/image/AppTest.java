@@ -11,11 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class AppTest {
 
-    private static String testImagePath;
-
     @BeforeAll
     static void setUp() {
-        testImagePath = "/img/myImage1.img";
+        String testImagePath = "/img/myImage1.img";
     }
 
     @Test

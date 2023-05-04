@@ -1,12 +1,3 @@
-/**
- * The Window class provides functionality to display the original image and its three
- * black and white versions with different effects. It also provides the option to change the
- * input image and save the black and white images with the applied effects.
- * The main components of the class include:
- * 1. A method to display the original and processed images in a JFrame.
- * 2. A method to change the displayed image based on user input.
- * 3. A method to scale the images for preview purposes.
- */
 package org.image;
 
 import javax.imageio.ImageIO;
@@ -25,23 +16,13 @@ import static org.image.App.logURL;
 
 public class Window {
 
-    // A JLabel to display the original image in the user interface
     private static JLabel originalImageLabel;
+    private static JTextArea magnetLinksTextArea;
 
-    // A JButton that, when clicked, will open a dialog for the user to enter a URL to be parsed
-    private static JButton enterUrlButton;
-
-    /**
-     * Displays the original and black and white versions of an image with three different effects.
-     *
-     * @param colorImage the original color image
-     */
     public static void displayImages(BufferedImage colorImage) {
 
-        // Run the code on the Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
 
-            // Set the look and feel for the application
             try {
                 UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
@@ -49,55 +30,72 @@ public class Window {
                 e.printStackTrace();
             }
 
-            // Create the main application frame
             JFrame frame = new JFrame("Magnet Links Parser.");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLayout(new BorderLayout());
-
-            // Prevent window resizing
             frame.setResizable(false);
 
-            // Create and add the center panel with a BorderLayout
             JPanel centerPanel = new JPanel();
             centerPanel.setLayout(new BorderLayout());
-            centerPanel.setBackground(Color.GRAY); // Change background color to gray
+            centerPanel.setBackground(Color.GRAY);
 
-            // Create an image label with a scaled image and add it to the center panel
             originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
-            // Create the second button and add an action listener
-            JButton centerButton = new JButton("Enter the URL of the page to be parsed");
-            centerButton.addActionListener(e -> enterUrl());
+            JButton jButton = new JButton("Enter the URL of the page to be parsed");
+            jButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            jButton.addActionListener(e -> enterUrl());
 
-            // Create a panel with a GridBagLayout and add the second button
-            JPanel overlayPanel = new JPanel(new GridBagLayout());
+            JPanel buttonPanel = new JPanel() {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    g.setColor(new Color(0, 0, 0, 64));
+                    g.fillRect(0, 0, getWidth(), getHeight());
+                }
+            };
+
+            buttonPanel.setLayout(new GridBagLayout());
+            buttonPanel.setOpaque(false);
+
             GridBagConstraints gbc = new GridBagConstraints();
+            gbc.anchor = GridBagConstraints.NORTHWEST;
             gbc.gridx = 0;
             gbc.gridy = 0;
-            overlayPanel.setOpaque(false);
-            overlayPanel.add(centerButton, gbc);
 
-            // Add the panel on top of the image label
-            originalImageLabel.setLayout(new GridBagLayout());
-            originalImageLabel.add(overlayPanel, gbc);
+            double verticalPercent = -0.1; // Change this value to adjust the vertical position (0.0 to 1.0)
+            double horizontalPercent = 0.05; // Change this value to adjust the horizontal position (0.0 to 1.0)
 
-            // Add the center panel to the main frame
+            int topInset = (int) (colorImage.getHeight() * verticalPercent);
+            int leftInset = (int) (colorImage.getWidth() * horizontalPercent - jButton.getPreferredSize().getWidth() / 2);
+
+            gbc.insets = new Insets(topInset, leftInset, 0, 0);
+
+            buttonPanel.add(jButton, gbc);
+
+            magnetLinksTextArea = new JTextArea(10, 50);
+            magnetLinksTextArea.setEditable(false);
+            JScrollPane scrollPane = new JScrollPane(magnetLinksTextArea);
+
+            JPanel textAreaPanel = new JPanel();
+            textAreaPanel.setLayout(new BorderLayout());
+            textAreaPanel.add(scrollPane, BorderLayout.NORTH);
+
+            originalImageLabel.setLayout(new BorderLayout());
+            originalImageLabel.add(buttonPanel, BorderLayout.CENTER);
+
             frame.add(centerPanel, BorderLayout.CENTER);
-
-            // Pack the frame, set its location relative to other windows and make it visible
+            frame.add(textAreaPanel, BorderLayout.SOUTH);
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });
     }
 
-    /**
-     * This method creates and displays a dialog to input a URL.
-     * Once a URL is entered and the OK button is clicked, it validates the URL and calls the parseUrl method
-     * from the Parser class to parse the provided URL.
-     * If the URL is invalid, it shows an error message dialog.
-     */
+    public static void addMagnetLinkToTextArea(String magnetLink) {
+        magnetLinksTextArea.append(magnetLink + "\n");
+    }
+
     private static void enterUrl() {
 
         JTextField urlField = new JTextField(66);
@@ -108,11 +106,10 @@ public class Window {
         int result = JOptionPane.showConfirmDialog(null, urlPanel, "Enter the URL of the page to be parsed", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             String urlString = urlField.getText();
-            logURL(urlString); // Log the entered URL or any other characters
+            logURL(urlString);
 
             try {
                 URL url = new URL(urlString);
-                // Call the parseUrl method with the entered URL
                 Parser.parseUrl(url.toString());
             } catch (MalformedURLException e) {
                 JOptionPane.showMessageDialog(null, "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
@@ -120,12 +117,6 @@ public class Window {
         }
     }
 
-    /**
-     * Scales a given image to fit within a maximum size of 512x512 pixels for preview purposes.
-     *
-     * @param source the image to be scaled
-     * @return the scaled image
-     */
     public static BufferedImage scaleImageForPreview(BufferedImage source) {
 
         final int maxSize = 512;
@@ -145,12 +136,6 @@ public class Window {
         return scaledImage;
     }
 
-    /**
-     * Decodes a Base64 encoded image string and returns a BufferedImage object.
-     *
-     * @param base64ImageString The Base64 encoded image string.
-     * @return A BufferedImage object representing the decoded image, or null if an error occurs during decoding.
-     */
     static BufferedImage decodeBase64ToImage(String base64ImageString) {
         try {
             byte[] imageBytes = Base64.getDecoder().decode(base64ImageString);
@@ -161,5 +146,4 @@ public class Window {
             return null;
         }
     }
-
 }
