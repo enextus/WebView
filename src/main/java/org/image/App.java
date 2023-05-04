@@ -18,7 +18,6 @@ import static org.image.Window.decodeBase64ToImage;
 
 public class App {
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
-    private static final String IMAGE_PATH = "/img/myImage1.txt";
 
     private static final String IMAGE_DIRECTORY = "/img";
 
@@ -26,7 +25,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        LOGGER.info("App \"BWEffectsImageProcessor\" running");
+        LOGGER.info("App \"Magnet Opener\" running");
 
         String randomImagePath = getRandomImagePath();
         String imagePath = getRandomImagePath();
