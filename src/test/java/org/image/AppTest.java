@@ -13,7 +13,7 @@ public class AppTest {
 
     @BeforeAll
     static void setUp() {
-        String testImagePath = "/img/myImage1.img";
+        String testImagePath = "/img/1.img";
     }
 
     @Test
