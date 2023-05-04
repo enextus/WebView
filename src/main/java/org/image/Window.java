@@ -68,6 +68,10 @@ public class Window {
 
             magnetLinksTextArea = new JTextArea(10, 50);
             magnetLinksTextArea.setEditable(false);
+
+            magnetLinksTextArea.setForeground(new Color(255, 215, 0)); // the text color set to gold
+            magnetLinksTextArea.setBackground(Color.BLACK); // the background color of the text area set to black
+
             JScrollPane scrollPane = new JScrollPane(magnetLinksTextArea);
 
             JPanel textAreaPanel = new JPanel();
@@ -89,17 +93,16 @@ public class Window {
         magnetLinksTextArea.append(magnetLink + "\n");
         magnetLinksTextArea.append(magnetLink + "\n");
         magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
-
     }
 
     private static void enterUrl() {
-
         JTextField urlField = new JTextField(66);
         JPanel urlPanel = new JPanel();
         urlPanel.add(new JLabel("URL:"));
         urlPanel.add(urlField);
 
-        int result = JOptionPane.showConfirmDialog(null, urlPanel, "Enter the URL of the page to be parsed", JOptionPane.OK_CANCEL_OPTION);
+        int result = JOptionPane.showConfirmDialog(null,
+                urlPanel, "Enter the URL of the page to be parsed", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             String urlString = urlField.getText();
             logURL(urlString);
@@ -108,7 +111,8 @@ public class Window {
                 URL url = new URL(urlString);
                 Parser.parseUrl(url.toString());
             } catch (MalformedURLException e) {
-                JOptionPane.showMessageDialog(null, "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                        "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
