@@ -109,7 +109,7 @@ public class App {
      * @throws IllegalArgumentException If the resource file is not found.
      * @throws RuntimeException         If there's an error reading the resource file.
      */
-    private static String readResourceFileToString(String imagePath) {
+    static String readResourceFileToString(String imagePath) {
 
         InputStream inputStream = App.class.getResourceAsStream(imagePath);
 
