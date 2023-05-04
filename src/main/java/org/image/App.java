@@ -42,9 +42,10 @@ public class App {
     }
 
     public static String getRandomImagePath() {
+
         List<String> imagePaths = new ArrayList<>();
 
-        try (InputStream inputStream = App.class.getResourceAsStream(IMAGE_DIRECTORY + "/img.config");
+        try (InputStream inputStream = App.class.getResourceAsStream(IMAGE_DIRECTORY + "/img.properties");
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -61,7 +62,6 @@ public class App {
         String randomImagePath = imagePaths.get(RANDOM.nextInt(imagePaths.size()));
         return randomImagePath;
     }
-
 
     /**
      * Logs the provided URL.
