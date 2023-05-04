@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/logging.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/img/img.config" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/img.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/myImage1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/myImage1.img" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/myImage2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/myImage2.img" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/myImage3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/myImage3.img" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/myImage4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/myImage4.img" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/myImage5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/myImage5.img" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -358,7 +351,7 @@
       <workItem from="1683137576811" duration="574000" />
       <workItem from="1683138298829" duration="1595000" />
       <workItem from="1683140049789" duration="392000" />
-      <workItem from="1683186192638" duration="112000" />
+      <workItem from="1683186192638" duration="248000" />
     </task>
     <servers />
   </component>
