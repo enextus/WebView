@@ -45,11 +45,13 @@ public class App {
 
         List<String> imagePaths = new ArrayList<>();
 
-        try (InputStream inputStream = App.class.getResourceAsStream(IMAGE_DIRECTORY + "/img.properties");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                imagePaths.add(IMAGE_DIRECTORY + "/" + line);
+        try (InputStream inputStream = App.class.getResourceAsStream(IMAGE_DIRECTORY + "/img.properties")) {
+            assert inputStream != null;
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    imagePaths.add(IMAGE_DIRECTORY + "/" + line);
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException("Failed to read image directory: " + IMAGE_DIRECTORY, e);
