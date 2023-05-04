@@ -23,24 +23,16 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 
-import java.io.FileInputStream;
-
 public class Parser {
     private static final Logger logger = Logger.getLogger(Parser.class.getName());
 
-/*    static {
-        try {
-            LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Failed to load the logger configuration file", e);
-        }
-    }*/
-
+    // This static block loads the logger configuration file "logging.properties" from the resources folder.
+    // It uses getResourceAsStream to access the file, which works both when running from an IDE and from a JAR file.
     static {
         try {
             InputStream configFile = Parser.class.getResourceAsStream("/logging.properties");
             if (configFile == null) {
-                throw new FileNotFoundException("logging.properties not found!");
+                throw new FileNotFoundException("File \"logging.properties\" not found!");
             }
             LogManager.getLogManager().readConfiguration(configFile);
         } catch (IOException e) {
@@ -57,9 +49,8 @@ public class Parser {
      * of your country. Ensure that you use this program in compliance with the law.
      *
      * @param url The URL to be parsed for magnet links
-     * @return
      */
-    public static Object parseUrl(String url) {
+    public static void parseUrl(String url) {
         try {
             // Connecting to the URL and obtaining the document using Jsoup
             Document doc = Jsoup.connect(url).get();
@@ -86,7 +77,6 @@ public class Parser {
             logger.log(Level.SEVERE, "An error occurred while connecting to the URL", e);
             e.printStackTrace();
         }
-        return null;
     }
 
     /**
