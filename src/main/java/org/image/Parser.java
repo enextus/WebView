@@ -12,8 +12,8 @@ import java.net.URI;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
+
 import java.io.FileInputStream;
-import java.io.IOException;
 
 public class Parser {
     private static final Logger logger = Logger.getLogger(Parser.class.getName());
@@ -22,17 +22,15 @@ public class Parser {
         try {
             LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Не удалось загрузить файл конфигурации логгера", e);
+            logger.log(Level.SEVERE, "Failed to load the logger configuration file", e);
         }
     }
 
     /**
      * Parses the given URL for magnet links and opens them in the default torrent client installed on the user's system.
-     *
      * This method connects to the specified URL and retrieves the page content using Jsoup. It then selects all magnet
      * links on the page using a CSS selector. For each found magnet link, the method extracts the "href" attribute
      * and opens the link in the default torrent client using the openMagnetLinkInTorrentClient() method.
-     *
      * It is important to note that using this program to download illegal content may violate the laws
      * of your country. Ensure that you use this program in compliance with the law.
      *
@@ -40,22 +38,22 @@ public class Parser {
      */
     public static void parseUrl(String url) {
         try {
-            // Подключение к URL и получение документа с использованием Jsoup
+            // Connecting to the URL and obtaining the document using Jsoup
             Document doc = Jsoup.connect(url).get();
-            // Выбор магнитных ссылок на странице с использованием CSS-селектора
+            //  Selecting magnet links on the page using a CSS selector
             Elements magnetLinks = doc.select("a[href^=magnet]");
 
-            // Обработка каждой найденной магнитной ссылки
+            // Processing each found magnet link
             for (Element magnetLink : magnetLinks) {
 
-                // Извлечение атрибута "href" из элемента ссылки
+                // Extracting the "href" attribute from the link element
                 String link = magnetLink.attr("href");
                 System.out.println("Link found: " + link);
 
                 // log file
                 logger.log(Level.INFO, "Link found: " + link);
 
-                // Открытие магнитной ссылки в торрент-клиенте по умолчанию
+                // Opening the magnet link in the default torrent client
                 openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
             }
         } catch (IOException e) {
@@ -66,12 +64,10 @@ public class Parser {
 
     /**
      * The main method of the MagnetLinkParser program.
-     *
      * This method serves as the entry point for the program. It connects to the specified URL and retrieves the page
      * content using Jsoup. It then selects all magnet links on the page using a CSS selector. For each found magnet link,
      * the method extracts the "href" attribute and opens the link in the default torrent client using the
      * openMagnetLinkInTorrentClient() method.
-     *
      * It is important to note that using this program to download illegal content may violate the laws
      * of your country. Ensure that you use this program in compliance with the law.
      *
