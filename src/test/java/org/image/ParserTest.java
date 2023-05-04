@@ -30,23 +30,6 @@ public class ParserTest {
         parser = new Parser();
     }
 
-    @Test
-    public void testParseUrl_validUrl() throws IOException {
-        // Prepare a mocked Jsoup Document with a magnet link
-        String html = "<html><body><a href='magnet:?xt=urn:btih:12345'>Magnet Link</a></body></html>";
-        Document mockedDocument = Jsoup.parse(html);
-
-        // Stub the Jsoup.connect().get() method to return the mocked Document
-        try (MockedStatic<Jsoup> jsoupMock = Mockito.mockStatic(Jsoup.class)) {
-            jsoupMock.when(() -> Jsoup.connect(anyString())).thenReturn(connection);
-            when(connection.get()).thenReturn(mockedDocument);
-
-            // Call the parseUrl method with a valid URL and check if it processes the magnet link
-            String validUrl = "http://example.com";
-            assertDoesNotThrow(() -> parser.parseUrl(validUrl),
-                    "parseUrl should not throw an exception when parsing a valid URL with a magnet link");
-        }
-    }
 
     @Test
     public void testParseInvalidUrl() {

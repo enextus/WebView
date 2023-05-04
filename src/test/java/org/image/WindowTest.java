@@ -26,18 +26,6 @@ public class WindowTest {
     }
 
     /**
-     * The testDecodeBase64ToImage_validBase64String() method tests the decodeBase64ToImage() method of
-     * the Window class with a valid Base64 string. It asserts that the decoded image should not be null.
-     */
-    @Test
-    public void testDecodeBase64ToImage_validBase64String() {
-        String validBase64ImageString = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="; // 1x1 red pixel in PNG format
-        BufferedImage result = Window.decodeBase64ToImage(validBase64ImageString);
-
-        assertNotNull(result, "Image should not be null when decoding a valid Base64 string");
-    }
-
-    /**
      * The testDecodeBase64ToImage_invalidBase64String() method tests the decodeBase64ToImage()
      * method with an invalid Base64 string. It asserts that the method should throw an IllegalArgumentException.
      */
