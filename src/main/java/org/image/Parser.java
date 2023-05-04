@@ -57,7 +57,7 @@ public class Parser {
                 openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
             }
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Произошла ошибка при подключении к URL", e);
+            logger.log(Level.SEVERE, "An error occurred while connecting to the URL", e);
             e.printStackTrace();
         }
     }
@@ -78,16 +78,16 @@ public class Parser {
         String url = "https://xxxtor.com/kino/";
 
         try {
-            // Подключение к URL и получение документа с использованием Jsoup
+            // Connecting to the URL and obtaining the document using Jsoup
             Document doc = Jsoup.connect(url).get();
-            // Выбор магнитных ссылок на странице с использованием CSS-селектора
+            // Selecting magnet links on the page using a CSS selector
             Elements magnetLinks = doc.select("a[href^=magnet]");
 
             for (Element magnetLink : magnetLinks) {
-                // Извлечение атрибута "href" из элемента ссылки
+                // Extracting the "href" attribute from the link element
                 String link = magnetLink.attr("href");
                 System.out.println("Link found: " + link);
-                // Открытие магнитной ссылки в торрент-клиенте по умолчанию
+                // Opening the magnet link in the default torrent client
                 openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
 
             }
@@ -112,11 +112,11 @@ public class Parser {
      */
     private static void openMagnetLinkInTorrentClient(String magnetLink, Desktop desktop) {
         try {
-            // Проверка поддержки действия BROWSE классом Desktop на текущей платформе
+            // Checking if the BROWSE action is supported by the Desktop class on the current platform
             if (desktop.isSupported(Desktop.Action.BROWSE)) {
-                // Создание URI из магнитной ссылки
+                // Creating a URI from the magnet link
                 URI magnetURI = new URI(magnetLink);
-                // Открытие магнитной ссылки в торрент-клиенте по умолчанию
+                // Opening the magnet link in the default torrent client
                 desktop.browse(magnetURI);
             }
         } catch (Exception e) {
