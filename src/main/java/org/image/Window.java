@@ -30,7 +30,7 @@ public class Window {
 
             JPanel centerPanel = new JPanel();
             centerPanel.setLayout(new BorderLayout());
-            centerPanel.setBackground(Color.GRAY);
+            centerPanel.setBackground(Color.BLACK);
 
             originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
@@ -56,8 +56,8 @@ public class Window {
             gbc.gridx = 0;
             gbc.gridy = 0;
 
-            double verticalPercent = -0.1; // Change this value to adjust the vertical position (0.0 to 1.0)
-            double horizontalPercent = 0.05; // Change this value to adjust the horizontal position (0.0 to 1.0)
+            double verticalPercent = -0.11; // Change this value to adjust the vertical position (0.0 to 1.0)
+            double horizontalPercent = 0.099; // Change this value to adjust the horizontal position (0.0 to 1.0)
 
             int topInset = (int) (colorImage.getHeight() * verticalPercent);
             int leftInset = (int) (colorImage.getWidth() * horizontalPercent - jButton.getPreferredSize().getWidth() / 2);
