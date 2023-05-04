@@ -13,8 +13,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.awt.Desktop;
+import java.io.InputStream;
 import java.net.URI;
 
 import java.util.logging.Logger;
@@ -26,9 +28,21 @@ import java.io.FileInputStream;
 public class Parser {
     private static final Logger logger = Logger.getLogger(Parser.class.getName());
 
-    static {
+/*    static {
         try {
             LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "Failed to load the logger configuration file", e);
+        }
+    }*/
+
+    static {
+        try {
+            InputStream configFile = Parser.class.getResourceAsStream("/logging.properties");
+            if (configFile == null) {
+                throw new FileNotFoundException("logging.properties not found!");
+            }
+            LogManager.getLogManager().readConfiguration(configFile);
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Failed to load the logger configuration file", e);
         }
