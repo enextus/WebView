@@ -21,7 +21,6 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 
-
 import java.io.FileInputStream;
 
 public class Parser {
@@ -75,7 +74,6 @@ public class Parser {
         }
         return null;
     }
-
 
     /**
      * The main method of the MagnetLinkParser program.

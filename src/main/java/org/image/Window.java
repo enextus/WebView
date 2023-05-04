@@ -1,25 +1,16 @@
 package org.image;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Base64;
-
 import static org.image.App.logURL;
 
 public class Window {
-
     private static JLabel originalImageLabel;
     private static JTextArea magnetLinksTextArea;
-
 
     public static void displayImages(BufferedImage colorImage) {
 
@@ -100,7 +91,6 @@ public class Window {
         magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
 
     }
-
 
     private static void enterUrl() {
 
