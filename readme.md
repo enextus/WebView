@@ -1,17 +1,14 @@
-# EffectfulBWImageConverter
+# The App class serves as the main class for the "Magnet Opener" application
 
-EffectfulBWImageConverter is a Java application designed to convert color images to black and white with various effects applied. The program allows users to choose an image, apply three different black and white effects, preview the results, and save the desired effect.
+The App class serves as the main class for the "Magnet Opener" application
 
 ## Features
 
-- Open color images in various formats
-- Apply three different black and white effects
-- Preview original and processed images
-- Save the processed images with the desired effect
+The App class serves as the main class for the "Magnet Opener" application
 
 ## Prerequisites
 
-To run the EffectfulBWImageConverter, you need to have Java Development Kit (JDK) installed on your computer. You can download the JDK from the official Oracle website: https://www.oracle.com/java/technologies/javase-downloads.html
+To run the  "Magnet Opener", you need to have Java Development Kit (JDK) installed on your computer. You can download the JDK from the official Oracle website: https://www.oracle.com/java/technologies/javase-downloads.html
 
 ## How to run
 
