@@ -10,6 +10,7 @@ import java.net.URL;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Base64;
 
 import static org.image.App.logURL;
@@ -18,6 +19,7 @@ public class Window {
 
     private static JLabel originalImageLabel;
     private static JTextArea magnetLinksTextArea;
+
 
     public static void displayImages(BufferedImage colorImage) {
 
@@ -94,7 +96,11 @@ public class Window {
 
     public static void addMagnetLinkToTextArea(String magnetLink) {
         magnetLinksTextArea.append(magnetLink + "\n");
+        magnetLinksTextArea.append(magnetLink + "\n");
+        magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
+
     }
+
 
     private static void enterUrl() {
 
@@ -146,4 +152,5 @@ public class Window {
             return null;
         }
     }
+
 }
