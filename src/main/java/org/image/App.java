@@ -1,3 +1,15 @@
+/**
+ * The App class serves as the main class for the "Magnet Opener" application, which is responsible for selecting,
+ * reading, decoding, and displaying random images from a specified image directory. The class consists of the following components:
+ * - Constants: LOGGER for logging, IMAGE_DIRECTORY for specifying the image directory, and RANDOM for generating random numbers.
+ * - main method: The entry point of the application, which handles the image processing and display.
+ * - getRandomImagePath method: Selects and returns a random image path from the specified directory.
+ * - logURL method: Logs the provided URL.
+ * - readResourceFileToString method: Reads a resource file and returns its content as a string.
+ * - logSelectedImage method: Logs the path of the selected image.
+ * The application reads image paths from a properties file (img.properties) within the specified directory, decodes Base64-encoded images,
+ * and displays them in a window.
+ */
 package org.image;
 
 import java.awt.image.BufferedImage;
@@ -16,18 +28,6 @@ import java.util.stream.Collectors;
 
 import static org.image.Window.decodeBase64ToImage;
 
-/**
- * The App class serves as the main class for the "Magnet Opener" application, which is responsible for selecting,
- * reading, decoding, and displaying random images from a specified image directory. The class consists of the following components:
- * - Constants: LOGGER for logging, IMAGE_DIRECTORY for specifying the image directory, and RANDOM for generating random numbers.
- * - main method: The entry point of the application, which handles the image processing and display.
- * - getRandomImagePath method: Selects and returns a random image path from the specified directory.
- * - logURL method: Logs the provided URL.
- * - readResourceFileToString method: Reads a resource file and returns its content as a string.
- * - logSelectedImage method: Logs the path of the selected image.
- * The application reads image paths from a properties file (img.properties) within the specified directory, decodes Base64-encoded images,
- * and displays them in a window.
- */
 public class App {
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
     private static final String IMAGE_DIRECTORY = "/img";

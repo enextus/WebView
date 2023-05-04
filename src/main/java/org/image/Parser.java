@@ -1,3 +1,11 @@
+/**
+ * The Parser class is responsible for parsing a given URL for magnet links and opening them in the default torrent client
+ * installed on the user's system. The class connects to the specified URL and retrieves the page content using Jsoup, selects
+ * all magnet links on the page using a CSS selector, and processes each found magnet link. For each magnet link, the class
+ * extracts the "href" attribute and opens the link in the default torrent client using the openMagnetLinkInTorrentClient() method.
+ * Note that using this program to download illegal content may violate the laws of your country. Ensure that you use this program
+ * in compliance with the law.
+ */
 package org.image;
 
 import org.jsoup.Jsoup;
@@ -15,14 +23,6 @@ import java.util.logging.LogManager;
 
 import java.io.FileInputStream;
 
-/**
- * The Parser class is responsible for parsing a given URL for magnet links and opening them in the default torrent client
- * installed on the user's system. The class connects to the specified URL and retrieves the page content using Jsoup, selects
- * all magnet links on the page using a CSS selector, and processes each found magnet link. For each magnet link, the class
- * extracts the "href" attribute and opens the link in the default torrent client using the openMagnetLinkInTorrentClient() method.
- * Note that using this program to download illegal content may violate the laws of your country. Ensure that you use this program
- * in compliance with the law.
- */
 public class Parser {
     private static final Logger logger = Logger.getLogger(Parser.class.getName());
 

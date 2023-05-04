@@ -1,3 +1,12 @@
+/**
+ * The Window class provides functionality to display the original image and its three
+ * black and white versions with different effects. It also provides the option to change the
+ * input image and save the black and white images with the applied effects.
+ * The main components of the class include:
+ * 1. A method to display the original and processed images in a JFrame.
+ * 2. A method to change the displayed image based on user input.
+ * 3. A method to scale the images for preview purposes.
+ */
 package org.image;
 
 import javax.imageio.ImageIO;
@@ -14,15 +23,6 @@ import java.util.Base64;
 
 import static org.image.App.logURL;
 
-/**
- * The Window class provides functionality to display the original image and its three
- * black and white versions with different effects. It also provides the option to change the
- * input image and save the black and white images with the applied effects.
- * The main components of the class include:
- * 1. A method to display the original and processed images in a JFrame.
- * 2. A method to change the displayed image based on user input.
- * 3. A method to scale the images for preview purposes.
- */
 public class Window {
 
     // A JLabel to display the original image in the user interface
