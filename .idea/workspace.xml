@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/image/WindowTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/image/WindowTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logging.properties" beforeDir="false" afterPath="$PROJECT_DIR$/logging.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logging.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logging.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/image/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/image/ParserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +74,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.42413792&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
     &quot;settings.editor.splitter.proportion&quot;: &quot;0.23649338&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -96,7 +97,7 @@
       <recent name="org.image" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.WindowTest">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.image.App" />
       <module name="image-processor" />
@@ -121,22 +122,6 @@
       <option name="PACKAGE_NAME" value="org.image" />
       <option name="MAIN_CLASS_NAME" value="org.image.AppTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AppTest.testGetRandomImagePath_validDirectory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="image-processor" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.image.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.AppTest" />
-      <option name="METHOD_NAME" value="testGetRandomImagePath_validDirectory" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -219,6 +204,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ParserTest.testParseDifferentTypesOfUrls" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="image-processor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
+      <option name="METHOD_NAME" value="testParseDifferentTypesOfUrls" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WindowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="image-processor" />
       <extension name="coverage">
@@ -264,11 +265,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.App" />
+      <item itemvalue="JUnit.ParserTest.testParseDifferentTypesOfUrls" />
       <item itemvalue="JUnit.ImageProcessorTest" />
       <item itemvalue="JUnit.ImageProcessorTest.testConvertToBlackAndWhite" />
       <item itemvalue="JUnit.ImageSaverTest" />
       <item itemvalue="JUnit.AppTest" />
-      <item itemvalue="JUnit.AppTest.testGetRandomImagePath_validDirectory" />
       <item itemvalue="JUnit.AppTest.testReadResourceFileToString" />
       <item itemvalue="JUnit.ParserTest" />
       <item itemvalue="JUnit.WindowTest" />
@@ -276,11 +277,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WindowTest" />
         <item itemvalue="JUnit.ParserTest" />
+        <item itemvalue="JUnit.WindowTest" />
         <item itemvalue="JUnit.AppTest" />
         <item itemvalue="JUnit.AppTest.testReadResourceFileToString" />
-        <item itemvalue="JUnit.AppTest.testGetRandomImagePath_validDirectory" />
       </list>
     </recent_temporary>
   </component>
@@ -384,7 +384,9 @@
       <workItem from="1683140049789" duration="392000" />
       <workItem from="1683186192638" duration="468000" />
       <workItem from="1683186723967" duration="3517000" />
-      <workItem from="1683190266930" duration="2057000" />
+      <workItem from="1683190266930" duration="2222000" />
+      <workItem from="1683198412351" duration="1633000" />
+      <workItem from="1683203676079" duration="313000" />
     </task>
     <servers />
   </component>

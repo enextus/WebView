@@ -13,7 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -47,4 +47,13 @@ public class ParserTest {
                     "parseUrl should not throw an exception when parsing a valid URL with a magnet link");
         }
     }
+
+    @Test
+    public void testParseInvalidUrl() {
+        // Test case for invalid URL
+        String invalidUrl = "this-is-not-a-url";
+        assertThrows(IllegalArgumentException.class, () -> Parser.parseUrl(invalidUrl),
+                "parseUrl should throw IllegalArgumentException for an invalid URL");
+    }
+
 }

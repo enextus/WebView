@@ -43,8 +43,9 @@ public class Parser {
      * of your country. Ensure that you use this program in compliance with the law.
      *
      * @param url The URL to be parsed for magnet links
+     * @return
      */
-    public static void parseUrl(String url) {
+    public static Object parseUrl(String url) {
         try {
             // Connecting to the URL and obtaining the document using Jsoup
             Document doc = Jsoup.connect(url).get();
@@ -68,6 +69,7 @@ public class Parser {
             logger.log(Level.SEVERE, "An error occurred while connecting to the URL", e);
             e.printStackTrace();
         }
+        return null;
     }
 
     /**
