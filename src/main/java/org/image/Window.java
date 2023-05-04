@@ -142,15 +142,4 @@ public class Window {
         return scaledImage;
     }
 
-    static BufferedImage decodeBase64ToImage(String base64ImageString) {
-        try {
-            byte[] imageBytes = Base64.getDecoder().decode(base64ImageString);
-            InputStream inputStream = new ByteArrayInputStream(imageBytes);
-            return ImageIO.read(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
 }

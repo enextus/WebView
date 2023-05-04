@@ -20,7 +20,7 @@ import java.net.URI;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
-import org.image.Window;
+
 
 import java.io.FileInputStream;
 

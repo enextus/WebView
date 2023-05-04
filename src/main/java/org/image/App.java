@@ -12,10 +12,12 @@
  */
 package org.image;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import java.util.Random;
@@ -25,8 +27,6 @@ import java.util.logging.Logger;
 
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
-
-import static org.image.Window.decodeBase64ToImage;
 
 public class App {
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
@@ -131,6 +131,17 @@ public class App {
      */
     public static void logSelectedImage(String imagePath) {
         LOGGER.log(Level.INFO, "Opened original file: {0}", imagePath);
+    }
+
+    static BufferedImage decodeBase64ToImage(String base64ImageString) {
+        try {
+            byte[] imageBytes = Base64.getDecoder().decode(base64ImageString);
+            InputStream inputStream = new ByteArrayInputStream(imageBytes);
+            return ImageIO.read(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
