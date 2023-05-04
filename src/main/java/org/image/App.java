@@ -19,11 +19,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
-
 import java.util.Random;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -61,8 +57,6 @@ public class App {
         }
 
     }
-
-
 
     /**
      * This method, getRandomImagePath(), returns a randomly-selected image path from the specified image directory.
