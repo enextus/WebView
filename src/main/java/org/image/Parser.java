@@ -23,6 +23,13 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.List;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Parser {
     private static final Logger logger = Logger.getLogger(Parser.class.getName());
 
@@ -50,7 +57,7 @@ public class Parser {
      *
      * @param url The URL to be parsed for magnet links
      */
-    public static void parseUrl(String url) {
+/*    public static void parseUrl(String url) {
         try {
             // Connecting to the URL and obtaining the document using Jsoup
             Document doc = Jsoup.connect(url).get();
@@ -77,7 +84,48 @@ public class Parser {
             logger.log(Level.SEVERE, "An error occurred while connecting to the URL", e);
             e.printStackTrace();
         }
+    }*/
+
+    public static void parseUrl(String url) {
+        try {
+            // Connecting to the URL and obtaining the document using Jsoup
+            Document doc = Jsoup.connect(url).get();
+            // Selecting magnet links on the page using a CSS selector
+            Elements magnetLinks = doc.select("a[href^=magnet]");
+
+            // Создайте пул потоков с фиксированным количеством рабочих потоков
+            int numberOfThreads = 10; // Задайте количество потоков в пуле
+            ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
+
+            // Processing each found magnet link
+            for (Element magnetLink : magnetLinks) {
+                executorService.submit(() -> {
+                    // Extracting the "href" attribute from the link element
+                    String link = magnetLink.attr("href");
+                    System.out.println("Link found: " + link);
+
+                    // log file
+                    logger.log(Level.INFO, "Link found: " + link);
+
+                    // Add magnet link to text area
+                    Window.addMagnetLinkToTextArea(link);
+
+                    // Opening the magnet link in the default torrent client
+                    openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
+                });
+            }
+
+            // Завершите работу пула потоков после обработки всех задач
+            executorService.shutdown();
+
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "An error occurred while connecting to the URL", e);
+            e.printStackTrace();
+        }
     }
+
+
+
 
     /**
      * The main method of the MagnetLinkParser program.
