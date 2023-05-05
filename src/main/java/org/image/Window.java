@@ -52,6 +52,7 @@ public class Window {
         }
     }
 
+
     public static void displayImages(BufferedImage colorImage) {
 
         SwingUtilities.invokeLater(() -> {
@@ -87,12 +88,16 @@ public class Window {
                 urlField.requestFocusInWindow();
             });
 
+            urlField.setColumns(40);
+
             JPanel urlPanel = new JPanel();
             urlPanel.setLayout(new BoxLayout(urlPanel, BoxLayout.X_AXIS));
+
             urlPanel.add(new JLabel("URL: "));
-            urlField.setColumns(40);
-            urlField.setPreferredSize(new Dimension(300, 30)); // установить размеры поля ввода 300 пикселей по ширине и 30 пикселей по высоте
             urlPanel.add(urlField);
+
+            urlPanel.setMaximumSize(new Dimension(300, urlField.getPreferredSize().height));
+            urlPanel.setPreferredSize(new Dimension(300, urlField.getPreferredSize().height));
 
             JLabel numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
             numberLabel.setFont(new Font("Arial", Font.PLAIN, 64));
@@ -100,6 +105,7 @@ public class Window {
 
             JPanel numberPanel = new JPanel();
             numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.X_AXIS));
+            numberPanel.setOpaque(false); // Добавьте эту строку для прозрачности
             numberPanel.add(new JLabel("Number of links found: "));
             numberPanel.add(numberLabel);
 
@@ -145,6 +151,8 @@ public class Window {
             urlField.requestFocusInWindow();
         });
     }
+
+
 
 
 }

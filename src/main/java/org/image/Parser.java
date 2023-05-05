@@ -98,14 +98,6 @@ public class Parser {
         // Add magnet link to text area
         Tools.addMagnetLinkToTextArea(getNumberOfFoundLinks() + ": " + link);
 
-        // Check the value of the isSearching flag
-        System.out.println("isSearching: " + isSearching);
-
-        // Check if the stop button has been pressed
-        if (!isSearching) {
-            return;
-        }
-
         // Opening the magnet link in the default torrent client
         openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
     }
