@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/8.img" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch4j-config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/10.img" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/3.img" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/3.img" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/4.img" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/4.img" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/5.img" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/6.img" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/7.img" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/8.img" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/9.img" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/Tools.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/img/img.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/img.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/image/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/image/ParserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TestNG Test Class" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -124,21 +113,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MagnetLinksOpener" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.image.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.AppTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ImageProcessorTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="MagnetLinksOpener" />
       <extension name="coverage">
@@ -201,39 +175,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MagnetLinksOpener" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.image.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea -Xshare:off " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ParserTest.testOpenMagnetLinkInTorrentClient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MagnetLinksOpener" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.image.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
-      <option name="METHOD_NAME" value="testOpenMagnetLinkInTorrentClient" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ParserTest.testParseDifferentTypesOfUrls" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="MagnetLinksOpener" />
       <extension name="coverage">
@@ -245,22 +186,6 @@
       <option name="PACKAGE_NAME" value="org.image" />
       <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
       <option name="METHOD_NAME" value="testParseDifferentTypesOfUrls" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ParserTest.testParseUrlMultipleLinks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MagnetLinksOpener" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.image.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
-      <option name="METHOD_NAME" value="testParseUrlMultipleLinks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -279,6 +204,68 @@
       <option name="METHOD_NAME" value="testParseUrlNoLinks" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea  -Xshare:off " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ToolsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MagnetLinksOpener" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.ToolsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MagnetLinksOpener" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.ToolsTest" />
+      <option name="METHOD_NAME" value="testAddMagnetLinkToTextAreaWithEmptyString" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ToolsTest.testAddMagnetLinkToTextAreaWithNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MagnetLinksOpener" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.ToolsTest" />
+      <option name="METHOD_NAME" value="testAddMagnetLinkToTextAreaWithNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WindowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MagnetLinksOpener" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.WindowTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -318,20 +305,20 @@
       <item itemvalue="JUnit.ImageProcessorTest" />
       <item itemvalue="JUnit.ImageProcessorTest.testConvertToBlackAndWhite" />
       <item itemvalue="JUnit.ImageSaverTest" />
-      <item itemvalue="JUnit.AppTest" />
       <item itemvalue="JUnit.ParserTest (1)" />
-      <item itemvalue="JUnit.ParserTest.testOpenMagnetLinkInTorrentClient" />
-      <item itemvalue="JUnit.ParserTest.testParseUrlMultipleLinks" />
-      <item itemvalue="JUnit.ParserTest" />
+      <item itemvalue="JUnit.ToolsTest" />
+      <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" />
+      <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithNull" />
+      <item itemvalue="JUnit.WindowTest" />
       <item itemvalue="Maven.image-processor [clean] (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" />
+        <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithNull" />
+        <item itemvalue="JUnit.ToolsTest" />
+        <item itemvalue="JUnit.WindowTest" />
         <item itemvalue="JUnit.ParserTest (1)" />
-        <item itemvalue="JUnit.AppTest" />
-        <item itemvalue="JUnit.ParserTest" />
-        <item itemvalue="JUnit.ParserTest.testParseUrlMultipleLinks" />
-        <item itemvalue="JUnit.ParserTest.testOpenMagnetLinkInTorrentClient" />
       </list>
     </recent_temporary>
   </component>
@@ -459,7 +446,7 @@
       <workItem from="1683286014678" duration="376000" />
       <workItem from="1683286475328" duration="161000" />
       <workItem from="1683300107176" duration="603000" />
-      <workItem from="1683311385780" duration="7947000" />
+      <workItem from="1683311385780" duration="8999000" />
     </task>
     <servers />
   </component>

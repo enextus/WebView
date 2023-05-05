@@ -18,9 +18,14 @@ import static org.image.Window.magnetLinksTextArea;
  */
 public class Tools {
 
+    /*    public static void addMagnetLinkToTextArea(String magnetLink) {
+            magnetLinksTextArea.append(magnetLink + "\n\n");
+            magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
+        }*/
     public static void addMagnetLinkToTextArea(String magnetLink) {
-        magnetLinksTextArea.append(magnetLink + "\n\n");
-        magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
+        if (magnetLink != null && !magnetLink.isEmpty()) {
+            Window.magnetLinksTextArea.append(magnetLink + "\n");
+        }
     }
 
     /**
