@@ -9,6 +9,11 @@ import java.net.URL;
 import static org.image.App.logURL;
 
 public class Window {
+
+    private static final Color BACKGROUND_COLOR = Color.BLACK;
+    private static final Color TEXT_COLOR = new Color(255, 215, 0); // Gold
+
+
     /**
      * The label used to display the original image in the program's GUI.
      */
@@ -36,7 +41,7 @@ public class Window {
 
             JPanel centerPanel = new JPanel();
             centerPanel.setLayout(new BorderLayout());
-            centerPanel.setBackground(Color.BLACK);
+            centerPanel.setBackground(BACKGROUND_COLOR );
 
             originalImageLabel = new JLabel(new ImageIcon(Tools.scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
@@ -75,8 +80,8 @@ public class Window {
             magnetLinksTextArea = new JTextArea(10, 50);
             magnetLinksTextArea.setEditable(false);
 
-            magnetLinksTextArea.setForeground(new Color(255, 215, 0)); // the text color set to gold
-            magnetLinksTextArea.setBackground(Color.BLACK); // the background color of the text area set to black
+            magnetLinksTextArea.setForeground(TEXT_COLOR); // the text color set to gold
+            magnetLinksTextArea.setBackground(BACKGROUND_COLOR); // the background color of the text area set to black
 
             JScrollPane scrollPane = new JScrollPane(magnetLinksTextArea);
 
@@ -96,8 +101,7 @@ public class Window {
     }
 
     public static void addMagnetLinkToTextArea(String magnetLink) {
-        magnetLinksTextArea.append(magnetLink + "\n");
-        magnetLinksTextArea.append(magnetLink + "\n");
+        magnetLinksTextArea.append(magnetLink + "\n\n");
         magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
     }
 
