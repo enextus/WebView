@@ -8,10 +8,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
 
+import static org.image.Window.magnetLinksTextArea;
+
 /**
  * A utility class providing methods for working with images.
  */
 public class Tools {
+
+    public static void addMagnetLinkToTextArea(String magnetLink) {
+        magnetLinksTextArea.append(magnetLink + "\n\n");
+        magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
+    }
 
     /**
      * Decodes a base64-encoded image string into a BufferedImage.

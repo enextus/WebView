@@ -6,13 +6,23 @@ import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.swing.Timer; // Import javax.swing.Timer at the beginning of the file
+
 import static org.image.App.logURL;
 
 public class Window {
 
+    /**
+     * The background color used for the components in the program's GUI.
+     * Currently set to black.
+     */
     private static final Color BACKGROUND_COLOR = Color.BLACK;
-    private static final Color TEXT_COLOR = new Color(255, 215, 0); // Gold
 
+    /**
+     * The text color used for the components in the program's GUI.
+     * Currently set to gold (RGB: 255, 215, 0).
+     */
+    private static final Color TEXT_COLOR = new Color(255, 215, 0); // Gold
 
     /**
      * The label used to display the original image in the program's GUI.
@@ -22,7 +32,8 @@ public class Window {
     /**
      * The text area used to display magnet links in the program's GUI.
      */
-    private static JTextArea magnetLinksTextArea;
+    static JTextArea magnetLinksTextArea;
+
     public static void displayImages(BufferedImage colorImage) {
 
         SwingUtilities.invokeLater(() -> {
@@ -41,7 +52,7 @@ public class Window {
 
             JPanel centerPanel = new JPanel();
             centerPanel.setLayout(new BorderLayout());
-            centerPanel.setBackground(BACKGROUND_COLOR );
+            centerPanel.setBackground(BACKGROUND_COLOR);
 
             originalImageLabel = new JLabel(new ImageIcon(Tools.scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
@@ -50,15 +61,7 @@ public class Window {
             jButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             jButton.addActionListener(e -> enterUrl());
 
-            JPanel buttonPanel = new JPanel() {
-                @Override
-                protected void paintComponent(Graphics g) {
-                    super.paintComponent(g);
-                    g.setColor(new Color(0, 0, 0, 64));
-                    g.fillRect(0, 0, getWidth(), getHeight());
-                }
-            };
-
+            JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new GridBagLayout());
             buttonPanel.setOpaque(false);
 
@@ -67,21 +70,21 @@ public class Window {
             gbc.gridx = 0;
             gbc.gridy = 0;
 
-            double verticalPercent = -0.11; // Change this value to adjust the vertical position (0.0 to 1.0)
-            double horizontalPercent = 0.099; // Change this value to adjust the horizontal position (0.0 to 1.0)
+            JLabel numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
+            numberLabel.setFont(new Font("Arial", Font.PLAIN, 132));
+            numberLabel.setForeground(TEXT_COLOR);
 
-            int topInset = (int) (colorImage.getHeight() * verticalPercent);
-            int leftInset = (int) (colorImage.getWidth() * horizontalPercent - jButton.getPreferredSize().getWidth() / 2);
+            gbc.insets = new Insets(0, 0, 0, 0);
+            buttonPanel.add(numberLabel, gbc);
 
-            gbc.insets = new Insets(topInset, leftInset, 0, 0);
-
+            gbc.gridy = 1;
             buttonPanel.add(jButton, gbc);
 
             magnetLinksTextArea = new JTextArea(10, 50);
             magnetLinksTextArea.setEditable(false);
 
-            magnetLinksTextArea.setForeground(TEXT_COLOR); // the text color set to gold
-            magnetLinksTextArea.setBackground(BACKGROUND_COLOR); // the background color of the text area set to black
+            magnetLinksTextArea.setForeground(TEXT_COLOR);
+            magnetLinksTextArea.setBackground(BACKGROUND_COLOR);
 
             JScrollPane scrollPane = new JScrollPane(magnetLinksTextArea);
 
@@ -97,12 +100,14 @@ public class Window {
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-        });
-    }
 
-    public static void addMagnetLinkToTextArea(String magnetLink) {
-        magnetLinksTextArea.append(magnetLink + "\n\n");
-        magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
+            // Create a javax.swing.Timer to update the numberLabel every 1000 milliseconds (1 second)
+            int delay = 333;
+            Timer timer = new Timer(delay, e -> {
+                numberLabel.setText(Integer.toString(Parser.getNumberOfFoundLinks()));
+            });
+            timer.start();
+        });
     }
 
     private static void enterUrl() {
