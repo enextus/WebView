@@ -27,12 +27,20 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Parser {
+    /**
+     * The logger used to log information about the parsing process.
+     */
     private static final Logger logger = Logger.getLogger(Parser.class.getName());
+
+    /**
+     * The number of magnet links that have been found so far.
+     */
     private static Integer numberOfFoundLinks = 0;
 
-
-    // This static block loads the logger configuration file "logging.properties" from the resources folder.
-    // It uses getResourceAsStream to access the file, which works both when running from an IDE and from a JAR file.
+    /*
+      Initializes the logger configuration for the program by reading the "logging.properties" file
+      located in the root of the classpath.
+     */
     static {
         try {
             InputStream configFile = Parser.class.getResourceAsStream("/logging.properties");
@@ -52,23 +60,36 @@ public class Parser {
         numberOfFoundLinks++;
     }
 
+    /**
+     * Returns the number of magnet links that have been found so far.
+     *
+     * @return the number of found magnet links
+     */
     public static Integer getNumberOfFoundLinks() {
         return numberOfFoundLinks;
     }
 
+    /**
+     * Processes a magnet link by incrementing the counter for the number of found magnet links,
+     * extracting the "href" attribute from the link element, printing the link and number of found
+     * links to the console, logging the link, adding the magnet link to a text area, and opening
+     * the magnet link in the default torrent client.
+     *
+     * @param magnetLink the element representing the magnet link to be processed
+     */
     private static void processMagnetLink(Element magnetLink) {
         // Increment the counter for the number of found magnet links
         incrementNumberOfFoundLinks();
 
         // Extracting the "href" attribute from the link element
         String link = magnetLink.attr("href");
-        System.out.println(getNumberOfFoundLinks()  + ": " + "Link found: " + link);
+        System.out.println(getNumberOfFoundLinks() + ": " + "Link found: " + link);
 
-        // log file
-        logger.log(Level.INFO, getNumberOfFoundLinks()  + ": " + "Link found: " + link);
+        // For the logfile
+        logger.log(Level.INFO, getNumberOfFoundLinks() + ": " + "Link found: " + link);
 
         // Add magnet link to text area
-        Window.addMagnetLinkToTextArea(getNumberOfFoundLinks()  + ": " + link);
+        Window.addMagnetLinkToTextArea(getNumberOfFoundLinks() + ": " + link);
 
         // Opening the magnet link in the default torrent client
         openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
