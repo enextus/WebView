@@ -59,7 +59,7 @@ public class Window {
                 e.printStackTrace();
             }
 
-            JFrame frame = new JFrame("Magnet Links Parser.");
+            JFrame frame = new JFrame("Magnet Links Opener 2023");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLayout(new BorderLayout());
             frame.setResizable(false);
