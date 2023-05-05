@@ -8,9 +8,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
 
+/**
+ * A utility class providing methods for working with images.
+ */
 public class Tools {
 
-    static BufferedImage decodeBase64ToImage(String base64ImageString) {
+    /**
+     * Decodes a base64-encoded image string into a BufferedImage.
+     *
+     * @param base64ImageString the base64-encoded image string to decode
+     * @return the decoded BufferedImage, or null if an IOException occurs
+     */
+    public static BufferedImage decodeBase64ToImage(String base64ImageString) {
         try {
             byte[] imageBytes = Base64.getDecoder().decode(base64ImageString);
             InputStream inputStream = new ByteArrayInputStream(imageBytes);
@@ -21,6 +30,12 @@ public class Tools {
         }
     }
 
+    /**
+     * Scales a BufferedImage to fit within a preview area of maximum size 512x512 pixels while maintaining its aspect ratio.
+     *
+     * @param source the BufferedImage to scale
+     * @return the scaled BufferedImage
+     */
     public static BufferedImage scaleImageForPreview(BufferedImage source) {
 
         final int maxSize = 512;
@@ -39,4 +54,5 @@ public class Tools {
 
         return scaledImage;
     }
+
 }
