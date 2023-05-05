@@ -86,6 +86,8 @@ public class Window {
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
+
+
         });
     }
 

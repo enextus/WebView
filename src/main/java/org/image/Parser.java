@@ -28,6 +28,7 @@ import java.util.concurrent.Executors;
 
 public class Parser {
     private static final Logger logger = Logger.getLogger(Parser.class.getName());
+    private static final Integer numberOfFoundLinks = 0;
 
     // This static block loads the logger configuration file "logging.properties" from the resources folder.
     // It uses getResourceAsStream to access the file, which works both when running from an IDE and from a JAR file.
@@ -60,7 +61,7 @@ public class Parser {
             // Selecting magnet links on the page using a CSS selector
             Elements magnetLinks = doc.select("a[href^=magnet]");
 
-            // Создайте пул потоков с фиксированным количеством рабочих потоков
+            // Create a thread pool with a fixed number of worker threads
             int numberOfThreads = 8; // Задайте количество потоков в пуле
             ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
@@ -82,7 +83,7 @@ public class Parser {
                 });
             }
 
-            // Завершите работу пула потоков после обработки всех задач
+            // Complete the thread pool work after processing all tasks.
             executorService.shutdown();
 
         } catch (IOException e) {
