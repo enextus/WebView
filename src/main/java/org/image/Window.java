@@ -9,9 +9,15 @@ import java.net.URL;
 import static org.image.App.logURL;
 
 public class Window {
+    /**
+     * The label used to display the original image in the program's GUI.
+     */
     private static JLabel originalImageLabel;
-    private static JTextArea magnetLinksTextArea;
 
+    /**
+     * The text area used to display magnet links in the program's GUI.
+     */
+    private static JTextArea magnetLinksTextArea;
     public static void displayImages(BufferedImage colorImage) {
 
         SwingUtilities.invokeLater(() -> {
@@ -86,8 +92,6 @@ public class Window {
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-
-
         });
     }
 
