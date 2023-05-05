@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/10.img" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/8.img" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/9.img" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/img.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/img.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,22 +206,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParserTest.testParseInvalidUrl" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MagnetLinksOpener" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.image.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
-      <option name="METHOD_NAME" value="testParseInvalidUrl" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ParserTest.testParseUrlMultipleLinks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MagnetLinksOpener" />
       <extension name="coverage">
@@ -314,7 +293,6 @@
       <item itemvalue="JUnit.ParserTest.testOpenMagnetLinkInTorrentClient" />
       <item itemvalue="JUnit.ParserTest.testParseUrlMultipleLinks" />
       <item itemvalue="JUnit.ParserTest.testParseUrlSingleLink" />
-      <item itemvalue="JUnit.ParserTest.testParseInvalidUrl" />
       <item itemvalue="JUnit.ParserTest" />
       <item itemvalue="Maven.image-processor [clean] (1)" />
     </list>
@@ -324,7 +302,6 @@
         <item itemvalue="JUnit.ParserTest.testParseUrlMultipleLinks" />
         <item itemvalue="JUnit.ParserTest.testOpenMagnetLinkInTorrentClient" />
         <item itemvalue="JUnit.ParserTest.testParseUrlSingleLink" />
-        <item itemvalue="JUnit.ParserTest.testParseInvalidUrl" />
       </list>
     </recent_temporary>
   </component>
@@ -445,7 +422,12 @@
       <workItem from="1683281055318" duration="4859000" />
       <workItem from="1683289171769" duration="54000" />
       <workItem from="1683289247858" duration="1304000" />
-      <workItem from="1683284595139" duration="554000" />
+      <workItem from="1683284595139" duration="700000" />
+      <workItem from="1683285301126" duration="7000" />
+      <workItem from="1683285386354" duration="322000" />
+      <workItem from="1683285957193" duration="44000" />
+      <workItem from="1683286014678" duration="376000" />
+      <workItem from="1683286475328" duration="77000" />
     </task>
     <servers />
   </component>
