@@ -6,10 +6,6 @@ import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-// Import javax.swing.Timer at the beginning of the file
 import javax.swing.Timer;
 
 import static org.image.App.logURL;
@@ -52,7 +48,6 @@ public class Window {
         }
     }
 
-
     public static void displayImages(BufferedImage colorImage) {
 
         SwingUtilities.invokeLater(() -> {
@@ -77,11 +72,9 @@ public class Window {
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
             JButton jButton = new JButton("OK");
-            jButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             jButton.addActionListener(e -> enterUrl());
 
             JButton clearButton = new JButton("Clear");
-            clearButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             clearButton.addActionListener(e -> {
                 Parser.resetNumberOfFoundLinks();
                 urlField.setText("");
@@ -105,9 +98,19 @@ public class Window {
 
             JPanel numberPanel = new JPanel();
             numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.X_AXIS));
-            numberPanel.setOpaque(false); // Добавьте эту строку для прозрачности
-            numberPanel.add(new JLabel("Number of links found: "));
+            numberPanel.setOpaque(false);
+            numberPanel.add(new JLabel(""));
             numberPanel.add(numberLabel);
+
+            JPanel inputPanel = new JPanel();
+            inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
+            inputPanel.setOpaque(false);
+
+            inputPanel.add(urlPanel);
+            inputPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add a horizontal spacing
+            inputPanel.add(jButton);
+            inputPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add a horizontal spacing
+            inputPanel.add(clearButton);
 
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
@@ -115,11 +118,7 @@ public class Window {
 
             buttonPanel.add(numberPanel);
             buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
-            buttonPanel.add(urlPanel);
-            buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
-            buttonPanel.add(jButton);
-            buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
-            buttonPanel.add(clearButton);
+            buttonPanel.add(inputPanel);
 
             magnetLinksTextArea = new JTextArea(10, 50);
             magnetLinksTextArea.setEditable(false);
@@ -151,8 +150,5 @@ public class Window {
             urlField.requestFocusInWindow();
         });
     }
-
-
-
 
 }
