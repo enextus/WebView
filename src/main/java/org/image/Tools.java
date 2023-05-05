@@ -1,11 +1,14 @@
 package org.image;
 
 import javax.imageio.ImageIO;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
 import java.util.Base64;
 
 import static org.image.Window.magnetLinksTextArea;
