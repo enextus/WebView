@@ -86,8 +86,7 @@ public class App {
             throw new RuntimeException("No images found in the directory: " + IMAGE_DIRECTORY);
         }
 
-        String randomImagePath = imagePaths.get(RANDOM.nextInt(imagePaths.size()));
-        return randomImagePath;
+        return imagePaths.get(RANDOM.nextInt(imagePaths.size()));
     }
 
     /**
