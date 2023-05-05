@@ -37,7 +37,20 @@ public class Window {
      * The text area used to display magnet links in the program's GUI.
      */
     static JTextArea magnetLinksTextArea;
+    private static final JTextField urlField = new JTextField(15);
 
+    private static void enterUrl() {
+        String urlString = urlField.getText();
+        logURL(urlString);
+
+        try {
+            URL url = new URL(urlString);
+            Parser.parseUrl(url.toString());
+        } catch (MalformedURLException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     public static void displayImages(BufferedImage colorImage) {
 
         SwingUtilities.invokeLater(() -> {
@@ -61,28 +74,43 @@ public class Window {
             originalImageLabel = new JLabel(new ImageIcon(Tools.scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
-            JButton jButton = new JButton("Enter the URL of the page to be parsed");
+            JButton jButton = new JButton("OK");
             jButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             jButton.addActionListener(e -> enterUrl());
 
-            JPanel buttonPanel = new JPanel();
-            buttonPanel.setLayout(new GridBagLayout());
-            buttonPanel.setOpaque(false);
+            JButton clearButton = new JButton("Clear");
+            clearButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            clearButton.addActionListener(e -> {
+                Parser.resetNumberOfFoundLinks();
+                urlField.setText("");
+                urlField.requestFocusInWindow();
+            });
 
-            GridBagConstraints gbc = new GridBagConstraints();
-            gbc.anchor = GridBagConstraints.NORTHWEST;
-            gbc.gridx = 0;
-            gbc.gridy = 0;
+            // Создаем кнопку STOP
+            JButton stopButton = new JButton("STOP");
+            stopButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            stopButton.addActionListener(e -> Parser.stopSearching());
+
+            urlField.setColumns(40);
+            urlField.setFont(new Font("Arial", Font.PLAIN, 16));
 
             JLabel numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
             numberLabel.setFont(new Font("Arial", Font.PLAIN, 64));
             numberLabel.setForeground(TEXT_COLOR);
 
-            gbc.insets = new Insets(0, 0, 0, 0);
-            buttonPanel.add(numberLabel, gbc);
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+            buttonPanel.setOpaque(false);
 
-            gbc.gridy = 1;
-            buttonPanel.add(jButton, gbc);
+            buttonPanel.add(numberLabel);
+            buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
+            buttonPanel.add(urlField);
+            buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
+            buttonPanel.add(jButton);
+            buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
+            buttonPanel.add(clearButton);
+            buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
+            buttonPanel.add(stopButton);
 
             magnetLinksTextArea = new JTextArea(10, 50);
             magnetLinksTextArea.setEditable(false);
@@ -105,64 +133,15 @@ public class Window {
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
 
-            // Create a javax.swing.Timer to update the numberLabel every 1000 milliseconds (1 second)
             int delay = 150;
             Timer timer = new Timer(delay, e -> {
                 numberLabel.setText(Integer.toString(Parser.getNumberOfFoundLinks()));
             });
             timer.start();
+
+            urlField.requestFocusInWindow();
         });
     }
-    private static void enterUrl() {
-        JTextField urlField = new JTextField(50);
-        JPanel urlPanel = new JPanel();
-        urlPanel.add(new JLabel("URL:"));
-        urlPanel.add(urlField);
 
-        JButton okButton = new JButton("OK");
-        JButton cancelButton = new JButton("Cancel");
 
-        urlPanel.add(okButton);
-        urlPanel.add(cancelButton);
-
-        JDialog urlDialog = new JDialog((Frame) null, "Enter the URL of the page to be parsed", true);
-        urlDialog.setContentPane(urlPanel);
-        urlDialog.pack();
-
-        // Create a variable to store the result of the dialog
-        final int[] result = new int[1];
-
-        okButton.addActionListener(e -> {
-            result[0] = JOptionPane.OK_OPTION;
-            urlDialog.dispose();
-        });
-
-        cancelButton.addActionListener(e -> {
-            result[0] = JOptionPane.CANCEL_OPTION;
-            urlDialog.dispose();
-        });
-
-        urlDialog.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-                urlField.requestFocus();
-            }
-        });
-
-        urlDialog.setLocationRelativeTo(null);
-        urlDialog.setVisible(true);
-
-        if (result[0] == JOptionPane.OK_OPTION) {
-            String urlString = urlField.getText();
-            logURL(urlString);
-
-            try {
-                URL url = new URL(urlString);
-                Parser.parseUrl(url.toString());
-            } catch (MalformedURLException e) {
-                JOptionPane.showMessageDialog(null,
-                        "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
 }

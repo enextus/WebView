@@ -69,6 +69,13 @@ public class Parser {
         return numberOfFoundLinks;
     }
 
+    private static volatile boolean isSearching = true;
+
+    public static void stopSearching() {
+        isSearching = false;
+    }
+
+
     /**
      * Processes a magnet link by incrementing the counter for the number of found magnet links,
      * extracting the "href" attribute from the link element, printing the link and number of found
@@ -91,8 +98,20 @@ public class Parser {
         // Add magnet link to text area
         Tools.addMagnetLinkToTextArea(getNumberOfFoundLinks() + ": " + link);
 
+        // Check the value of the isSearching flag
+        System.out.println("isSearching: " + isSearching);
+
+        // Check if the stop button has been pressed
+        if (!isSearching) {
+            return;
+        }
+
         // Opening the magnet link in the default torrent client
         openMagnetLinkInTorrentClient(link, Desktop.getDesktop());
+    }
+
+    public static void resetNumberOfFoundLinks() {
+        numberOfFoundLinks = 0;
     }
 
     /**
@@ -106,6 +125,8 @@ public class Parser {
      * @param url The URL to be parsed for magnet links
      */
     public static void parseUrl(String url) {
+        // Обязательно установите isSearching обратно в true перед началом поиска
+        isSearching = true;
         try {
             // Connecting to the URL and obtaining the document using Jsoup
             Document doc = Jsoup.connect(url).get();
@@ -118,17 +139,25 @@ public class Parser {
 
             // Processing each found magnet link
             for (Element magnetLink : magnetLinks) {
+                if (!isSearching) { // Проверьте, не была ли нажата кнопка STOP
+                    executorService.shutdownNow(); // Прекратить выполнение всех задач в пуле потоков
+                    break;
+                }
+
                 executorService.submit(() -> processMagnetLink(magnetLink));
             }
 
             // Complete the thread pool work after processing all tasks.
-            executorService.shutdown();
+            if (isSearching) {
+                executorService.shutdown();
+            }
 
         } catch (IOException e) {
             logger.log(Level.SEVERE, "An error occurred while connecting to the URL", e);
             e.printStackTrace();
         }
     }
+
 
     /**
      * Opens the given magnet link in the default torrent client installed on the user's system.
