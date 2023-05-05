@@ -71,7 +71,7 @@ public class Window {
             gbc.gridy = 0;
 
             JLabel numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
-            numberLabel.setFont(new Font("Arial", Font.PLAIN, 132));
+            numberLabel.setFont(new Font("Arial", Font.PLAIN, 64));
             numberLabel.setForeground(TEXT_COLOR);
 
             gbc.insets = new Insets(0, 0, 0, 0);

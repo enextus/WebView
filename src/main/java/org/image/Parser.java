@@ -56,7 +56,7 @@ public class Parser {
     /**
      * Increments the counter for the number of found magnet links.
      */
-    private synchronized static void incrementNumberOfFoundLinks() {
+    synchronized static void incrementNumberOfFoundLinks() {
         numberOfFoundLinks++;
     }
 
@@ -77,7 +77,7 @@ public class Parser {
      *
      * @param magnetLink the element representing the magnet link to be processed
      */
-    private static void processMagnetLink(Element magnetLink) {
+    static void processMagnetLink(Element magnetLink) {
         // Increment the counter for the number of found magnet links
         incrementNumberOfFoundLinks();
 
@@ -142,7 +142,7 @@ public class Parser {
      *
      * @param magnetLink The magnet link to be opened in the default torrent client
      */
-    private static void openMagnetLinkInTorrentClient(String magnetLink, Desktop desktop) {
+    static void openMagnetLinkInTorrentClient(String magnetLink, Desktop desktop) {
         try {
             // Checking if the BROWSE action is supported by the Desktop class on the current platform
             if (desktop.isSupported(Desktop.Action.BROWSE)) {

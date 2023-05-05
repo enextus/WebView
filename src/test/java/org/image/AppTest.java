@@ -52,7 +52,6 @@ public class AppTest {
         });
     }
 
-
     @Test
     void testLogURL() {
         String url = "https://example.com";

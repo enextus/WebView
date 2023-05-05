@@ -53,7 +53,6 @@ public class App {
         } else {
             System.err.println("Failed to decode the image.");
         }
-
     }
 
     /**
