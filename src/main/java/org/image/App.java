@@ -57,8 +57,11 @@ public class App {
         LOGGER.info("App \"Magnet Links Opener\" running");
 
         String randomImagePath = getRandomImagePath();
-        String imagePath = getRandomImagePath();
-        String base64ImageString = readResourceFileToString(imagePath);
+
+        System.out.println("randomImagePath: " + randomImagePath);
+
+
+        String base64ImageString = readResourceFileToString(randomImagePath);
         BufferedImage imageDecode = Tools.decodeBase64ToImage(base64ImageString);
 
         if (imageDecode != null) {

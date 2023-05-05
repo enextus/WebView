@@ -37,7 +37,7 @@ public class Window {
      * The text area used to display magnet links in the program's GUI.
      */
     static JTextArea magnetLinksTextArea;
-    private static final JTextField urlField = new JTextField(15);
+    private static final JTextField urlField = new JTextField();
 
     private static void enterUrl() {
         String urlString = urlField.getText();
@@ -51,6 +51,7 @@ public class Window {
                     "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     public static void displayImages(BufferedImage colorImage) {
 
         SwingUtilities.invokeLater(() -> {
@@ -86,31 +87,33 @@ public class Window {
                 urlField.requestFocusInWindow();
             });
 
-            // Создаем кнопку STOP
-            JButton stopButton = new JButton("STOP");
-            stopButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-            stopButton.addActionListener(e -> Parser.stopSearching());
-
+            JPanel urlPanel = new JPanel();
+            urlPanel.setLayout(new BoxLayout(urlPanel, BoxLayout.X_AXIS));
+            urlPanel.add(new JLabel("URL: "));
             urlField.setColumns(40);
-            urlField.setFont(new Font("Arial", Font.PLAIN, 16));
+            urlField.setPreferredSize(new Dimension(300, 30)); // установить размеры поля ввода 300 пикселей по ширине и 30 пикселей по высоте
+            urlPanel.add(urlField);
 
             JLabel numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
             numberLabel.setFont(new Font("Arial", Font.PLAIN, 64));
             numberLabel.setForeground(TEXT_COLOR);
 
+            JPanel numberPanel = new JPanel();
+            numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.X_AXIS));
+            numberPanel.add(new JLabel("Number of links found: "));
+            numberPanel.add(numberLabel);
+
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
             buttonPanel.setOpaque(false);
 
-            buttonPanel.add(numberLabel);
+            buttonPanel.add(numberPanel);
             buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
-            buttonPanel.add(urlField);
+            buttonPanel.add(urlPanel);
             buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
             buttonPanel.add(jButton);
             buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
             buttonPanel.add(clearButton);
-            buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
-            buttonPanel.add(stopButton);
 
             magnetLinksTextArea = new JTextArea(10, 50);
             magnetLinksTextArea.setEditable(false);

@@ -62,9 +62,6 @@ public class WindowTest {
         // it's difficult to test its functionality directly. You can visually test
         // the method by calling it and checking if the image is displayed correctly.
         Window.displayImages(testImage);
-
-        // Alternatively, you could refactor the method to return a JFrame or JPanel object,
-        // which could then be inspected for the presence of the image.
     }
 
 }
