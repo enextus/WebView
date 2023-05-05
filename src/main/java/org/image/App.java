@@ -47,7 +47,7 @@ public class App {
         String randomImagePath = getRandomImagePath();
         String imagePath = getRandomImagePath();
         String base64ImageString = readResourceFileToString(imagePath);
-        BufferedImage imageDecode = decodeBase64ToImage(base64ImageString);
+        BufferedImage imageDecode = Tools.decodeBase64ToImage(base64ImageString);
 
         if (imageDecode != null) {
             logSelectedImage(randomImagePath);
@@ -128,17 +128,6 @@ public class App {
      */
     public static void logSelectedImage(String imagePath) {
         LOGGER.log(Level.INFO, "Opened original file: {0}", imagePath);
-    }
-
-    static BufferedImage decodeBase64ToImage(String base64ImageString) {
-        try {
-            byte[] imageBytes = Base64.getDecoder().decode(base64ImageString);
-            InputStream inputStream = new ByteArrayInputStream(imageBytes);
-            return ImageIO.read(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
 }

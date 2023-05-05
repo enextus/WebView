@@ -32,7 +32,7 @@ public class WindowTest {
     @Test
     public void testDecodeBase64ToImage_invalidBase64String() {
         String invalidBase64ImageString = "invalid_base64_string";
-        assertThrows(IllegalArgumentException.class, () -> App.decodeBase64ToImage(invalidBase64ImageString),
+        assertThrows(IllegalArgumentException.class, () -> Tools.decodeBase64ToImage(invalidBase64ImageString),
                 "decodeBase64ToImage should throw IllegalArgumentException when decoding an invalid Base64 string");
     }
 
@@ -43,7 +43,7 @@ public class WindowTest {
     @Test
     public void testDecodeBase64ToImage_nullBase64String() {
         String nullBase64ImageString = null;
-        assertThrows(NullPointerException.class, () ->App.decodeBase64ToImage(nullBase64ImageString),
+        assertThrows(NullPointerException.class, () -> Tools.decodeBase64ToImage(nullBase64ImageString),
                 "decodeBase64ToImage should throw NullPointerException when decoding a null Base64 string");
     }
 
@@ -56,7 +56,7 @@ public class WindowTest {
     public void testDisplayImages() {
         // Prepare a test image
         String validBase64ImageString = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="; // 1x1 red pixel in PNG format
-        BufferedImage testImage = App.decodeBase64ToImage(validBase64ImageString);
+        BufferedImage testImage = Tools.decodeBase64ToImage(validBase64ImageString);
 
         // Since displayImages is a GUI-related method and doesn't return any values,
         // it's difficult to test its functionality directly. You can visually test

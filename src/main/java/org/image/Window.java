@@ -38,7 +38,7 @@ public class Window {
             centerPanel.setLayout(new BorderLayout());
             centerPanel.setBackground(Color.BLACK);
 
-            originalImageLabel = new JLabel(new ImageIcon(scaleImageForPreview(colorImage)));
+            originalImageLabel = new JLabel(new ImageIcon(Tools.scaleImageForPreview(colorImage)));
             centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
             JButton jButton = new JButton("Enter the URL of the page to be parsed");
@@ -123,23 +123,5 @@ public class Window {
         }
     }
 
-    public static BufferedImage scaleImageForPreview(BufferedImage source) {
-
-        final int maxSize = 512;
-        double scaleFactor = Math.min((double) maxSize / source.getWidth(), (double) maxSize / source.getHeight());
-
-        int newWidth = (int) (source.getWidth() * scaleFactor);
-        int newHeight = (int) (source.getHeight() * scaleFactor);
-
-        BufferedImage scaledImage = new BufferedImage(newWidth, newHeight, source.getType());
-
-        Graphics2D g = scaledImage.createGraphics();
-
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.drawImage(source, 0, 0, newWidth, newHeight, null);
-        g.dispose();
-
-        return scaledImage;
-    }
 
 }
