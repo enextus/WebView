@@ -86,7 +86,7 @@ public class Window {
             JPanel urlPanel = new JPanel();
             urlPanel.setLayout(new BoxLayout(urlPanel, BoxLayout.X_AXIS));
 
-            urlPanel.add(new JLabel("URL: "));
+            urlPanel.add(new JLabel(""));
             urlPanel.add(urlField);
 
             urlPanel.setMaximumSize(new Dimension(300, urlField.getPreferredSize().height));
