@@ -42,7 +42,7 @@ public class App {
      */
     public static void main(String[] args) {
 
-        LOGGER.info("App \"Magnet Opener\" running");
+        LOGGER.info("App \"Magnet Links Opener\" running");
 
         String randomImagePath = getRandomImagePath();
         String imagePath = getRandomImagePath();
