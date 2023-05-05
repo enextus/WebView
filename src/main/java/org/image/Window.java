@@ -6,7 +6,11 @@ import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.swing.Timer; // Import javax.swing.Timer at the beginning of the file
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+// Import javax.swing.Timer at the beginning of the file
+import javax.swing.Timer;
 
 import static org.image.App.logURL;
 
@@ -102,23 +106,53 @@ public class Window {
             frame.setVisible(true);
 
             // Create a javax.swing.Timer to update the numberLabel every 1000 milliseconds (1 second)
-            int delay = 333;
+            int delay = 150;
             Timer timer = new Timer(delay, e -> {
                 numberLabel.setText(Integer.toString(Parser.getNumberOfFoundLinks()));
             });
             timer.start();
         });
     }
-
     private static void enterUrl() {
-        JTextField urlField = new JTextField(66);
+        JTextField urlField = new JTextField(50);
         JPanel urlPanel = new JPanel();
         urlPanel.add(new JLabel("URL:"));
         urlPanel.add(urlField);
 
-        int result = JOptionPane.showConfirmDialog(null,
-                urlPanel, "Enter the URL of the page to be parsed", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
+        JButton okButton = new JButton("OK");
+        JButton cancelButton = new JButton("Cancel");
+
+        urlPanel.add(okButton);
+        urlPanel.add(cancelButton);
+
+        JDialog urlDialog = new JDialog((Frame) null, "Enter the URL of the page to be parsed", true);
+        urlDialog.setContentPane(urlPanel);
+        urlDialog.pack();
+
+        // Create a variable to store the result of the dialog
+        final int[] result = new int[1];
+
+        okButton.addActionListener(e -> {
+            result[0] = JOptionPane.OK_OPTION;
+            urlDialog.dispose();
+        });
+
+        cancelButton.addActionListener(e -> {
+            result[0] = JOptionPane.CANCEL_OPTION;
+            urlDialog.dispose();
+        });
+
+        urlDialog.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                urlField.requestFocus();
+            }
+        });
+
+        urlDialog.setLocationRelativeTo(null);
+        urlDialog.setVisible(true);
+
+        if (result[0] == JOptionPane.OK_OPTION) {
             String urlString = urlField.getText();
             logURL(urlString);
 
@@ -131,6 +165,4 @@ public class Window {
             }
         }
     }
-
-
 }
