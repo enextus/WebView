@@ -81,7 +81,7 @@ public class Window {
                 urlField.requestFocusInWindow();
             });
 
-            urlField.setColumns(40);
+            urlField.setColumns(55);
 
             JPanel urlPanel = new JPanel();
             urlPanel.setLayout(new BoxLayout(urlPanel, BoxLayout.X_AXIS));
@@ -93,7 +93,7 @@ public class Window {
             urlPanel.setPreferredSize(new Dimension(300, urlField.getPreferredSize().height));
 
             JLabel numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
-            numberLabel.setFont(new Font("Arial", Font.PLAIN, 64));
+            numberLabel.setFont(new Font("Arial", Font.PLAIN, 53));
             numberLabel.setForeground(TEXT_COLOR);
 
             JPanel numberPanel = new JPanel();
