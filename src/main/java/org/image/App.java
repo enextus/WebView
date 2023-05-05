@@ -12,19 +12,17 @@
  */
 package org.image;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import java.nio.charset.StandardCharsets;
-import java.util.stream.Collectors;
 
 public class App {
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
