@@ -11,8 +11,6 @@ import java.io.InputStream;
 
 import java.util.Base64;
 
-import static org.image.Window.magnetLinksTextArea;
-
 /**
  * A utility class providing methods for working with images.
  */

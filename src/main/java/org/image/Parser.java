@@ -75,7 +75,6 @@ public class Parser {
         isSearching = false;
     }
 
-
     /**
      * Processes a magnet link by incrementing the counter for the number of found magnet links,
      * extracting the "href" attribute from the link element, printing the link and number of found
@@ -149,7 +148,6 @@ public class Parser {
             e.printStackTrace();
         }
     }
-
 
     /**
      * Opens the given magnet link in the default torrent client installed on the user's system.
