@@ -2,16 +2,16 @@ package org.image;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import javax.swing.Timer;
 
 import static org.image.App.logURL;
 
 public class Window {
-
     /**
      * The background color used for the components in the program's GUI.
      * Currently set to black.
@@ -34,6 +34,28 @@ public class Window {
      */
     static JTextArea magnetLinksTextArea;
     private static final JTextField urlField = new JTextField();
+
+    // Add a mouse event handler for the urlField input field
+    static {
+        urlField.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (SwingUtilities.isRightMouseButton(e)) {
+                    showContextMenu(e);
+                }
+            }
+
+            private void showContextMenu(MouseEvent e) {
+                JPopupMenu contextMenu = new JPopupMenu();
+                JMenuItem pasteMenuItem = new JMenuItem("Paste");
+                pasteMenuItem.addActionListener(e1 -> {
+                    urlField.paste();
+                });
+                contextMenu.add(pasteMenuItem);
+                contextMenu.show(e.getComponent(), e.getX(), e.getY());
+            }
+        });
+    }
 
     private static void enterUrl() {
         String urlString = urlField.getText();
