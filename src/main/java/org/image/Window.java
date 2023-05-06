@@ -12,6 +12,10 @@ import javax.swing.Timer;
 import static org.image.App.logURL;
 
 public class Window {
+
+    static JLabel numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
+
+
     /**
      * The background color used for the components in the program's GUI.
      * Currently set to black.
@@ -70,107 +74,151 @@ public class Window {
         }
     }
 
+    // The existing enterUrl() method remains unchanged.
+
     public static void displayImages(BufferedImage colorImage) {
-
         SwingUtilities.invokeLater(() -> {
-
-            try {
-                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-                     UnsupportedLookAndFeelException e) {
-                e.printStackTrace();
-            }
-
-            JFrame frame = new JFrame("Magnet Links Opener 2023");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setLayout(new BorderLayout());
-            frame.setResizable(false);
-
-            JPanel centerPanel = new JPanel();
-            centerPanel.setLayout(new BorderLayout());
-            centerPanel.setBackground(BACKGROUND_COLOR);
-
-            originalImageLabel = new JLabel(new ImageIcon(Tools.scaleImageForPreview(colorImage)));
-            centerPanel.add(originalImageLabel, BorderLayout.CENTER);
-
-            JButton jButton = new JButton("OK");
-            jButton.addActionListener(e -> enterUrl());
-
-            JButton clearButton = new JButton("Clear");
-            clearButton.addActionListener(e -> {
-                Parser.resetNumberOfFoundLinks();
-                urlField.setText("");
-                urlField.requestFocusInWindow();
-            });
-
-            urlField.setColumns(55);
-
-            JPanel urlPanel = new JPanel();
-            urlPanel.setLayout(new BoxLayout(urlPanel, BoxLayout.X_AXIS));
-
-            urlPanel.add(new JLabel(""));
-            urlPanel.add(urlField);
-
-            urlPanel.setMaximumSize(new Dimension(300, urlField.getPreferredSize().height));
-            urlPanel.setPreferredSize(new Dimension(300, urlField.getPreferredSize().height));
-
-            JLabel numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
-            numberLabel.setFont(new Font("Arial", Font.PLAIN, 53));
-            numberLabel.setForeground(TEXT_COLOR);
-
-            JPanel numberPanel = new JPanel();
-            numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.X_AXIS));
-            numberPanel.setOpaque(false);
-            numberPanel.add(new JLabel(""));
-            numberPanel.add(numberLabel);
-
-            JPanel inputPanel = new JPanel();
-            inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
-            inputPanel.setOpaque(false);
-
-            inputPanel.add(urlPanel);
-            inputPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add a horizontal spacing
-            inputPanel.add(jButton);
-            inputPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add a horizontal spacing
-            inputPanel.add(clearButton);
-
-            JPanel buttonPanel = new JPanel();
-            buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-            buttonPanel.setOpaque(false);
-
-            buttonPanel.add(numberPanel);
-            buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
-            buttonPanel.add(inputPanel);
-
-            magnetLinksTextArea = new JTextArea(10, 50);
-            magnetLinksTextArea.setEditable(false);
-
-            magnetLinksTextArea.setForeground(TEXT_COLOR);
-            magnetLinksTextArea.setBackground(BACKGROUND_COLOR);
-
-            JScrollPane scrollPane = new JScrollPane(magnetLinksTextArea);
-
-            JPanel textAreaPanel = new JPanel();
-            textAreaPanel.setLayout(new BorderLayout());
-            textAreaPanel.add(scrollPane, BorderLayout.NORTH);
-
-            originalImageLabel.setLayout(new BorderLayout());
-            originalImageLabel.add(buttonPanel, BorderLayout.CENTER);
-
+            configureLookAndFeel();
+            JFrame frame = createMainFrame();
+            JPanel centerPanel = createCenterPanel(colorImage);
+            JPanel textAreaPanel = createTextAreaPanel();
             frame.add(centerPanel, BorderLayout.CENTER);
             frame.add(textAreaPanel, BorderLayout.SOUTH);
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-
-            int delay = 150;
-            Timer timer = new Timer(delay, e -> {
-                numberLabel.setText(Integer.toString(Parser.getNumberOfFoundLinks()));
-            });
-            timer.start();
-
+            startTimer();
             urlField.requestFocusInWindow();
         });
+    }
+
+    private static void configureLookAndFeel() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                 UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static JFrame createMainFrame() {
+        JFrame frame = new JFrame("Magnet Links Opener 2023");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+        frame.setResizable(false);
+        return frame;
+    }
+
+    private static JPanel createCenterPanel(BufferedImage colorImage) {
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BorderLayout());
+        centerPanel.setBackground(BACKGROUND_COLOR);
+
+        originalImageLabel = new JLabel(new ImageIcon(Tools.scaleImageForPreview(colorImage)));
+        centerPanel.add(originalImageLabel, BorderLayout.CENTER);
+
+        JPanel buttonPanel = createButtonPanel();
+        originalImageLabel.setLayout(new BorderLayout());
+        originalImageLabel.add(buttonPanel, BorderLayout.CENTER);
+
+        return centerPanel;
+    }
+
+    private static JPanel createButtonPanel() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+        buttonPanel.setOpaque(false);
+
+        buttonPanel.add(createNumberPanel());
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
+        buttonPanel.add(createInputPanel());
+
+        return buttonPanel;
+    }
+
+    private static JPanel createNumberPanel() {
+        numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
+        numberLabel.setFont(new Font("Arial", Font.PLAIN, 53));
+        numberLabel.setForeground(TEXT_COLOR);
+
+        JPanel numberPanel = new JPanel();
+        numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.X_AXIS));
+        numberPanel.setOpaque(false);
+        numberPanel.add(new JLabel(""));
+        numberPanel.add(numberLabel);
+        return numberPanel;
+    }
+
+    private static JPanel createInputPanel() {
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
+        inputPanel.setOpaque(false);
+
+        inputPanel.add(createUrlPanel());
+        inputPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add a horizontal spacing
+        inputPanel.add(createOkButton());
+        inputPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add a horizontal spacing
+        inputPanel.add(createClearButton());
+
+        return inputPanel;
+    }
+
+    private static JPanel createUrlPanel() {
+        urlField.setColumns(55);
+
+        JPanel urlPanel = new JPanel();
+        urlPanel.setLayout(new BoxLayout(urlPanel, BoxLayout.X_AXIS));
+
+        urlPanel.add(new JLabel(""));
+        urlPanel.add(urlField);
+
+        urlPanel.setMaximumSize(new Dimension(300, urlField.getPreferredSize().height));
+        urlPanel.setPreferredSize(new Dimension(300, urlField.getPreferredSize().height));
+
+        return urlPanel;
+    }
+
+    private static JButton createOkButton() {
+        JButton jButton = new JButton("OK");
+        jButton.addActionListener(e -> enterUrl());
+        return jButton;
+    }
+
+    private static JButton createClearButton() {
+        JButton clearButton = new JButton("Clear");
+        clearButton.addActionListener(e -> {
+            Parser.resetNumberOfFoundLinks();
+            urlField.setText("");
+            urlField.requestFocusInWindow();
+        });
+        return clearButton;
+    }
+
+    private static JPanel createTextAreaPanel() {
+        magnetLinksTextArea = new JTextArea(10, 50);
+        magnetLinksTextArea.setEditable(false);
+        magnetLinksTextArea.setForeground(TEXT_COLOR);
+        magnetLinksTextArea.setBackground(BACKGROUND_COLOR);
+
+        JScrollPane scrollPane = new JScrollPane(magnetLinksTextArea);
+
+        JPanel textAreaPanel = new JPanel();
+        textAreaPanel.setLayout(new BorderLayout());
+        textAreaPanel.add(scrollPane, BorderLayout.NORTH);
+
+        return textAreaPanel;
+    }
+
+    private static void startTimer() {
+
+        int delay = 150;
+
+        Timer timer = new Timer(delay, e -> {
+            // JLabel numberLabel уже объявлен как поле класса Window
+
+            numberLabel.setText(Integer.toString(Parser.getNumberOfFoundLinks()));
+        });
+        timer.start();
     }
 
 }
