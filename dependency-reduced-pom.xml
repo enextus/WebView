@@ -44,9 +44,11 @@
               </filters>
               <transformers>
                 <transformer>
-                  <mainClass>org.image.App</mainClass>
+                  <manifestEntries>
+                    <Main-Class>org.image.App</Main-Class>
+                    <Build-Number>10.5</Build-Number>
+                  </manifestEntries>
                 </transformer>
-                <transformer />
               </transformers>
             </configuration>
           </execution>
