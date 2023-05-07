@@ -116,7 +116,7 @@ public class LinkParser {
      * @param url The URL to be parsed for magnet links
      */
     public static void parseUrl(String url) {
-        // Обязательно установите isSearching обратно в true перед началом поиска
+
         isSearching = true;
         try {
             // Connecting to the URL and obtaining the document using Jsoup
@@ -125,13 +125,13 @@ public class LinkParser {
             Elements magnetLinks = doc.select("a[href^=magnet]");
 
             // Create a thread pool with a fixed number of worker threads
-            int numberOfThreads = 8; // Задайте количество потоков в пуле
+            int numberOfThreads = 8;
             ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
             // Processing each found magnet link
             for (Element magnetLink : magnetLinks) {
-                if (!isSearching) { // Проверьте, не была ли нажата кнопка STOP
-                    executorService.shutdownNow(); // Прекратить выполнение всех задач в пуле потоков
+                if (!isSearching) {
+                    executorService.shutdownNow();
                     break;
                 }
 
