@@ -7,9 +7,6 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.net.URL;
-import javax.swing.Timer;
-
-import static org.image.App.logURL;
 
 public class AppWindow {
     static JLabel numberLabel = new JLabel(Integer.toString(LinkParser.getNumberOfFoundLinks()));
@@ -61,7 +58,7 @@ public class AppWindow {
 
     private static void enterUrl() {
         String urlString = urlField.getText();
-        logURL(urlString);
+        LoggerUtil.logURL(urlString);
 
         try {
             URL url = new URL(urlString);
@@ -72,10 +69,6 @@ public class AppWindow {
         }
     }
 
-    /*    public static void addMagnetLinkToTextArea(String magnetLink) {
-            magnetLinksTextArea.append(magnetLink + "\n\n");
-            magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
-        }*/
     public static void addMagnetLinkToTextArea(String magnetLink) {
         if (magnetLink != null && !magnetLink.isEmpty()) {
             AppWindow.magnetLinksTextArea.append(magnetLink + "\n");
@@ -201,7 +194,6 @@ public class AppWindow {
         return clearButton;
     }
 
-
     private static JPanel createTextAreaPanel() {
         magnetLinksTextArea = new JTextArea(10, 50);
         magnetLinksTextArea.setEditable(false);
@@ -218,9 +210,7 @@ public class AppWindow {
     }
 
     private static void startTimer() {
-
         int delay = 150;
-
         Timer timer = new Timer(delay, e -> {
             // JLabel numberLabel уже объявлен как поле класса AppWindow
 

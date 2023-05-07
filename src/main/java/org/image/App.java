@@ -33,9 +33,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static org.image.ImgProvider.getRandomImagePath;
+import static org.image.LoggerUtil.logSelectedImage;
+import static org.image.LoggerUtil.logURL;
 
 public class App {
-    private static final Logger LOGGER = Logger.getLogger(App.class.getName());
 
     /**
      * The main method serves as the entry point for the "Magnet Opener" application. It performs the following steps:
@@ -47,7 +48,7 @@ public class App {
      * If the image decoding fails, an error message is printed to the console.
      */
     public static void main(String[] args) {
-        LOGGER.info("App \"Magnet Links Opener\" running");
+        logURL("App \"Magnet Links Opener\" running"); // Измените вызов LOGGER.info на logURL
         String randomImagePath = getRandomImagePath();
         System.out.println("randomImagePath: " + randomImagePath);
 
@@ -56,33 +57,16 @@ public class App {
             BufferedImage imageDecode = ImgProcessor.decodeBase64ToImage(base64ImageString);
 
             if (imageDecode != null) {
-                logSelectedImage(randomImagePath);
+                logSelectedImage(randomImagePath); // Используйте метод из класса LoggerUtil
                 AppWindow.displayImages(imageDecode);
             } else {
                 System.err.println("Failed to decode the image.");
             }
         } catch (IllegalArgumentException e) {
-            LOGGER.log(Level.SEVERE, "Resource file not found: " + randomImagePath, e);
+            logSelectedImage("Resource file not found: " + randomImagePath); // Измените вызов LOGGER.log на logSelectedImage
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Failed to read resource file: " + randomImagePath, e);
+            logURL("Failed to read resource file: " + randomImagePath); // Измените вызов LOGGER.log на logURL
         }
     }
 
-    /**
-     * Logs the selected image's path.
-     *
-     * @param imagePath The path of the selected image.
-     */
-    public static void logSelectedImage(String imagePath) {
-        LOGGER.log(Level.INFO, "Opened original file: {0}", imagePath);
-    }
-
-    /**
-     * Logs the provided URL.
-     *
-     * @param url The URL to be logged.
-     */
-    public static void logURL(String url) {
-        LOGGER.log(Level.INFO, "Parsed URL: {0}", url);
-    }
 }
