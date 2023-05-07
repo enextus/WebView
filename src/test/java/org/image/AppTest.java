@@ -53,7 +53,7 @@ public class AppTest {
     }
 
     @Test
-    void testReadResourceFileToString() {
+    void testReadResourceFileToString() throws IOException {
         String imagePath = "/img/test.txt";
         String content = ImgProvider.readResourceFileToString(imagePath);
         Assertions.assertEquals("Hello, world!", content);
