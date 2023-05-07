@@ -1,5 +1,5 @@
 /**
- * The Parser class is responsible for parsing a given URL for magnet links and opening them in the default torrent client
+ * The LnkParser class is responsible for parsing a given URL for magnet links and opening them in the default torrent client
  * installed on the user's system. The class connects to the specified URL and retrieves the page content using Jsoup, selects
  * all magnet links on the page using a CSS selector, and processes each found magnet link. For each magnet link, the class
  * extracts the "href" attribute and opens the link in the default torrent client using the openMagnetLinkInTorrentClient() method.
@@ -26,11 +26,11 @@ import java.util.logging.LogManager;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Parser {
+public class LnkParser {
     /**
      * The logger used to log information about the parsing process.
      */
-    private static final Logger logger = Logger.getLogger(Parser.class.getName());
+    private static final Logger logger = Logger.getLogger(LnkParser.class.getName());
 
     /**
      * The number of magnet links that have been found so far.
@@ -43,7 +43,7 @@ public class Parser {
      */
     static {
         try {
-            InputStream configFile = Parser.class.getResourceAsStream("/logging.properties");
+            InputStream configFile = LnkParser.class.getResourceAsStream("/logging.properties");
             if (configFile == null) {
                 throw new FileNotFoundException("File \"logging.properties\" not found!");
             }
@@ -95,7 +95,7 @@ public class Parser {
         logger.log(Level.INFO, getNumberOfFoundLinks() + ": " + "Link found: " + link);
 
         // Add magnet link to text area
-        Window.addMagnetLinkToTextArea(getNumberOfFoundLinks() + ": " + link);
+        AppWindow.addMagnetLinkToTextArea(getNumberOfFoundLinks() + ": " + link);
 
         // Opening the magnet link in the default torrent client
         openMagnetLinkInTorrentClient(link, Desktop.getDesktop());

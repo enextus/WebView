@@ -11,8 +11,8 @@ import javax.swing.Timer;
 
 import static org.image.App.logURL;
 
-public class Window {
-    static JLabel numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
+public class AppWindow {
+    static JLabel numberLabel = new JLabel(Integer.toString(LnkParser.getNumberOfFoundLinks()));
 
     /**
      * The background color used for the components in the program's GUI.
@@ -65,7 +65,7 @@ public class Window {
 
         try {
             URL url = new URL(urlString);
-            Parser.parseUrl(url.toString());
+            LnkParser.parseUrl(url.toString());
         } catch (MalformedURLException e) {
             JOptionPane.showMessageDialog(null,
                     "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
@@ -78,7 +78,7 @@ public class Window {
         }*/
     public static void addMagnetLinkToTextArea(String magnetLink) {
         if (magnetLink != null && !magnetLink.isEmpty()) {
-            Window.magnetLinksTextArea.append(magnetLink + "\n");
+            AppWindow.magnetLinksTextArea.append(magnetLink + "\n");
         }
     }
 
@@ -143,7 +143,7 @@ public class Window {
     }
 
     private static JPanel createNumberPanel() {
-        numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
+        numberLabel = new JLabel(Integer.toString(LnkParser.getNumberOfFoundLinks()));
         numberLabel.setFont(new Font("Arial", Font.PLAIN, 53));
         numberLabel.setForeground(TEXT_COLOR);
 
@@ -193,7 +193,7 @@ public class Window {
     private static JButton createClearButton() {
         JButton clearButton = new JButton("Clear");
         clearButton.addActionListener(e -> {
-            Parser.resetNumberOfFoundLinks();
+            LnkParser.resetNumberOfFoundLinks();
             urlField.setText("");
             urlField.requestFocusInWindow();
         });
@@ -220,9 +220,9 @@ public class Window {
         int delay = 150;
 
         Timer timer = new Timer(delay, e -> {
-            // JLabel numberLabel уже объявлен как поле класса Window
+            // JLabel numberLabel уже объявлен как поле класса AppWindow
 
-            numberLabel.setText(Integer.toString(Parser.getNumberOfFoundLinks()));
+            numberLabel.setText(Integer.toString(LnkParser.getNumberOfFoundLinks()));
         });
         timer.start();
     }

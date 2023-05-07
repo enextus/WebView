@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="" />
+    <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/LnkParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/AppWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/image/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/image/ParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/image/WindowTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/image/AppWindowTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,6 +111,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppWindowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MagnetLinksOpener" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.AppWindowTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -250,21 +272,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WindowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MagnetLinksOpener" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.image.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.WindowTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="image-processor [clean] (1)" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -300,11 +307,11 @@
       <item itemvalue="JUnit.ImageProcessorTest" />
       <item itemvalue="JUnit.ImageProcessorTest.testConvertToBlackAndWhite" />
       <item itemvalue="JUnit.ImageSaverTest" />
+      <item itemvalue="JUnit.AppWindowTest" />
       <item itemvalue="JUnit.ParserTest" />
       <item itemvalue="JUnit.ToolsTest" />
       <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" />
       <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithNull" />
-      <item itemvalue="JUnit.WindowTest" />
       <item itemvalue="Maven.image-processor [clean] (1)" />
     </list>
     <recent_temporary>
@@ -312,7 +319,7 @@
         <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" />
         <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithNull" />
         <item itemvalue="JUnit.ToolsTest" />
-        <item itemvalue="JUnit.WindowTest" />
+        <item itemvalue="JUnit.AppWindowTest" />
       </list>
     </recent_temporary>
   </component>
@@ -448,7 +455,7 @@
       <workItem from="1683397668436" duration="4961000" />
       <workItem from="1683456280519" duration="214000" />
       <workItem from="1683456974554" duration="4077000" />
-      <workItem from="1683461078194" duration="229000" />
+      <workItem from="1683461078194" duration="705000" />
     </task>
     <servers />
   </component>

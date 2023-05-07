@@ -43,7 +43,7 @@ public class App {
      * Retrieves a random image path using getRandomImagePath() method.
      * Reads the image file as a Base64-encoded string using readResourceFileToString() method.
      * Decodes the Base64-encoded string back to a BufferedImage using decodeBase64ToImage() method.
-     * If the BufferedImage is successfully obtained, it logs the selected image path and displays the image in a window using Window.displayImages() method.
+     * If the BufferedImage is successfully obtained, it logs the selected image path and displays the image in a window using AppWindow.displayImages() method.
      * If the image decoding fails, an error message is printed to the console.
      */
     public static void main(String[] args) {
@@ -57,7 +57,7 @@ public class App {
 
             if (imageDecode != null) {
                 logSelectedImage(randomImagePath);
-                Window.displayImages(imageDecode);
+                AppWindow.displayImages(imageDecode);
             } else {
                 System.err.println("Failed to decode the image.");
             }

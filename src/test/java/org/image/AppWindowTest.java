@@ -1,11 +1,11 @@
 /**
- * The WindowTest class is a JUnit test class that tests the functionality of the Window class.
+ * The AppWindowTest class is a JUnit test class that tests the functionality of the AppWindow class.
  * It contains four test methods that test different scenarios for the decodeBase64ToImage()
- * and displayImages() methods of the Window class. The test methods are well-written
- * and cover different cases to ensure that the Window class works as expected.
+ * and displayImages() methods of the AppWindow class. The test methods are well-written
+ * and cover different cases to ensure that the AppWindow class works as expected.
  * However, it would be even better if the displayImages() method could be refactored
  * to return a JFrame or JPanel object, which could be inspected for the presence
- * of the image. Overall, the WindowTest class is a good example
+ * of the image. Overall, the AppWindowTest class is a good example
  * of how to write JUnit tests for a class.
  */
 package org.image;
@@ -17,12 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.awt.image.BufferedImage;
 
-public class WindowTest {
-    private Window window;
+public class AppWindowTest {
+    private AppWindow appWindow;
 
     @BeforeEach
     public void setUp() {
-        window = new Window();
+        appWindow = new AppWindow();
     }
 
     /**
@@ -48,7 +48,7 @@ public class WindowTest {
     }
 
     /**
-     * The testDisplayImages() method tests the displayImages() method of the Window class.
+     * The testDisplayImages() method tests the displayImages() method of the AppWindow class.
      * Since this method is GUI-related and does not return any value, it is difficult to test its functionality directly.
      * The test sets up a test image and visually tests the method by calling it and checking if the image is displayed correctly.
      */
@@ -61,7 +61,7 @@ public class WindowTest {
         // Since displayImages is a GUI-related method and doesn't return any values,
         // it's difficult to test its functionality directly. You can visually test
         // the method by calling it and checking if the image is displayed correctly.
-        Window.displayImages(testImage);
+        AppWindow.displayImages(testImage);
     }
 
 }
