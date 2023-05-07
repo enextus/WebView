@@ -12,7 +12,7 @@ import javax.swing.Timer;
 import static org.image.App.logURL;
 
 public class AppWindow {
-    static JLabel numberLabel = new JLabel(Integer.toString(LnkParser.getNumberOfFoundLinks()));
+    static JLabel numberLabel = new JLabel(Integer.toString(LinkParser.getNumberOfFoundLinks()));
 
     /**
      * The background color used for the components in the program's GUI.
@@ -65,7 +65,7 @@ public class AppWindow {
 
         try {
             URL url = new URL(urlString);
-            LnkParser.parseUrl(url.toString());
+            LinkParser.parseUrl(url.toString());
         } catch (MalformedURLException e) {
             JOptionPane.showMessageDialog(null,
                     "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
@@ -143,7 +143,7 @@ public class AppWindow {
     }
 
     private static JPanel createNumberPanel() {
-        numberLabel = new JLabel(Integer.toString(LnkParser.getNumberOfFoundLinks()));
+        numberLabel = new JLabel(Integer.toString(LinkParser.getNumberOfFoundLinks()));
         numberLabel.setFont(new Font("Arial", Font.PLAIN, 53));
         numberLabel.setForeground(TEXT_COLOR);
 
@@ -193,7 +193,7 @@ public class AppWindow {
     private static JButton createClearButton() {
         JButton clearButton = new JButton("Clear");
         clearButton.addActionListener(e -> {
-            LnkParser.resetNumberOfFoundLinks();
+            LinkParser.resetNumberOfFoundLinks();
             urlField.setText("");
             magnetLinksTextArea.setText("");
             urlField.requestFocusInWindow();
@@ -224,7 +224,7 @@ public class AppWindow {
         Timer timer = new Timer(delay, e -> {
             // JLabel numberLabel уже объявлен как поле класса AppWindow
 
-            numberLabel.setText(Integer.toString(LnkParser.getNumberOfFoundLinks()));
+            numberLabel.setText(Integer.toString(LinkParser.getNumberOfFoundLinks()));
         });
         timer.start();
     }

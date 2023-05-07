@@ -1,5 +1,5 @@
 /**
- * The LnkParser class is responsible for parsing a given URL for magnet links and opening them in the default torrent client
+ * The LinkParser class is responsible for parsing a given URL for magnet links and opening them in the default torrent client
  * installed on the user's system. The class connects to the specified URL and retrieves the page content using Jsoup, selects
  * all magnet links on the page using a CSS selector, and processes each found magnet link. For each magnet link, the class
  * extracts the "href" attribute and opens the link in the default torrent client using the openMagnetLinkInTorrentClient() method.
@@ -26,11 +26,11 @@ import java.util.logging.LogManager;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class LnkParser {
+public class LinkParser {
     /**
      * The logger used to log information about the parsing process.
      */
-    private static final Logger logger = Logger.getLogger(LnkParser.class.getName());
+    private static final Logger logger = Logger.getLogger(LinkParser.class.getName());
 
     /**
      * The number of magnet links that have been found so far.
@@ -43,7 +43,7 @@ public class LnkParser {
      */
     static {
         try {
-            InputStream configFile = LnkParser.class.getResourceAsStream("/logging.properties");
+            InputStream configFile = LinkParser.class.getResourceAsStream("/logging.properties");
             if (configFile == null) {
                 throw new FileNotFoundException("File \"logging.properties\" not found!");
             }
