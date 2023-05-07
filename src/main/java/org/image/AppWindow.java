@@ -195,10 +195,12 @@ public class AppWindow {
         clearButton.addActionListener(e -> {
             LnkParser.resetNumberOfFoundLinks();
             urlField.setText("");
+            magnetLinksTextArea.setText("");
             urlField.requestFocusInWindow();
         });
         return clearButton;
     }
+
 
     private static JPanel createTextAreaPanel() {
         magnetLinksTextArea = new JTextArea(10, 50);
