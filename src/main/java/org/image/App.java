@@ -29,8 +29,6 @@ package org.image;
 import java.awt.image.BufferedImage;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static org.image.ImgProvider.getRandomImagePath;
 import static org.image.LoggerUtil.logSelectedImage;
