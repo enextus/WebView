@@ -8,18 +8,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class ImageProvider {
     private static final String IMAGE_DIRECTORY = "/img";
     private static final Random RANDOM = new Random();
 
     /**
-     * This method, getRandomImagePath(), returns a randomly-selected image path from the specified image directory.
-     * It reads the image paths from a properties file (img.properties) within the directory, adding them to a list.
-     * After ensuring the list isn't empty, the method selects a random image path from the list and returns it.
      *
-     * @return A randomly-selected image path from the specified image directory.
-     * @throws RuntimeException if there is an error reading the image directory or if no images are found in the directory.
      */
     public static String getRandomImagePath() {
 
@@ -42,6 +38,33 @@ public class ImageProvider {
         }
 
         return imagePaths.get(RANDOM.nextInt(imagePaths.size()));
+    }
+
+
+    /**
+     * Reads a resource file located at the specified path and returns its content as a string.
+     * The file is read using UTF-8 encoding.
+     *
+     * @param imagePath The path of the resource file.
+     * @return The content of the resource file as a string.
+     * @throws IllegalArgumentException If the resource file is not found.
+     * @throws RuntimeException         If there's an error reading the resource file.
+     */
+    public static String readResourceFileToString(String imagePath) {
+
+        InputStream inputStream = ImageProcessor.class.getResourceAsStream(imagePath);
+
+        // ReadingAndPrintingBytes(inputStream);
+
+        if (inputStream == null) {
+            throw new IllegalArgumentException("Resource file not found: " + imagePath);
+        }
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+            return reader.lines().collect(Collectors.joining("\n"));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read resource file: " + imagePath, e);
+        }
     }
 
 }

@@ -49,7 +49,7 @@ public class App {
         String randomImagePath = ImageProvider.getRandomImagePath();
         System.out.println("randomImagePath: " + randomImagePath);
 
-        String base64ImageString = ImageProcessor.readResourceFileToString(randomImagePath);
+        String base64ImageString = ImageProvider.readResourceFileToString(randomImagePath);
         BufferedImage imageDecode = ImageProcessor.decodeBase64ToImage(base64ImageString);
 
         if (imageDecode != null) {

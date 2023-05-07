@@ -30,7 +30,7 @@ public class AppTest {
     void testReadResourceFileToString_withInvalidPath() {
         String invalidPath = "/img/invalid.txt";
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> ImageProcessor.readResourceFileToString(invalidPath));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> ImageProvider.readResourceFileToString(invalidPath));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class AppTest {
         String imagePath = "/img/test-image.txt";
         Assertions.assertThrows(RuntimeException.class, () -> {
             try (InputStream inputStream = mockInputStream) {
-                ImageProcessor.readResourceFileToString(imagePath);
+                ImageProvider.readResourceFileToString(imagePath);
             }
         });
     }
@@ -55,7 +55,7 @@ public class AppTest {
     @Test
     void testReadResourceFileToString() {
         String imagePath = "/img/test.txt";
-        String content = ImageProcessor.readResourceFileToString(imagePath);
+        String content = ImageProvider.readResourceFileToString(imagePath);
         Assertions.assertEquals("Hello, world!", content);
     }
 

@@ -52,32 +52,6 @@ public class ImageProcessor {
 
     }
 
-    /**
-     * Reads a resource file located at the specified path and returns its content as a string.
-     * The file is read using UTF-8 encoding.
-     *
-     * @param imagePath The path of the resource file.
-     * @return The content of the resource file as a string.
-     * @throws IllegalArgumentException If the resource file is not found.
-     * @throws RuntimeException         If there's an error reading the resource file.
-     */
-    public static String readResourceFileToString(String imagePath) {
-
-        InputStream inputStream = ImageProcessor.class.getResourceAsStream(imagePath);
-
-        // ReadingAndPrintingBytes(inputStream);
-
-        if (inputStream == null) {
-            throw new IllegalArgumentException("Resource file not found: " + imagePath);
-        }
-
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-            return reader.lines().collect(Collectors.joining("\n"));
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to read resource file: " + imagePath, e);
-        }
-    }
-
     public static void ReadingAndPrintingBytes(InputStream inputStream) {
 
         // Reading and printing bytes to the console
