@@ -67,4 +67,26 @@ public class ImageProvider {
         }
     }
 
+
+    public static void ReadingAndPrintingBytes(InputStream inputStream) {
+
+        // Reading and printing bytes to the console
+        try {
+            int byteRead;
+            while ((byteRead = inputStream.read()) != -1) {
+                System.out.print(byteRead + " : ");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Закрываем InputStream
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 }
