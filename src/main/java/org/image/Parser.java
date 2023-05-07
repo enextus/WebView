@@ -95,7 +95,7 @@ public class Parser {
         logger.log(Level.INFO, getNumberOfFoundLinks() + ": " + "Link found: " + link);
 
         // Add magnet link to text area
-        Tools.addMagnetLinkToTextArea(getNumberOfFoundLinks() + ": " + link);
+        Window.addMagnetLinkToTextArea(getNumberOfFoundLinks() + ": " + link);
 
         // Opening the magnet link in the default torrent client
         openMagnetLinkInTorrentClient(link, Desktop.getDesktop());

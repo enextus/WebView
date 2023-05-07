@@ -12,9 +12,7 @@ import javax.swing.Timer;
 import static org.image.App.logURL;
 
 public class Window {
-
     static JLabel numberLabel = new JLabel(Integer.toString(Parser.getNumberOfFoundLinks()));
-
 
     /**
      * The background color used for the components in the program's GUI.
@@ -74,6 +72,16 @@ public class Window {
         }
     }
 
+    /*    public static void addMagnetLinkToTextArea(String magnetLink) {
+            magnetLinksTextArea.append(magnetLink + "\n\n");
+            magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
+        }*/
+    public static void addMagnetLinkToTextArea(String magnetLink) {
+        if (magnetLink != null && !magnetLink.isEmpty()) {
+            Window.magnetLinksTextArea.append(magnetLink + "\n");
+        }
+    }
+
     public static void displayImages(BufferedImage colorImage) {
         SwingUtilities.invokeLater(() -> {
             configureLookAndFeel();
@@ -112,7 +120,7 @@ public class Window {
         centerPanel.setLayout(new BorderLayout());
         centerPanel.setBackground(BACKGROUND_COLOR);
 
-        originalImageLabel = new JLabel(new ImageIcon(Tools.scaleImageForPreview(colorImage)));
+        originalImageLabel = new JLabel(new ImageIcon(ImageProcessor.scaleImageForPreview(colorImage)));
         centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
         JPanel buttonPanel = createButtonPanel();
