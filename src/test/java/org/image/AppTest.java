@@ -22,7 +22,7 @@ public class AppTest {
         App app = new App();
 
         // Call the getRandomImagePath method and check if it returns a valid image path
-        assertDoesNotThrow(() -> ImageProvider.getRandomImagePath(),
+        assertDoesNotThrow(() -> ImgProvider.getRandomImagePath(),
                 "getRandomImagePath should not throw an exception when called with a valid image directory");
     }
 
@@ -30,7 +30,7 @@ public class AppTest {
     void testReadResourceFileToString_withInvalidPath() {
         String invalidPath = "/img/invalid.txt";
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> ImageProvider.readResourceFileToString(invalidPath));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> ImgProvider.readResourceFileToString(invalidPath));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class AppTest {
         String imagePath = "/img/test-image.txt";
         Assertions.assertThrows(RuntimeException.class, () -> {
             try (InputStream inputStream = mockInputStream) {
-                ImageProvider.readResourceFileToString(imagePath);
+                ImgProvider.readResourceFileToString(imagePath);
             }
         });
     }
@@ -55,7 +55,7 @@ public class AppTest {
     @Test
     void testReadResourceFileToString() {
         String imagePath = "/img/test.txt";
-        String content = ImageProvider.readResourceFileToString(imagePath);
+        String content = ImgProvider.readResourceFileToString(imagePath);
         Assertions.assertEquals("Hello, world!", content);
     }
 

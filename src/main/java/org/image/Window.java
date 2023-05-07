@@ -120,7 +120,7 @@ public class Window {
         centerPanel.setLayout(new BorderLayout());
         centerPanel.setBackground(BACKGROUND_COLOR);
 
-        originalImageLabel = new JLabel(new ImageIcon(ImageProcessor.scaleImageForPreview(colorImage)));
+        originalImageLabel = new JLabel(new ImageIcon(ImgProcessor.scaleImageForPreview(colorImage)));
         centerPanel.add(originalImageLabel, BorderLayout.CENTER);
 
         JPanel buttonPanel = createButtonPanel();

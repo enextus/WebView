@@ -28,8 +28,11 @@ package org.image;
 
 import java.awt.image.BufferedImage;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static org.image.ImgProvider.getRandomImagePath;
 
 public class App {
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
@@ -44,21 +47,25 @@ public class App {
      * If the image decoding fails, an error message is printed to the console.
      */
     public static void main(String[] args) {
-
         LOGGER.info("App \"Magnet Links Opener\" running");
-        String randomImagePath = ImageProvider.getRandomImagePath();
+        String randomImagePath = getRandomImagePath();
         System.out.println("randomImagePath: " + randomImagePath);
 
-        String base64ImageString = ImageProvider.readResourceFileToString(randomImagePath);
-        BufferedImage imageDecode = ImageProcessor.decodeBase64ToImage(base64ImageString);
+        try {
+            String base64ImageString = ImgProvider.readResourceFileToString(randomImagePath);
+            BufferedImage imageDecode = ImgProcessor.decodeBase64ToImage(base64ImageString);
 
-        if (imageDecode != null) {
-            logSelectedImage(randomImagePath);
-            Window.displayImages(imageDecode);
-        } else {
-            System.err.println("Failed to decode the image.");
+            if (imageDecode != null) {
+                logSelectedImage(randomImagePath);
+                Window.displayImages(imageDecode);
+            } else {
+                System.err.println("Failed to decode the image.");
+            }
+        } catch (IllegalArgumentException e) {
+            LOGGER.log(Level.SEVERE, "Resource file not found: " + randomImagePath, e);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to read resource file: " + randomImagePath, e);
         }
-
     }
 
     /**
@@ -78,5 +85,4 @@ public class App {
     public static void logURL(String url) {
         LOGGER.log(Level.INFO, "Parsed URL: {0}", url);
     }
-
 }

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class ImageProvider {
+public class ImgProvider {
     private static final String IMAGE_DIRECTORY = "/img";
     private static final Random RANDOM = new Random();
 
@@ -40,7 +40,6 @@ public class ImageProvider {
         return imagePaths.get(RANDOM.nextInt(imagePaths.size()));
     }
 
-
     /**
      * Reads a resource file located at the specified path and returns its content as a string.
      * The file is read using UTF-8 encoding.
@@ -50,9 +49,9 @@ public class ImageProvider {
      * @throws IllegalArgumentException If the resource file is not found.
      * @throws RuntimeException         If there's an error reading the resource file.
      */
-    public static String readResourceFileToString(String imagePath) {
+    public static String readResourceFileToString(String imagePath) throws IOException {
 
-        InputStream inputStream = ImageProcessor.class.getResourceAsStream(imagePath);
+        InputStream inputStream = ImgProcessor.class.getResourceAsStream(imagePath);
 
         // ReadingAndPrintingBytes(inputStream);
 
@@ -62,11 +61,8 @@ public class ImageProvider {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
             return reader.lines().collect(Collectors.joining("\n"));
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to read resource file: " + imagePath, e);
         }
     }
-
 
     public static void ReadingAndPrintingBytes(InputStream inputStream) {
 

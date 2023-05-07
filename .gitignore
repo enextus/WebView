@@ -39,11 +39,11 @@ build/
 
 <<<<<<< HEAD
 ###
-#PS C:\Projects\ImageProcessor> git rm --cached logs/app.log
+#PS C:\Projects\ImgProcessor> git rm --cached logs/app.log
 #rm 'logs/app.log'
-#PS C:\Projects\ImageProcessor> git commit -m "Исключить лог-файл из Git-индексации"
+#PS C:\Projects\ImgProcessor> git commit -m "Исключить лог-файл из Git-индексации"
 #[main 7d2cb83] Исключить лог-файл из Git-индексации
-#PS C:\Projects\ImageProcessor>
+#PS C:\Projects\ImgProcessor>
 ###
 logs/app.log
 =======

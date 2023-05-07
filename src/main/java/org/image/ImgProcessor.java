@@ -4,11 +4,9 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import java.util.stream.Collectors;
 
-public class ImageProcessor {
+public class ImgProcessor {
 
     /**
      * Scales a BufferedImage to fit within a preview area of maximum size 512x512 pixels while maintaining its aspect ratio.
@@ -42,7 +40,9 @@ public class ImageProcessor {
      * @return The BufferedImage decoded from the provided Base64-encoded string.
      */
     public static BufferedImage decodeBase64ToImage(String base64ImageString) {
+
         byte[] imageBytes = Base64.getDecoder().decode(base64ImageString);
+
         try (InputStream inputStream = new ByteArrayInputStream(imageBytes)) {
             return ImageIO.read(inputStream);
         } catch (IOException e) {

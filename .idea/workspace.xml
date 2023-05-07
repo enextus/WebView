@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/ImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/ImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/ImageProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/ImageProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/ImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/ImgProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/ImageProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/ImgProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/image/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/image/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/image/WindowTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/image/WindowTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +164,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParserTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MagnetLinksOpener" />
       <extension name="coverage">
         <pattern>
@@ -304,7 +309,7 @@
       <item itemvalue="JUnit.ImageProcessorTest" />
       <item itemvalue="JUnit.ImageProcessorTest.testConvertToBlackAndWhite" />
       <item itemvalue="JUnit.ImageSaverTest" />
-      <item itemvalue="JUnit.ParserTest (1)" />
+      <item itemvalue="JUnit.ParserTest" />
       <item itemvalue="JUnit.ToolsTest" />
       <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" />
       <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithNull" />
@@ -317,7 +322,6 @@
         <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithNull" />
         <item itemvalue="JUnit.ToolsTest" />
         <item itemvalue="JUnit.WindowTest" />
-        <item itemvalue="JUnit.ParserTest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -452,7 +456,8 @@
       <workItem from="1683395139969" duration="553000" />
       <workItem from="1683397668436" duration="4961000" />
       <workItem from="1683456280519" duration="214000" />
-      <workItem from="1683456974554" duration="3427000" />
+      <workItem from="1683456974554" duration="4077000" />
+      <workItem from="1683461078194" duration="198000" />
     </task>
     <servers />
   </component>
