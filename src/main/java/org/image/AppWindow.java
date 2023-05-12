@@ -148,22 +148,8 @@ public class AppWindow {
         return numberPanel;
     }
 
-    private static JPanel createInputPanel() {
-        JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.X_AXIS));
-        inputPanel.setOpaque(false);
-
-        inputPanel.add(createUrlPanel());
-        inputPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add a horizontal spacing
-        inputPanel.add(createOkButton());
-        inputPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Add a horizontal spacing
-        inputPanel.add(createClearButton());
-
-        return inputPanel;
-    }
-
     private static JPanel createUrlPanel() {
-        urlField.setColumns(55);
+        urlField.setColumns(33);
 
         JPanel urlPanel = new JPanel();
         urlPanel.setLayout(new BoxLayout(urlPanel, BoxLayout.X_AXIS));
@@ -183,6 +169,59 @@ public class AppWindow {
         return jButton;
     }
 
+    private static JButton createSearchTopButton() {
+        JButton searchButton = new JButton("Top");
+        searchButton.addActionListener(e -> {
+            urlField.setText("https://xxxtor.com/top/");
+            enterUrl();
+        });
+        return searchButton;
+    }
+
+    private static JButton createSearchNewButton() {
+        JButton searchButton = new JButton("New");
+        searchButton.addActionListener(e -> {
+            urlField.setText("https://xxxtor.com/");
+            enterUrl();
+        });
+        return searchButton;
+    }
+
+    private static JPanel createInputPanel() {
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS)); // Changed layout to Y_AXIS for vertical alignment
+        inputPanel.setOpaque(false);
+
+        // This panel contains the url field and existing buttons
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
+        topPanel.setOpaque(false);
+
+        topPanel.add(createUrlPanel());
+        topPanel.add(Box.createRigidArea(new Dimension(3, 0))); // Add a horizontal spacing
+        topPanel.add(createOkButton());
+
+        // This panel contains the new search button
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
+        bottomPanel.setOpaque(false);
+
+        bottomPanel.add(createSearchNewButton());
+        bottomPanel.add(Box.createRigidArea(new Dimension(3, 0))); // Add a horizontal spacing
+        bottomPanel.add(createSearchTopButton());
+        bottomPanel.add(Box.createRigidArea(new Dimension(3, 0))); // Add a horizontal spacing
+        bottomPanel.add(createClearButton());
+        bottomPanel.add(Box.createRigidArea(new Dimension(3, 0))); // Add a horizontal spacing
+
+
+        // Add the panels to the main inputPanel
+        inputPanel.add(topPanel);
+        inputPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
+        inputPanel.add(bottomPanel);
+
+        return inputPanel;
+    }
+
     private static JButton createClearButton() {
         JButton clearButton = new JButton("Clear");
         clearButton.addActionListener(e -> {
@@ -195,7 +234,7 @@ public class AppWindow {
     }
 
     private static JPanel createTextAreaPanel() {
-        magnetLinksTextArea = new JTextArea(10, 50);
+        magnetLinksTextArea = new JTextArea(10, 33);
         magnetLinksTextArea.setEditable(false);
         magnetLinksTextArea.setForeground(TEXT_COLOR);
         magnetLinksTextArea.setBackground(BACKGROUND_COLOR);
