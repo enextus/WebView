@@ -35,7 +35,6 @@ import static org.image.LoggerUtil.logSelectedImage;
 import static org.image.LoggerUtil.logURL;
 
 public class App {
-
     /**
      * The main method serves as the entry point for the "Magnet Opener" application. It performs the following steps:
      * Logs that the application is running.
@@ -49,7 +48,6 @@ public class App {
         logURL("App \"MaLO - ((Magnet Links Opener))\" running");
         String randomImagePath = getRandomImagePath();
         System.out.println("randomImagePath: " + randomImagePath);
-
         try {
             String base64ImageString = ImgProvider.readResourceFileToString(randomImagePath);
             BufferedImage imageDecode = ImgProcessor.decodeBase64ToImage(base64ImageString);

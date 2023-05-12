@@ -6,37 +6,55 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 public class AppWindow {
     private static final String FRAME = "MaLO © Magnet Links Opener 2023";
     private static final Color BACKGROUND_COLOR = Color.BLACK;
     private static final Color TEXT_COLOR = new Color(255, 215, 0); // Gold
+    private static final int NULIS = 0;
     private static final int HORIZONTAL_SPACING = 3;
     private static final int VERTICAL_SPACING = 10;
     private static final int URL_FIELD_COLUMNS = 33;
     private static final int URL_PANEL_WIDTH = 300;
+    private static final String FONT_NAME = "Arial";
+    private static final int FONT_STYLE = Font.PLAIN;
+    private static final int FONT_SIZE = 53;
+    private static final int TEXT_AREA_ROWS = 10;
+    private static final int TEXT_AREA_COLUMNS = 33;
+    private static final int TIMER_DELAY = 150;
+    private static final String DEFAULT_URL = "https://xxxtor.com/";
+    private static final String TOP_URL = "https://xxxtor.com/top/";
+    private static final String NEW_BUTTON_LABEL = "New";
+    private static final String TOP_BUTTON_LABEL = "TOP";
+    private static final String OK_BUTTON_TEXT = "OK";
+    private static final String ERROR_DIALOG_TITLE = "Issue!";
+    private static final String INVALID_URL_MESSAGE = "Invalid URL. Please enter a valid URL.";
+    private static final String PASTE_MENU_ITEM_TEXT = "Paste";
+    private static final String CLEAR_BUTTON_TEXT = "Clear";
+    private static final String ERROR_MESSAGE_URL_SYNTAX = "URL could not be parsed. Please check the URL.";
+    private static final String ERROR_MESSAGE_URL_MALFORMED = "URL is malformed. Please check the URL.";
+    private static final String CONTEXT_MENU_PASTE = "Paste";
     private static final JTextField urlField = new JTextField();
     private static final int URL_PANEL_HEIGHT = urlField.getPreferredSize().height;
     private static final Dimension URL_PANEL_DIMENSION = new Dimension(URL_PANEL_WIDTH, URL_PANEL_HEIGHT);
-
-    private static final Dimension RIGID_AREA_DIMENSION_HORIZONTAL = new Dimension(HORIZONTAL_SPACING, 0);
-    private static final Dimension RIGID_AREA_DIMENSION_VERTICAL = new Dimension(0, VERTICAL_SPACING);
+    private static final Dimension RIGID_AREA_DIMENSION_HORIZONTAL = new Dimension(HORIZONTAL_SPACING, NULIS);
+    private static final Dimension RIGID_AREA_DIMENSION_VERTICAL = new Dimension(NULIS, VERTICAL_SPACING);
+    private static JTextArea magnetLinksTextArea;
     private static JLabel numberLabel = new JLabel(Integer.toString(LinkParser.getNumberOfFoundLinks()));
+
     private static JPanel createButtonPanel() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         buttonPanel.setOpaque(false);
         buttonPanel.add(createNumberPanel());
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        buttonPanel.add(Box.createRigidArea(RIGID_AREA_DIMENSION_VERTICAL));
         buttonPanel.add(createInputPanel());
         return buttonPanel;
     }
 
-    private static JTextArea magnetLinksTextArea;
-
-
-    // mouse event handler for the urlField input field :)
     static {
         urlField.addMouseListener(new MouseAdapter() {
             @Override
@@ -48,7 +66,7 @@ public class AppWindow {
 
             private void showContextMenu(MouseEvent e) {
                 JPopupMenu contextMenu = new JPopupMenu();
-                JMenuItem pasteMenuItem = new JMenuItem("Paste");
+                JMenuItem pasteMenuItem = new JMenuItem(CONTEXT_MENU_PASTE);
                 pasteMenuItem.addActionListener(e1 -> {
                     urlField.paste();
                 });
@@ -63,14 +81,22 @@ public class AppWindow {
         LoggerUtil.logURL(urlString);
 
         try {
-            URL url = new URL(urlString);
-            LinkParser.parseUrl(url.toString());
+            URI uri = new URI(urlString);
+            if (uri.isAbsolute() && (uri.getScheme() != null)) {
+                URL url = uri.toURL();
+                LinkParser.parseUrl(url.toString());
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        INVALID_URL_MESSAGE, ERROR_DIALOG_TITLE, JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (URISyntaxException e) {
+            JOptionPane.showMessageDialog(null,
+                    ERROR_MESSAGE_URL_SYNTAX, ERROR_DIALOG_TITLE, JOptionPane.ERROR_MESSAGE);
         } catch (MalformedURLException e) {
             JOptionPane.showMessageDialog(null,
-                    "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
+                    ERROR_MESSAGE_URL_MALFORMED, ERROR_DIALOG_TITLE, JOptionPane.ERROR_MESSAGE);
         }
     }
-
 
 
     public static void addMagnetLinkToTextArea(String magnetLink) {
@@ -127,7 +153,7 @@ public class AppWindow {
 
     private static JPanel createNumberPanel() {
         numberLabel = new JLabel(Integer.toString(LinkParser.getNumberOfFoundLinks()));
-        numberLabel.setFont(new Font("Arial", Font.PLAIN, 53));
+        numberLabel.setFont(new Font(FONT_NAME, FONT_STYLE, FONT_SIZE));
         numberLabel.setForeground(TEXT_COLOR);
         JPanel numberPanel = new JPanel();
         numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.X_AXIS));
@@ -150,24 +176,25 @@ public class AppWindow {
     }
 
     private static JButton createOkButton() {
-        JButton jButton = new JButton("OK");
+        JButton jButton = new JButton(OK_BUTTON_TEXT);
         jButton.addActionListener(e -> enterUrl());
         return jButton;
     }
 
     private static JButton createSearchTopButton() {
-        JButton searchButton = new JButton("Top");
+        JButton searchButton = new JButton(TOP_BUTTON_LABEL);
         searchButton.addActionListener(e -> {
-            urlField.setText("https://xxxtor.com/top/");
+            urlField.setText(TOP_URL);
             enterUrl();
         });
         return searchButton;
     }
 
     private static JButton createSearchNewButton() {
-        JButton searchButton = new JButton("New");
+        JButton searchButton = new JButton(NEW_BUTTON_LABEL);
         searchButton.addActionListener(e -> {
-            urlField.setText("https://xxxtor.com/");
+            urlField.setText(DEFAULT_URL);
+            ;
             enterUrl();
         });
         return searchButton;
@@ -200,7 +227,7 @@ public class AppWindow {
     }
 
     private static JButton createClearButton() {
-        JButton clearButton = new JButton("Clear");
+        JButton clearButton = new JButton(CLEAR_BUTTON_TEXT);
         clearButton.addActionListener(e -> {
             LinkParser.resetNumberOfFoundLinks();
             urlField.setText("");
@@ -211,7 +238,7 @@ public class AppWindow {
     }
 
     private static JPanel createTextAreaPanel() {
-        magnetLinksTextArea = new JTextArea(10, 33);
+        magnetLinksTextArea = new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
         magnetLinksTextArea.setEditable(false);
         magnetLinksTextArea.setForeground(TEXT_COLOR);
         magnetLinksTextArea.setBackground(BACKGROUND_COLOR);
@@ -224,9 +251,7 @@ public class AppWindow {
     }
 
     private static void startTimer() {
-        int delay = 150;
-        Timer timer = new Timer(delay, e -> {
-            // JLabel numberLabel уже объявлен как поле класса AppWindow
+        Timer timer = new Timer(TIMER_DELAY, e -> {
             numberLabel.setText(Integer.toString(LinkParser.getNumberOfFoundLinks()));
         });
         timer.start();
