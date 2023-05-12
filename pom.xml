@@ -94,33 +94,8 @@
                     </archive>
                 </configuration>
             </plugin>
-<!--            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-<<<<<<< HEAD
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <configuration>
-                            <target>
-                                <exec executable="C:\\Program Files (x86)\\Launch4j\\launch4jc"
-                                      resolveExecutable="true">
-                                    <arg value="C:\\Program Files (x86)\\Launch4j\\build.xml"/>
-                                </exec>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-=======
->>>>>>> caa686b46dd190aa05088f8cc84941348656e194
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
                 <executions>
