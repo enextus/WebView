@@ -14,10 +14,10 @@ public class AppWindow {
     private static final String FRAME = "MaLO © Magnet Links Opener 2023";
     private static final Color BACKGROUND_COLOR = Color.BLACK;
     private static final Color TEXT_COLOR = new Color(255, 215, 0); // Gold
-    private static final int NULIS = 0;
-    private static final int HORIZONTAL_SPACING = 3;
+    private static final int NULLIS = 0;
+    private static final int HORIZONTAL_SPACING = 2;
     private static final int VERTICAL_SPACING = 10;
-    private static final int URL_FIELD_COLUMNS = 33;
+    private static final int URL_FIELD_COLUMNS = 5;
     private static final int URL_PANEL_WIDTH = 300;
     private static final String FONT_NAME = "Arial";
     private static final int FONT_STYLE = Font.PLAIN;
@@ -40,8 +40,8 @@ public class AppWindow {
     private static final JTextField urlField = new JTextField();
     private static final int URL_PANEL_HEIGHT = urlField.getPreferredSize().height;
     private static final Dimension URL_PANEL_DIMENSION = new Dimension(URL_PANEL_WIDTH, URL_PANEL_HEIGHT);
-    private static final Dimension RIGID_AREA_DIMENSION_HORIZONTAL = new Dimension(HORIZONTAL_SPACING, NULIS);
-    private static final Dimension RIGID_AREA_DIMENSION_VERTICAL = new Dimension(NULIS, VERTICAL_SPACING);
+    private static final Dimension RIGID_AREA_DIMENSION_HORIZONTAL = new Dimension(HORIZONTAL_SPACING, NULLIS);
+    private static final Dimension RIGID_AREA_DIMENSION_VERTICAL = new Dimension(NULLIS, VERTICAL_SPACING);
     private static JTextArea magnetLinksTextArea;
     private static JLabel numberLabel = new JLabel(Integer.toString(LinkParser.getNumberOfFoundLinks()));
 

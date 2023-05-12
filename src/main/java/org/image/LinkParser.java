@@ -27,15 +27,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class LinkParser {
-    /**
-     * The logger used to log information about the parsing process.
-     */
-    private static final Logger logger = Logger.getLogger(LinkParser.class.getName());
-
-    /**
-     * The number of magnet links that have been found so far.
-     */
+    private static final int NUMBER_OF_THREADS = 8;
     private static Integer numberOfFoundLinks = 0;
+    private static final Logger logger = Logger.getLogger(LinkParser.class.getName());
+    private static final String CSS_SELECTOR_MAGNET = "a[href^=magnet]";
 
     /*
       Initializes the logger configuration for the program by reading the "logging.properties" file
@@ -119,26 +114,19 @@ public class LinkParser {
 
         isSearching = true;
         try {
-            // Connecting to the URL and obtaining the document using Jsoup
             Document doc = Jsoup.connect(url).get();
-            // Selecting magnet links on the page using a CSS selector
-            Elements magnetLinks = doc.select("a[href^=magnet]");
+            Elements magnetLinks = doc.select(CSS_SELECTOR_MAGNET);
 
-            // Create a thread pool with a fixed number of worker threads
-            int numberOfThreads = 8;
-            ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
+            ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-            // Processing each found magnet link
             for (Element magnetLink : magnetLinks) {
                 if (!isSearching) {
                     executorService.shutdownNow();
                     break;
                 }
-
                 executorService.submit(() -> processMagnetLink(magnetLink));
             }
 
-            // Complete the thread pool work after processing all tasks.
             if (isSearching) {
                 executorService.shutdown();
             }
@@ -148,6 +136,7 @@ public class LinkParser {
             e.printStackTrace();
         }
     }
+
 
     /**
      * Opens the given magnet link in the default torrent client installed on the user's system.
