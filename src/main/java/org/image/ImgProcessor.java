@@ -3,39 +3,10 @@ package org.image;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Base64;
 
-import static org.image.Window.magnetLinksTextArea;
-
-/**
- * A utility class providing methods for working with images.
- */
-public class Tools {
-
-    public static void addMagnetLinkToTextArea(String magnetLink) {
-        magnetLinksTextArea.append(magnetLink + "\n\n");
-        magnetLinksTextArea.setCaretPosition(magnetLinksTextArea.getDocument().getLength());
-    }
-
-    /**
-     * Decodes a base64-encoded image string into a BufferedImage.
-     *
-     * @param base64ImageString the base64-encoded image string to decode
-     * @return the decoded BufferedImage, or null if an IOException occurs
-     */
-    public static BufferedImage decodeBase64ToImage(String base64ImageString) {
-        try {
-            byte[] imageBytes = Base64.getDecoder().decode(base64ImageString);
-            InputStream inputStream = new ByteArrayInputStream(imageBytes);
-            return ImageIO.read(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+public class ImgProcessor {
 
     /**
      * Scales a BufferedImage to fit within a preview area of maximum size 512x512 pixels while maintaining its aspect ratio.
@@ -60,6 +31,25 @@ public class Tools {
         g.dispose();
 
         return scaledImage;
+    }
+
+    /**
+     * Decodes a Base64-encoded string back to a BufferedImage.
+     *
+     * @param base64ImageString The Base64-encoded string of the image.
+     * @return The BufferedImage decoded from the provided Base64-encoded string.
+     */
+    public static BufferedImage decodeBase64ToImage(String base64ImageString) {
+
+        byte[] imageBytes = Base64.getDecoder().decode(base64ImageString);
+
+        try (InputStream inputStream = new ByteArrayInputStream(imageBytes)) {
+            return ImageIO.read(inputStream);
+        } catch (IOException e) {
+            System.err.println("Failed to decode the image.");
+            return null;
+        }
+
     }
 
 }

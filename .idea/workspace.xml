@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/AppWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/AppWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/LinkParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/LinkParser.java" afterDir="false" />
+>>>>>>> caa686b46dd190aa05088f8cc84941348656e194
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +42,10 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+<<<<<<< HEAD
         <option name="mavenHome" value="$USER_HOME$/opt/apache-maven-3.9.1" />
+=======
+>>>>>>> caa686b46dd190aa05088f8cc84941348656e194
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
@@ -69,11 +77,18 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Projects/ImageProcessor/src/main/java/org/example/Main.java&quot;,
+<<<<<<< HEAD
     &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.42413792&quot;,
     &quot;ruby.rails.projectView.checked&quot;: &quot;true&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+=======
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.42413792&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
+>>>>>>> caa686b46dd190aa05088f8cc84941348656e194
     &quot;settings.editor.splitter.proportion&quot;: &quot;0.23649338&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -109,6 +124,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppWindowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MagnetLinksOpener" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.AppWindowTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,25 +200,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.image" />
       <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
-      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea -Xshare:off " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ParserTest.testOpenMagnetLinkInTorrentClient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MagnetLinksOpener" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.image.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
-      <option name="METHOD_NAME" value="testOpenMagnetLinkInTorrentClient" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -204,38 +216,6 @@
       <option name="PACKAGE_NAME" value="org.image" />
       <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
       <option name="METHOD_NAME" value="testParseDifferentTypesOfUrls" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ParserTest.testParseInvalidUrl" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MagnetLinksOpener" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.image.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
-      <option name="METHOD_NAME" value="testParseInvalidUrl" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ParserTest.testParseUrlMultipleLinks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MagnetLinksOpener" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.image.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
-      <option name="METHOD_NAME" value="testParseUrlMultipleLinks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -258,7 +238,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParserTest.testParseUrlSingleLink" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ToolsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MagnetLinksOpener" />
       <extension name="coverage">
         <pattern>
@@ -267,8 +247,39 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.ParserTest" />
-      <option name="METHOD_NAME" value="testParseUrlSingleLink" />
+      <option name="MAIN_CLASS_NAME" value="org.image.ToolsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MagnetLinksOpener" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.ToolsTest" />
+      <option name="METHOD_NAME" value="testAddMagnetLinkToTextAreaWithEmptyString" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ToolsTest.testAddMagnetLinkToTextAreaWithNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MagnetLinksOpener" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.ToolsTest" />
+      <option name="METHOD_NAME" value="testAddMagnetLinkToTextAreaWithNull" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -309,20 +320,28 @@
       <item itemvalue="JUnit.ImageProcessorTest" />
       <item itemvalue="JUnit.ImageProcessorTest.testConvertToBlackAndWhite" />
       <item itemvalue="JUnit.ImageSaverTest" />
-      <item itemvalue="JUnit.ParserTest.testOpenMagnetLinkInTorrentClient" />
-      <item itemvalue="JUnit.ParserTest.testParseUrlMultipleLinks" />
-      <item itemvalue="JUnit.ParserTest.testParseUrlSingleLink" />
-      <item itemvalue="JUnit.ParserTest.testParseInvalidUrl" />
+      <item itemvalue="JUnit.AppWindowTest" />
       <item itemvalue="JUnit.ParserTest" />
+      <item itemvalue="JUnit.ToolsTest" />
+      <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" />
+      <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithNull" />
       <item itemvalue="Maven.image-processor [clean] (1)" />
     </list>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
         <item itemvalue="JUnit.ParserTest.testParseUrlSingleLink" />
         <item itemvalue="JUnit.ParserTest.testParseUrlMultipleLinks" />
         <item itemvalue="JUnit.ParserTest.testParseInvalidUrl" />
         <item itemvalue="JUnit.ParserTest.testOpenMagnetLinkInTorrentClient" />
         <item itemvalue="JUnit.ParserTest" />
+=======
+        <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithNull" />
+        <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" />
+        <item itemvalue="JUnit.ToolsTest" />
+        <item itemvalue="JUnit.ParserTest" />
+        <item itemvalue="JUnit.AppWindowTest" />
+>>>>>>> caa686b46dd190aa05088f8cc84941348656e194
       </list>
     </recent_temporary>
   </component>
@@ -442,11 +461,44 @@
       <workItem from="1683280791623" duration="99000" />
       <workItem from="1683281055318" duration="4859000" />
       <workItem from="1683289171769" duration="54000" />
+<<<<<<< HEAD
       <workItem from="1683289247858" duration="1142000" />
       <workItem from="1683290971243" duration="572000" />
       <workItem from="1683927633143" duration="57000" />
       <workItem from="1683927706408" duration="48000" />
       <workItem from="1683927767710" duration="128000" />
+=======
+      <workItem from="1683289247858" duration="1304000" />
+      <workItem from="1683284595139" duration="700000" />
+      <workItem from="1683285301126" duration="7000" />
+      <workItem from="1683285386354" duration="322000" />
+      <workItem from="1683285957193" duration="44000" />
+      <workItem from="1683286014678" duration="376000" />
+      <workItem from="1683286475328" duration="161000" />
+      <workItem from="1683300107176" duration="603000" />
+      <workItem from="1683311385780" duration="9012000" />
+      <workItem from="1683322139155" duration="3286000" />
+      <workItem from="1683325497264" duration="1074000" />
+      <workItem from="1683326615181" duration="235000" />
+      <workItem from="1683395139969" duration="553000" />
+      <workItem from="1683397668436" duration="4961000" />
+      <workItem from="1683456280519" duration="214000" />
+      <workItem from="1683456974554" duration="4077000" />
+      <workItem from="1683461078194" duration="2698000" />
+      <workItem from="1683463796898" duration="38000" />
+      <workItem from="1683463876615" duration="113000" />
+      <workItem from="1683464006371" duration="254000" />
+      <workItem from="1683833721668" duration="230000" />
+      <workItem from="1683873409601" duration="4167000" />
+      <workItem from="1683885147353" duration="559000" />
+      <workItem from="1683885813245" duration="1541000" />
+      <workItem from="1683890779909" duration="43000" />
+      <workItem from="1683891011233" duration="49000" />
+      <workItem from="1683891072585" duration="73000" />
+      <workItem from="1683891194873" duration="252000" />
+      <workItem from="1683891464248" duration="39000" />
+      <workItem from="1683891571199" duration="7107000" />
+>>>>>>> caa686b46dd190aa05088f8cc84941348656e194
     </task>
     <servers />
   </component>

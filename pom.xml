@@ -15,7 +15,6 @@
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <jetbrains.version>24.0.1</jetbrains.version>
         <mockito-junit-jupiter.version>5.2.0</mockito-junit-jupiter.version>
-
     </properties>
 
     <dependencies>
@@ -29,8 +28,9 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>${jetbrains.version}</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
@@ -40,7 +40,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.9</version>
+            <version>1.4.6</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -96,6 +96,7 @@
             </plugin>
 <!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+<<<<<<< HEAD
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>1.8</version>
                 <executions>
@@ -118,6 +119,8 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+=======
+>>>>>>> caa686b46dd190aa05088f8cc84941348656e194
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
                 <executions>
@@ -134,27 +137,23 @@
                                         <exclude>META-INF/*.SF</exclude>
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
-                                        <exclude>META-INF/LICENSE*</exclude>
-                                        <exclude>META-INF/NOTICE*</exclude>
-                                        <exclude>
-                                            META-INF/maven/org.apache.maven.plugins/maven-shade-plugin/pom.properties
-                                        </exclude>
+                                        <exclude>META-INF/MANIFEST.MF</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
                             <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.image.App</mainClass>
+                                    <manifestEntries>
+                                        <Build-Number>1.0</Build-Number>
+                                    </manifestEntries>
                                 </transformer>
-                                <!-- Add this transformer to merge ServiceLoader configurations -->
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 </project>
