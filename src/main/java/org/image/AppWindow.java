@@ -10,27 +10,33 @@ import java.net.URL;
 
 public class AppWindow {
     private static final String FRAME = "MaLO © Magnet Links Opener 2023";
-    private static JLabel numberLabel = new JLabel(Integer.toString(LinkParser.getNumberOfFoundLinks()));
-    /**
-     * The background color used for the components in the program's GUI.
-     * Currently set to black.
-     */
     private static final Color BACKGROUND_COLOR = Color.BLACK;
-    /**
-     * The text color used for the components in the program's GUI.
-     * Currently set to gold (RGB: 255, 215, 0).
-     */
     private static final Color TEXT_COLOR = new Color(255, 215, 0); // Gold
-    /**
-     * The label used to display the original image in the program's GUI.
-     */
-    private static JLabel originalImageLabel;
-    /**
-     * The text area used to display magnet links in the program's GUI.
-     */
-    private static JTextArea magnetLinksTextArea;
+    private static final int HORIZONTAL_SPACING = 3;
+    private static final int VERTICAL_SPACING = 10;
+    private static final int URL_FIELD_COLUMNS = 33;
+    private static final int URL_PANEL_WIDTH = 300;
     private static final JTextField urlField = new JTextField();
-    // Add a mouse event handler for the urlField input field
+    private static final int URL_PANEL_HEIGHT = urlField.getPreferredSize().height;
+    private static final Dimension URL_PANEL_DIMENSION = new Dimension(URL_PANEL_WIDTH, URL_PANEL_HEIGHT);
+
+    private static final Dimension RIGID_AREA_DIMENSION_HORIZONTAL = new Dimension(HORIZONTAL_SPACING, 0);
+    private static final Dimension RIGID_AREA_DIMENSION_VERTICAL = new Dimension(0, VERTICAL_SPACING);
+    private static JLabel numberLabel = new JLabel(Integer.toString(LinkParser.getNumberOfFoundLinks()));
+    private static JPanel createButtonPanel() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+        buttonPanel.setOpaque(false);
+        buttonPanel.add(createNumberPanel());
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        buttonPanel.add(createInputPanel());
+        return buttonPanel;
+    }
+
+    private static JTextArea magnetLinksTextArea;
+
+
+    // mouse event handler for the urlField input field :)
     static {
         urlField.addMouseListener(new MouseAdapter() {
             @Override
@@ -64,6 +70,8 @@ public class AppWindow {
                     "Invalid URL. Please enter a valid URL.", "Issue!", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+
 
     public static void addMagnetLinkToTextArea(String magnetLink) {
         if (magnetLink != null && !magnetLink.isEmpty()) {
@@ -108,23 +116,13 @@ public class AppWindow {
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BorderLayout());
         centerPanel.setBackground(BACKGROUND_COLOR);
-        originalImageLabel = new JLabel(new ImageIcon(ImgProcessor.scaleImageForPreview(colorImage)));
+        JLabel originalImageLabel = new JLabel(new ImageIcon(ImgProcessor.scaleImageForPreview(colorImage)));
         centerPanel.add(originalImageLabel, BorderLayout.CENTER);
         JPanel buttonPanel = createButtonPanel();
         originalImageLabel.setLayout(new BorderLayout());
         originalImageLabel.add(buttonPanel, BorderLayout.CENTER);
 
         return centerPanel;
-    }
-
-    private static JPanel createButtonPanel() {
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        buttonPanel.setOpaque(false);
-        buttonPanel.add(createNumberPanel());
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
-        buttonPanel.add(createInputPanel());
-        return buttonPanel;
     }
 
     private static JPanel createNumberPanel() {
@@ -140,13 +138,13 @@ public class AppWindow {
     }
 
     private static JPanel createUrlPanel() {
-        urlField.setColumns(33);
+        urlField.setColumns(URL_FIELD_COLUMNS);
         JPanel urlPanel = new JPanel();
         urlPanel.setLayout(new BoxLayout(urlPanel, BoxLayout.X_AXIS));
         urlPanel.add(new JLabel(""));
         urlPanel.add(urlField);
-        urlPanel.setMaximumSize(new Dimension(300, urlField.getPreferredSize().height));
-        urlPanel.setPreferredSize(new Dimension(300, urlField.getPreferredSize().height));
+        urlPanel.setMaximumSize(URL_PANEL_DIMENSION);
+        urlPanel.setPreferredSize(URL_PANEL_DIMENSION);
 
         return urlPanel;
     }
@@ -177,28 +175,25 @@ public class AppWindow {
 
     private static JPanel createInputPanel() {
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS)); // Changed layout to Y_AXIS for vertical alignment
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
         inputPanel.setOpaque(false);
-        // This panel contains the url field and existing buttons
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
         topPanel.setOpaque(false);
         topPanel.add(createUrlPanel());
-        topPanel.add(Box.createRigidArea(new Dimension(3, 0))); // Add a horizontal spacing
+        topPanel.add(Box.createRigidArea(RIGID_AREA_DIMENSION_HORIZONTAL));
         topPanel.add(createOkButton());
-        // This panel contains the new search button
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
         bottomPanel.setOpaque(false);
         bottomPanel.add(createSearchNewButton());
-        bottomPanel.add(Box.createRigidArea(new Dimension(3, 0))); // Add a horizontal spacing
+        bottomPanel.add(Box.createRigidArea(RIGID_AREA_DIMENSION_HORIZONTAL));
         bottomPanel.add(createSearchTopButton());
-        bottomPanel.add(Box.createRigidArea(new Dimension(3, 0))); // Add a horizontal spacing
+        bottomPanel.add(Box.createRigidArea(RIGID_AREA_DIMENSION_HORIZONTAL));
         bottomPanel.add(createClearButton());
-        bottomPanel.add(Box.createRigidArea(new Dimension(3, 0))); // Add a horizontal spacing
-        // Add the panels to the main inputPanel
+        bottomPanel.add(Box.createRigidArea(RIGID_AREA_DIMENSION_HORIZONTAL));
         inputPanel.add(topPanel);
-        inputPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a vertical spacing
+        inputPanel.add(Box.createRigidArea(RIGID_AREA_DIMENSION_VERTICAL));
         inputPanel.add(bottomPanel);
 
         return inputPanel;
