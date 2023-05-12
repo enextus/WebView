@@ -46,7 +46,7 @@ public class App {
      * If the image decoding fails, an error message is printed to the console.
      */
     public static void main(String[] args) {
-        logURL("App \"Magnet Links Opener\" running"); // Измените вызов LOGGER.info на logURL
+        logURL("App \"MaLO - ((Magnet Links Opener))\" running");
         String randomImagePath = getRandomImagePath();
         System.out.println("randomImagePath: " + randomImagePath);
 
@@ -55,15 +55,15 @@ public class App {
             BufferedImage imageDecode = ImgProcessor.decodeBase64ToImage(base64ImageString);
 
             if (imageDecode != null) {
-                logSelectedImage(randomImagePath); // Используйте метод из класса LoggerUtil
+                logSelectedImage(randomImagePath);
                 AppWindow.displayImages(imageDecode);
             } else {
                 System.err.println("Failed to decode the image.");
             }
         } catch (IllegalArgumentException e) {
-            logSelectedImage("Resource file not found: " + randomImagePath); // Измените вызов LOGGER.log на logSelectedImage
+            logSelectedImage("Resource file not found: " + randomImagePath);
         } catch (IOException e) {
-            logURL("Failed to read resource file: " + randomImagePath); // Измените вызов LOGGER.log на logURL
+            logURL("Failed to read resource file: " + randomImagePath);
         }
     }
 

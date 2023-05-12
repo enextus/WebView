@@ -101,7 +101,7 @@ public class AppWindow {
     }
 
     private static JFrame createMainFrame() {
-        JFrame frame = new JFrame("Magnet Links Opener © 2023");
+        JFrame frame = new JFrame("MaLO ((Magnet Links Opener)) © 2023");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setResizable(false);
