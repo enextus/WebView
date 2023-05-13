@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="" />
+    <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/AppWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/AppWindow.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +96,7 @@
       <recent name="org.image" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.org.image.App">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.image.App" />
       <module name="MagnetLinksOpener" />
@@ -107,7 +110,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppWindowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="org.image.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.image.App" />
       <module name="MagnetLinksOpener" />
       <extension name="coverage">
         <pattern>
@@ -115,9 +119,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.image" />
-      <option name="MAIN_CLASS_NAME" value="org.image.AppWindowTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -294,12 +295,12 @@
     </configuration>
     <list>
       <item itemvalue="Application.App" />
+      <item itemvalue="Application.org.image.App" />
       <item itemvalue="JUnit.ParserTest.testParseUrlNoLinks" />
       <item itemvalue="JUnit.ParserTest.testParseDifferentTypesOfUrls" />
       <item itemvalue="JUnit.ImageProcessorTest" />
       <item itemvalue="JUnit.ImageProcessorTest.testConvertToBlackAndWhite" />
       <item itemvalue="JUnit.ImageSaverTest" />
-      <item itemvalue="JUnit.AppWindowTest" />
       <item itemvalue="JUnit.ParserTest" />
       <item itemvalue="JUnit.ToolsTest" />
       <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" />
@@ -308,11 +309,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.org.image.App" />
         <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithNull" />
         <item itemvalue="JUnit.ToolsTest.testAddMagnetLinkToTextAreaWithEmptyString" />
         <item itemvalue="JUnit.ToolsTest" />
         <item itemvalue="JUnit.ParserTest" />
-        <item itemvalue="JUnit.AppWindowTest" />
       </list>
     </recent_temporary>
   </component>
@@ -462,6 +463,8 @@
       <workItem from="1683891194873" duration="252000" />
       <workItem from="1683891464248" duration="39000" />
       <workItem from="1683891571199" duration="7181000" />
+      <workItem from="1683968232736" duration="438000" />
+      <workItem from="1683968786742" duration="331000" />
     </task>
     <servers />
   </component>

@@ -98,7 +98,6 @@ public class AppWindow {
         }
     }
 
-
     public static void addMagnetLinkToTextArea(String magnetLink) {
         if (magnetLink != null && !magnetLink.isEmpty()) {
             AppWindow.magnetLinksTextArea.append(magnetLink + "\n");
@@ -129,7 +128,6 @@ public class AppWindow {
             e.printStackTrace();
         }
     }
-
     private static JFrame createMainFrame() {
         JFrame frame = new JFrame(FRAME);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -137,7 +135,6 @@ public class AppWindow {
         frame.setResizable(false);
         return frame;
     }
-
     private static JPanel createCenterPanel(BufferedImage colorImage) {
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BorderLayout());
@@ -150,7 +147,6 @@ public class AppWindow {
 
         return centerPanel;
     }
-
     private static JPanel createNumberPanel() {
         numberLabel = new JLabel(Integer.toString(LinkParser.getNumberOfFoundLinks()));
         numberLabel.setFont(new Font(FONT_NAME, FONT_STYLE, FONT_SIZE));
@@ -162,7 +158,6 @@ public class AppWindow {
         numberPanel.add(numberLabel);
         return numberPanel;
     }
-
     private static JPanel createUrlPanel() {
         urlField.setColumns(URL_FIELD_COLUMNS);
         JPanel urlPanel = new JPanel();
@@ -174,13 +169,11 @@ public class AppWindow {
 
         return urlPanel;
     }
-
     private static JButton createOkButton() {
         JButton jButton = new JButton(OK_BUTTON_TEXT);
         jButton.addActionListener(e -> enterUrl());
         return jButton;
     }
-
     private static JButton createSearchTopButton() {
         JButton searchButton = new JButton(TOP_BUTTON_LABEL);
         searchButton.addActionListener(e -> {
@@ -189,7 +182,6 @@ public class AppWindow {
         });
         return searchButton;
     }
-
     private static JButton createSearchNewButton() {
         JButton searchButton = new JButton(NEW_BUTTON_LABEL);
         searchButton.addActionListener(e -> {
@@ -199,7 +191,6 @@ public class AppWindow {
         });
         return searchButton;
     }
-
     private static JPanel createInputPanel() {
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
