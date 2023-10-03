@@ -12,7 +12,7 @@ public class WebViewApp extends Application {
         WebView webView = new WebView();
         webView.getEngine().load("https://openai.com"); // Укажите URL вашей веб-страницы
 
-        Scene scene = new Scene(webView, 1024, 900);
+        Scene scene = new Scene(webView, 1080, 1024);
         primaryStage.setTitle("My WebView App");
         primaryStage.setScene(scene);
         primaryStage.show();
