@@ -10,9 +10,9 @@ public class WebViewApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         WebView webView = new WebView();
-        webView.getEngine().load("https://www.google.com"); // Укажите URL вашей веб-страницы
+        webView.getEngine().load("https://openai.com"); // Укажите URL вашей веб-страницы
 
-        Scene scene = new Scene(webView, 800, 600);
+        Scene scene = new Scene(webView, 1024, 900);
         primaryStage.setTitle("My WebView App");
         primaryStage.setScene(scene);
         primaryStage.show();
