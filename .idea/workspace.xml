@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/logback.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/WebViewApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/WebViewApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +74,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Projects/ImageProcessor/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.42413792&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
@@ -122,7 +121,7 @@
     <configuration name="WebViewApp" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.image.WebViewApp" />
       <module name="WebViewApp" />
-      <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 --module-path &quot;C:\Users\Administrator\.m2\repository\org\openjfx\javafx-base\21-ea+17;C:\Users\Administrator\.m2\repository\org\openjfx\javafx-graphics\21-ea+17;C:\Users\Administrator\.m2\repository\org\openjfx\javafx-fxml\21-ea+17;...[other JavaFX modules]&quot; --add-modules javafx.controls,javafx.fxml,javafx.web,javafx.media,javafx.graphics,javafx.base -classpath &quot;C:\Projects\WebView\target\classes;&quot; org.image.WebViewApp" />
+      <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 --module-path &quot;C:\Users\Administrator\.m2\repository\org\openjfx\javafx-base\21-ea+17;C:\Users\Administrator\.m2\repository\org\openjfx\javafx-controls\21-ea+17;C:\Users\Administrator\.m2\repository\org\openjfx\javafx-fxml\21-ea+17;C:\Users\Administrator\.m2\repository\org\openjfx\javafx-web\21-ea+17;C:\Users\Administrator\.m2\repository\org\openjfx\javafx-media\21-ea+17;C:\Users\Administrator\.m2\repository\org\openjfx\javafx-graphics\21-ea+17&quot; --add-modules javafx.controls,javafx.fxml,javafx.web,javafx.media,javafx.graphics,javafx.base -classpath &quot;C:\Projects\WebView\target\classes;&quot; org.image.WebViewApp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.image.*" />
@@ -361,7 +360,8 @@
       <workItem from="1696437882300" duration="306000" />
       <workItem from="1696438375222" duration="512000" />
       <workItem from="1696439093043" duration="299000" />
-      <workItem from="1696439469181" duration="74000" />
+      <workItem from="1696439469181" duration="994000" />
+      <workItem from="1696440505660" duration="155000" />
     </task>
     <servers />
   </component>

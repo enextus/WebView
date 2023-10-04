@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+<!--        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <jetbrains.version>24.0.1</jetbrains.version>
@@ -21,12 +21,6 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>21-ea+17</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-media</artifactId>
             <version>21-ea+17</version>
         </dependency>
 
@@ -47,6 +41,13 @@
             <artifactId>javafx-base</artifactId>
             <version>21-ea+17</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>21-ea+17</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
