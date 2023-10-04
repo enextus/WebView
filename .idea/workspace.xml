@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/WebViewApp.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/logback.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/image/WebViewApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/WebViewApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/1.img" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/2.img" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/3.img" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/4.img" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/img/img.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/image/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/image/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +32,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -79,7 +75,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Projects/ImageProcessor/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.42413792&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
@@ -362,7 +358,10 @@
       <workItem from="1696413471179" duration="847000" />
       <workItem from="1696414364504" duration="1238000" />
       <workItem from="1696437004301" duration="841000" />
-      <workItem from="1696437882300" duration="185000" />
+      <workItem from="1696437882300" duration="306000" />
+      <workItem from="1696438375222" duration="512000" />
+      <workItem from="1696439093043" duration="299000" />
+      <workItem from="1696439469181" duration="74000" />
     </task>
     <servers />
   </component>
