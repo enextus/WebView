@@ -19,7 +19,7 @@ public class AppTest {
     @Test
     public void testGetRandomImagePath_validDirectory() {
         // Create an instance of App
-        WebViewApp app = new WebViewApp();
+
 
 
     }
