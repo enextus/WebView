@@ -12,6 +12,11 @@ import org.slf4j.LoggerFactory;
 public class WebViewApp extends Application {
     private static final Logger logger = LoggerFactory.getLogger(WebViewApp.class);
     private WebView webView;
+
+    public WebView getWebView() {
+        return webView;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

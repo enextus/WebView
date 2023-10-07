@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f7e5b92-2ba3-4729-88ce-b7b399c9004e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/image/WebViewApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/image/WebViewApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,32 +58,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.TestNG&quot;: &quot;&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Projects/WebViewApp&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Projects/ImageProcessor/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.42413792&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.archetype.catalogs&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.23649338&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.TestNG": "",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_directory_selection": "C:/Projects/WebViewApp/src/test/java",
+    "last_opened_file_path": "C:/opt/javafx-sdk-21/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Projects/ImageProcessor/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.42413792",
+    "settings.editor.selected.configurable": "terminal",
+    "settings.editor.splitter.proportion": "0.23649338",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\MagnetLinksGrabber\target" />
@@ -101,7 +107,7 @@
       <recent name="org.image" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.WebViewApp">
+  <component name="RunManager" selected="Batch.startApp">
     <configuration name="WebViewApp" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.image.WebViewApp" />
       <module name="WebViewApp" />
@@ -112,6 +118,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="startApp" type="BatchConfigurationType" factoryName="Batch" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="./target" />
+      <option name="PARENT_ENVS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="startApp.bat" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,6 +150,21 @@
     </configuration>
     <configuration name="AppTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="JxBrowserApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.AppTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebViewApp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.image.*" />
@@ -177,6 +209,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WebViewAppTest.testStart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WebViewApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.image.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.image" />
+      <option name="MAIN_CLASS_NAME" value="org.image.WebViewAppTest" />
+      <option name="METHOD_NAME" value="testStart" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="image-processor [clean] (1)" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -211,7 +259,9 @@
     </configuration>
     <list>
       <item itemvalue="Application.WebViewApp" />
+      <item itemvalue="Batch.startApp" />
       <item itemvalue="JUnit.AppTest" />
+      <item itemvalue="JUnit.WebViewAppTest.testStart" />
       <item itemvalue="JUnit.AppTest (1)" />
       <item itemvalue="JUnit.WebViewAppTest" />
       <item itemvalue="JUnit.WebViewAppTest.should_contain_google_text" />
@@ -219,8 +269,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AppTest (1)" />
+        <item itemvalue="Batch.startApp" />
         <item itemvalue="JUnit.WebViewAppTest" />
+        <item itemvalue="JUnit.WebViewAppTest.testStart" />
+        <item itemvalue="JUnit.AppTest (1)" />
         <item itemvalue="JUnit.WebViewAppTest.should_contain_google_text" />
       </list>
     </recent_temporary>
@@ -407,7 +459,10 @@
       <workItem from="1696521764425" duration="1133000" />
       <workItem from="1696586395470" duration="39000" />
       <workItem from="1696607636829" duration="208000" />
-      <workItem from="1696703674151" duration="880000" />
+      <workItem from="1696703674151" duration="1054000" />
+      <workItem from="1696707467569" duration="32000" />
+      <workItem from="1696711673144" duration="486000" />
+      <workItem from="1696712176754" duration="1148000" />
     </task>
     <servers />
   </component>
