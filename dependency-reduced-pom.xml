@@ -64,7 +64,7 @@
             <configuration>
               <target>
                 <echo>@echo off
-                                    start javaw --module-path "C:\opt\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.fxml,javafx.web,javafx.media,javafx.graphics,javafx.base -jar ${project.build.directory}/${project.build.finalName}.jar</echo>
+                                    start javaw --module-path "C:\opt\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.web -jar ${project.build.directory}/${project.build.finalName}.jar</echo>
               </target>
             </configuration>
           </execution>
